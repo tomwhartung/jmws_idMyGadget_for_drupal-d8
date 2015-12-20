@@ -1,0 +1,5 @@
+idmygadget.config:
+  title: 'IdMyGadget Configuration'
+  description: 'Configure the IdMyGadget module: set the device detector.'
+  route_name: idmygadget.config
+  parent: system.admin_config_system

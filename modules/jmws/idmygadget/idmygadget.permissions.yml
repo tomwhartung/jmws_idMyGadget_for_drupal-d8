@@ -1,0 +1,3 @@
+'configure_idmygadget':
+  title: 'Configure the IdMyGadget module.'
+  description: 'Specify the gadget detector to use for device detection.'
