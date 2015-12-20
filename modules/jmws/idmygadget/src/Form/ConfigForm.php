@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\idMyGadget\Form;
+namespace Drupal\idmygadget\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
