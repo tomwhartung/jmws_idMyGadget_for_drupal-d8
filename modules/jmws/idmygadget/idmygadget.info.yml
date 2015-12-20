@@ -1,0 +1,5 @@
+name: IdMyGadget
+type: module
+description: 'Performs device detection so we can provide device-specific menus and content.'
+package: Jmws
+core: '8.x'
