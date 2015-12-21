@@ -1,0 +1,6 @@
+# The configuration schema for the idMyGadget module's detector.
+
+idmygadget.idmygadget_gadget_detector:
+  idmygadget_gadget_detector: 'detect_mobile_devices'
+  langcode: en
+
