@@ -46,6 +46,6 @@ class ConfigForm extends ConfigFormBase {
   }
 
   public function getEditableConfigNames() {
-    return ['idMyGadget.settings'];
+    return ['idmygadget.settings'];
   }
 }
