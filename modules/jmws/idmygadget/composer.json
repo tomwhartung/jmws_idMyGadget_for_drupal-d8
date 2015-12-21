@@ -1,0 +1,6 @@
+{
+  "name": "drupal/jmws-idmygadget",
+  "description": "A minimal composer.json file for the idmygadget module.  (See https://www.drupal.org/node/2514612 .)",
+  "type": "drupal-module",
+  "license": "GPL-2.0+"
+}
