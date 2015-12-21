@@ -1,0 +1,13 @@
+# Schema for the configuration files of the idmygadget module.
+
+idmygadget.settings:
+  type: module_settings
+  label: 'IdMyGadget settings'
+
+idmygadget.idmygadget_gadget_detector:
+  type: config_object
+  label: 'Gadget Detector'
+  mapping:
+    idmygadget_gadget_detector:
+      type: string
+      label: 'Gadget detector to use'
