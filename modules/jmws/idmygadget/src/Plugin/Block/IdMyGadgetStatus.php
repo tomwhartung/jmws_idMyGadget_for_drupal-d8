@@ -10,7 +10,7 @@ use Drupal\idmygadget\GadgetDetector;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Reports on hugability status.
+ * Reports on idmygadget status.
  *
  * @Block(
  *   id = "idmygadget_status",
@@ -57,12 +57,15 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
 
   public function build() {
     if ($this->configuration['enabled']) {
-      $message = $this->t('@to was the last person hugged', [
-        '@to' => $this->gadgetDetector->getLastRecipient()
+      // $message = $this->t('@to was the last person hugged', [
+      //   '@to' => $this->gadgetDetector->getLastRecipient()
+      // ]);
+      $message = $this->t('Using the @gadget_detector detector for device detection', [
+        '@gadget_detector' => $this->gadgetDetector->getGadgetDetector()
       ]);
     }
     else {
-      $message = $this->t('No hugs :-(');
+      $message = $this->t('This module is not enabled.');
     }
     return [
       '#markup' => $message,
