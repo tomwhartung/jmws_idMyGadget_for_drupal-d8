@@ -23,4 +23,8 @@ class GadgetDetector {
   public function getLastRecipient() {
     return $this->state->get('idmygadget.last_recipient');
   }
+
+  public function getGadgetDetector() {
+    return $this->state->get('idmygadget.idmygadget_gadget_detector');
+  }
 }
