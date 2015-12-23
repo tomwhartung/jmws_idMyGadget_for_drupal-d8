@@ -4,6 +4,8 @@ namespace Drupal\idmygadget;
 
 use Drupal\Core\State\StateInterface;
 
+// require 'JmwsIdMyGadget/JmwsIdMyGadgetDrupal.php';
+
 class GadgetDetector {
 
   /**
@@ -25,7 +27,15 @@ class GadgetDetector {
   }
 
   public function getGadgetDetector() {
+    $supportedGadgetDetectors = array(
+      'detect_mobile_browsers',   // note that this is used as the default throughout
+      'mobile_detect',
+      'tera_wurfl',
+      'no_detection'      // defaults to desktop (allows for isolating responsive behavior)
+   );
+
     $config = \Drupal::config('idmygadget.settings');
-    return $config->get('idmygadget_gadget_detector');
+    $detectorIndex = $config->get('idmygadget_gadget_detector');
+    return $supportedGadgetDetectors[$detectorIndex];
   }
 }
