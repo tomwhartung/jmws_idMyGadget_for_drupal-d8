@@ -25,6 +25,7 @@ class GadgetDetector {
   }
 
   public function getGadgetDetector() {
-    return $this->state->get('idmygadget.idmygadget_gadget_detector');
+    $config = \Drupal::config('idmygadget.settings');
+    return $config->get('idmygadget_gadget_detector');
   }
 }
