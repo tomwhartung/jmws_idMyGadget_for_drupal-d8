@@ -6,7 +6,7 @@
  * *THEN* we can reuse the rest of the code in this project for joomla and wordpress (and...?)
  */
 // require_once 'JmwsIdMyGadget.php';
-namespace Drupal\idMyGadget;
+namespace Drupal\idmygadget\JmwsIdMyGadget;
 
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 {
