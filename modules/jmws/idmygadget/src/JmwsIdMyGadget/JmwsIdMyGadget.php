@@ -8,7 +8,7 @@ if( !defined('DS') )
 	define('DS', DIRECTORY_SEPARATOR);
 }
 // require_once 'php/IdMyGadget.php';
-namespace Drupal\idMyGadget;
+namespace Drupal\idmygadget\JmwsIdMyGadget;
 
 /**
  * Error message for when the underlying 3rd party detection software is not installed
