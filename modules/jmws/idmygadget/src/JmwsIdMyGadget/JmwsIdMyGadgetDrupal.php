@@ -1,5 +1,7 @@
 <?php
 namespace Drupal\idmygadget\JmwsIdMyGadget;
+// use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget;
+
 /**
  * Creates an object of the desired idMyGadget subclass and uses it for device detection.
  * NOTE:
@@ -8,6 +10,7 @@ namespace Drupal\idmygadget\JmwsIdMyGadget;
  */
 // require_once 'JmwsIdMyGadget.php';
 
+// class JmwsIdMyGadgetDrupal extends \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 {
 	/**
