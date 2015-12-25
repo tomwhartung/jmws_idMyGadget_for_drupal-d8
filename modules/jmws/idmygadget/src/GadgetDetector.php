@@ -4,6 +4,7 @@ namespace Drupal\idmygadget;
 
 use Drupal\Core\State\StateInterface;
 use Drupal\idMyGadget\JmwsIdMyGadget;
+use Drupal\idMyGadget\LearningMore;
 
 // require 'JmwsIdMyGadget/JmwsIdMyGadgetDrupal.php';
 
@@ -23,6 +24,9 @@ class GadgetDetector {
 	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
 	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
 	$teachMe = new TeachMe();
+	// $learningMore = new LearningMore();
+	// $learningMore = new Drupal\idmygadget\LearningMore\LearningMore();
+	$learningMore = new \Drupal\idmygadget\LearningMore\LearningMore();
   }
 
   public function addHug($target_name) {
