@@ -10,7 +10,7 @@ use Drupal\idMyGadget\JmwsIdMyGadget;
 class GadgetDetector {
 
   public $jmwsIdMyGadget;
-	
+
   /**
    * @var \Drupal\Core\State\StateInterface
    */
@@ -22,6 +22,7 @@ class GadgetDetector {
 	// $this->jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
 	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
 	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
+	$teachMe = new TeachMe();
   }
 
   public function addHug($target_name) {
