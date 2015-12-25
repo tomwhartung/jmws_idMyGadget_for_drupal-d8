@@ -7,6 +7,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\idmygadget\GadgetDetector;
+use Drupal\idmygadget\JmwsIdMyGadget;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -67,6 +68,17 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
     else {
       $message = $this->t('This module is not enabled.');
     }
+
+	// $jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
+	// $jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
+	// $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
+
+	if ( class_exists('JmwsIdMyGadgetDrupal') ) {
+		$message .= '  Yes and btw JmwsIdMyGadgetDrupal is a class!';
+	}
+	else {
+		$message .= '  Oops and sowwy JmwsIdMyGadgetDrupal is a NOT class!';
+	}
     return [
       '#markup' => $message,
     ];
