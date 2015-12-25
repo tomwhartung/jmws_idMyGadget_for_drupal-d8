@@ -1,4 +1,5 @@
 <?php
+namespace Drupal\idmygadget\JmwsIdMyGadget;
 /**
  * Creates an object of the desired idMyGadget subclass and uses it for device detection.
  * Ideally this should exactly match the class with the same name in jmws_idMyGadget_for_joomla.
@@ -8,7 +9,6 @@ if( !defined('DS') )
 	define('DS', DIRECTORY_SEPARATOR);
 }
 // require_once 'php/IdMyGadget.php';
-namespace Drupal\idmygadget\JmwsIdMyGadget;
 
 /**
  * Error message for when the underlying 3rd party detection software is not installed
