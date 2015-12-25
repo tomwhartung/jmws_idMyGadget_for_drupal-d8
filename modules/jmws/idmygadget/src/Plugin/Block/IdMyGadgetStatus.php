@@ -7,6 +7,8 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\idmygadget\GadgetDetector;
+use Drupal\idmygadget\LearningMore;
+use Drupal\idmygadget\TeachMe;
 use Drupal\idmygadget\JmwsIdMyGadget;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -72,14 +74,37 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
 	// $jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
 	// $jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
 	// $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
+	$teachMe = new TeachMe( 'IdMyGadgetStatus::build()' );
 
-	if ( class_exists('JmwsIdMyGadgetDrupal') ) {
-		$message .= '  Yes and btw JmwsIdMyGadgetDrupal is a class!';
+	if ( class_exists('GadgetDetector') ) {
+		$message .= '<br />GadgetDetector is a class!';
 	}
 	else {
-		$message .= '  Oops and sowwy JmwsIdMyGadgetDrupal is a NOT class!';
+		$message .= '<br />Oops GadgetDetector is a NOT class.';
 	}
-    return [
+
+	if ( class_exists('LearningMore') ) {
+		$message .= '<br />LearningMore is a class!';
+	}
+	else {
+		$message .= '<br />Oops LearningMore is a NOT class.';
+	}
+
+	if ( class_exists('TeachMe') ) {
+		$message .= '<br />TeachMe is a class!';
+	}
+	else {
+		$message .= '<br />Oops TeachMe is a NOT class.';
+	}
+
+	if ( class_exists('JmwsIdMyGadgetDrupal') ) {
+		$message .= '<br />JmwsIdMyGadgetDrupal is a class!';
+	}
+	else {
+		$message .= '<br />Oops JmwsIdMyGadgetDrupal is a NOT class.';
+	}
+
+	return [
       '#markup' => $message,
     ];
   }
