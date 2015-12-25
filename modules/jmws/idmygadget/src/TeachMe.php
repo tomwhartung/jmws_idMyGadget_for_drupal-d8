@@ -2,9 +2,9 @@
 namespace Drupal\idMyGadget;
 
 class TeachMe {
-	public function __construct() {
+	public function __construct( $createdBy='' ) {
 		// print 'Teach me.';
-		error_log( 'Teach me.' );
+		error_log( 'TeachMe object created by ' . $createdBy . '.' );
 	}
 
 	public function teachMe() {
