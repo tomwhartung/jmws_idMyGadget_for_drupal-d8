@@ -3,8 +3,9 @@
 namespace Drupal\idmygadget;
 
 use Drupal\Core\State\StateInterface;
-use Drupal\idMyGadget\JmwsIdMyGadget;
-use Drupal\idMyGadget\LearningMore;
+use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget;
+use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal;
+use Drupal\idmygadget\LearningMore;
 
 // require 'JmwsIdMyGadget/JmwsIdMyGadgetDrupal.php';
 
@@ -19,14 +20,15 @@ class GadgetDetector {
 
   public function __construct(StateInterface $state) {
     $this->state = $state;
-	// $this->jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
-	// $this->jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
-	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
-	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
 	$teachMe = new TeachMe( 'GadgetDetector constructor' );
 	// $learningMore = new LearningMore();
 	// $learningMore = new Drupal\idmygadget\LearningMore\LearningMore();
 	$learningMore = new \Drupal\idmygadget\LearningMore\LearningMore( 'GadgetDetector constructor' );
+
+	// $this->jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
+	// $this->jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
+	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
+	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
   }
 
   public function addHug($target_name) {
