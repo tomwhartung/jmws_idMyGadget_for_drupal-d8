@@ -33,8 +33,8 @@ class GadgetDetector {
 	// Ie. "Class 'Drupal\\idMyGadget\\Heirarchy\\TheBase' not found"
 	// This happens even though we have a use statement explicitly for TheBase
 	//
-	$baseObject = new \Drupal\idmygadget\Heirarchy\TheBase( 'GadgetDetector constructor' );
-	$subObject = new \Drupal\idmygadget\Heirarchy\SubClass( 'GadgetDetector constructor' );
+	// $baseObject = new \Drupal\idmygadget\Heirarchy\TheBase( 'GadgetDetector constructor' );
+	// $subObject = new \Drupal\idmygadget\Heirarchy\SubClass( 'GadgetDetector constructor' );
 
 	//
 	// $this->jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
