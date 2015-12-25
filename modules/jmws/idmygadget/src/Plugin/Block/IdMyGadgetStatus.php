@@ -75,7 +75,7 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
 	// $jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
 	// $jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
 	// $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
-	$teachMe = new TeachMe( 'IdMyGadgetStatus::build()' );
+	// $teachMe = new TeachMe( 'IdMyGadgetStatus::build()' );
 	//
 	// (1) and (2) Does NOT work in either case, it looks for the class inside of this namespace
 	// ie: "Class 'Drupal\\idmygadget\\Plugin\\Block\\Drupal\\idmygadget\\LearningMore\\LearningMore' not found"
@@ -83,7 +83,7 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
 	// 
 	// (1) Works when we "use Drupal\idmygadget\LearningMore;"
 	// (2)            OR "use Drupal\idmygadget\LearningMore\LearningMore;"
-	$learningMore_1 = new \Drupal\idmygadget\LearningMore\LearningMore( 'IdMyGadgetStatus::build() - 1' );
+	// $learningMore_1 = new \Drupal\idmygadget\LearningMore\LearningMore( 'IdMyGadgetStatus::build() - 1' );
 	//
 	// (1) Does NOT work when we ""
 	// ie: "Class 'Drupal\\idmygadget\\LearningMore' not found..."
