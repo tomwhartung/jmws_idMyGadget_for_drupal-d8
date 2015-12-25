@@ -23,10 +23,10 @@ class GadgetDetector {
 	// $this->jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
 	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
 	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
-	$teachMe = new TeachMe();
+	$teachMe = new TeachMe( 'GadgetDetector constructor' );
 	// $learningMore = new LearningMore();
 	// $learningMore = new Drupal\idmygadget\LearningMore\LearningMore();
-	$learningMore = new \Drupal\idmygadget\LearningMore\LearningMore();
+	$learningMore = new \Drupal\idmygadget\LearningMore\LearningMore( 'GadgetDetector constructor' );
   }
 
   public function addHug($target_name) {
