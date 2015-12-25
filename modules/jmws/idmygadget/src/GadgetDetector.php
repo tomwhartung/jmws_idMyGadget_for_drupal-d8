@@ -3,11 +3,14 @@
 namespace Drupal\idmygadget;
 
 use Drupal\Core\State\StateInterface;
+use Drupal\idMyGadget\JmwsIdMyGadget;
 
 // require 'JmwsIdMyGadget/JmwsIdMyGadgetDrupal.php';
 
 class GadgetDetector {
 
+  public $jmwsIdMyGadget;
+	
   /**
    * @var \Drupal\Core\State\StateInterface
    */
@@ -15,6 +18,10 @@ class GadgetDetector {
 
   public function __construct(StateInterface $state) {
     $this->state = $state;
+	// $this->jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
+	// $this->jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
+	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
+	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
   }
 
   public function addHug($target_name) {
