@@ -75,6 +75,8 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
 	// $jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
 	// $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
 	$teachMe = new TeachMe( 'IdMyGadgetStatus::build()' );
+	// $learningMore = new Drupal\idmygadget\LearningMore\LearningMore( 'IdMyGadgetStatus::build()' );
+	$learningMore = new \Drupal\idmygadget\LearningMore\LearningMore( 'IdMyGadgetStatus::build()' );
 
 	if ( class_exists('GadgetDetector') ) {
 		$message .= '<br />GadgetDetector is a class!';
