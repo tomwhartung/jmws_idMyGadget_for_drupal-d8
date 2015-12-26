@@ -90,33 +90,7 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
 	// (2) Works when we "use Drupal\idmygadget\LearningMore\LearningMore;"
 	// $learningMore_2 = new LearningMore( 'IdMyGadgetStatus::build() - 2' );
 
-	if ( class_exists('GadgetDetector') ) {
-		$message .= '<br />GadgetDetector is a class!';
-	}
-	else {
-		$message .= '<br />Oops GadgetDetector is a NOT class.';
-	}
-
-	if ( class_exists('LearningMore') ) {
-		$message .= '<br />LearningMore is a class!';
-	}
-	else {
-		$message .= '<br />Oops LearningMore is a NOT class.';
-	}
-
-	if ( class_exists('TeachMe') ) {
-		$message .= '<br />TeachMe is a class!';
-	}
-	else {
-		$message .= '<br />Oops TeachMe is a NOT class.';
-	}
-
-	if ( class_exists('JmwsIdMyGadgetDrupal') ) {
-		$message .= '<br />JmwsIdMyGadgetDrupal is a class!';
-	}
-	else {
-		$message .= '<br />Oops JmwsIdMyGadgetDrupal is a NOT class.';
-	}
+  $message .= '<br />Oops, apparently class_exists() does NOT work well with autoloading!';
 
 	return [
       '#markup' => $message,
