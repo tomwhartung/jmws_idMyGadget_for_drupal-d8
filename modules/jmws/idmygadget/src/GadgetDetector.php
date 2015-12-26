@@ -5,9 +5,6 @@ namespace Drupal\idmygadget;
 use Drupal\Core\State\StateInterface;
 use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget;
 use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal;
-use Drupal\idmygadget\LearningMore;
-use Drupal\idmygadget\Heirarchy\SubClass;
-use Drupal\idmygadget\Heirarchy\TheBase;
 
 // require 'JmwsIdMyGadget/JmwsIdMyGadgetDrupal.php';
 
@@ -22,19 +19,6 @@ class GadgetDetector {
 
   public function __construct(StateInterface $state) {
     $this->state = $state;
-	// $teachMe = new TeachMe( 'GadgetDetector constructor' );
-	// $learningMore = new LearningMore();
-	// $learningMore = new Drupal\idmygadget\LearningMore\LearningMore();
-	// $learningMore = new \Drupal\idmygadget\LearningMore\LearningMore( 'GadgetDetector constructor' );
-
-	//
-	// This demonstrates that autoloading with inheritance can be a little tricky
-	// If we do not pull in TheBase class by creating the baseObject we get an error
-	// Ie. "Class 'Drupal\\idMyGadget\\Heirarchy\\TheBase' not found"
-	// This happens even though we have a use statement explicitly for TheBase
-	//
-	// $baseObject = new \Drupal\idmygadget\Heirarchy\TheBase( 'GadgetDetector constructor' );
-	// $subObject = new \Drupal\idmygadget\Heirarchy\SubClass( 'GadgetDetector constructor' );
 
 	//
 	// $this->jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
