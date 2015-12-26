@@ -7,9 +7,6 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\idmygadget\GadgetDetector;
-use Drupal\idmygadget\LearningMore;   // (1)
-// use Drupal\idmygadget\LearningMore\LearningMore;  // (2)
-use Drupal\idmygadget\TeachMe;
 use Drupal\idmygadget\JmwsIdMyGadget;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -71,24 +68,6 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
     else {
       $message = $this->t('This module is not enabled.');
     }
-
-	// $jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
-	// $jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
-	// $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
-	// $teachMe = new TeachMe( 'IdMyGadgetStatus::build()' );
-	//
-	// (1) and (2) Does NOT work in either case, it looks for the class inside of this namespace
-	// ie: "Class 'Drupal\\idmygadget\\Plugin\\Block\\Drupal\\idmygadget\\LearningMore\\LearningMore' not found"
-	// $learningMore = new Drupal\idmygadget\LearningMore\LearningMore( 'IdMyGadgetStatus::build()' );
-	// 
-	// (1) Works when we "use Drupal\idmygadget\LearningMore;"
-	// (2)            OR "use Drupal\idmygadget\LearningMore\LearningMore;"
-	// $learningMore_1 = new \Drupal\idmygadget\LearningMore\LearningMore( 'IdMyGadgetStatus::build() - 1' );
-	//
-	// (1) Does NOT work when we ""
-	// ie: "Class 'Drupal\\idmygadget\\LearningMore' not found..."
-	// (2) Works when we "use Drupal\idmygadget\LearningMore\LearningMore;"
-	// $learningMore_2 = new LearningMore( 'IdMyGadgetStatus::build() - 2' );
 
   $message .= '<br />Oops, apparently class_exists() does NOT work well with autoloading!';
 
