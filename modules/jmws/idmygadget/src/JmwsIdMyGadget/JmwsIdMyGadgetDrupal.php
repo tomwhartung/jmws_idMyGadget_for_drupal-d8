@@ -47,7 +47,8 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$returnValue = '<p>';
 		$returnValue .= parent::getSanityCheckString() . '/';
 
-		$jqmDataThemeIndex = variable_get( 'idmg_jqm_data_theme' );   // WARNING: drupal-specific (but we are just checking sanity)
+		// $jqmDataThemeIndex = variable_get( 'idmg_jqm_data_theme' );   // WARNING: drupal-specific (but we are just checking sanity)
+		$jqmDataThemeIndex = '?';
 		$returnValue .= '/' . $jqmDataThemeIndex;
 		$returnValue .= '/' . $this->jqmDataThemeAttribute;
 		$returnValue .= '/' . $extra;

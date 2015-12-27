@@ -70,22 +70,13 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
    */
   public function build() {
     if ($this->configuration['enabled']) {
-      // $message = $this->t('@to was the last person hugged', [
-      //   '@to' => $this->gadgetDetector->getLastRecipient()
-      // ]);
-      $message = $this->t('Using the @gadget_detector detector for device detection', [
-        '@gadget_detector' => $this->gadgetDetector->getGadgetDetectorString()
-      ]);
+      $sanityCheckString = $this->jmwsIdMyGadget->getSanityCheckString();
+      $message = $this->t( $sanityCheckString );
     }
     else {
       $message = $this->t('This module is not enabled.');
     }
 
-    // $sanityCheckString = $this->jmwsIdMyGadget->getSanityCheckString();
-    // $message .= '<br />$sanityCheckString: ' . $sanityCheckString;
-
-    return [
-      '#markup' => $message,
-    ];
+    return [ '#markup' => $message, ];
   }
 }
