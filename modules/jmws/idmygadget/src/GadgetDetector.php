@@ -26,12 +26,9 @@ class GadgetDetector {
   public function __construct(StateInterface $state) {
     $this->state = $state;
 
-    $getService = new GetJmwsIdMyGadgetDrupal( 'GadgetDector class constructor');
-    $this->jmwsIdMyGadget = $getService->getJmwsIdMyGadget();
-
-    $supportedGadgetDetectors = $this->jmwsIdMyGadget->getSupportedGadgetDetectors();
-    // $supportedGadgetDetectors = $jmwsIdMyGadget->supportedGadgetDetectors;
-    error_log( 'GadgetDetector constructor, $supportedGadgetDetectors[1] = ' . $supportedGadgetDetectors[1] );
+    $gadgetDetectorString = $this->getGadgetDetectorString();
+    $getJmwsIdMyGadgetDrupal = new GetJmwsIdMyGadgetDrupal( $gadgetDetectorString );
+    $this->jmwsIdMyGadget = $getJmwsIdMyGadgetDrupal->getJmwsIdMyGadget();
 
   }
 
@@ -44,7 +41,7 @@ class GadgetDetector {
     return $this->state->get('idmygadget.last_recipient');
   }
 
-  public function getGadgetDetector() {
+  public function getGadgetDetectorString() {
     $supportedGadgetDetectors = array(
       'detect_mobile_browsers',   // note that this is used as the default throughout
       'mobile_detect',
