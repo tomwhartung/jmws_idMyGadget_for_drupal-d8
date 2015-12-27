@@ -24,11 +24,19 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
   /**
    * @var \Drupal\idmygadget\GadgetDetector
    */
-  protected $gadgetDetector;
+  protected $gadgetDetector = null;
+  /**
+   * The IdMyGadget object.  It encasulates all device detection capabilities in
+   * a single global (for now) object, which we can access in this class via this data member.
+   *
+   * @var type JmwsIdMyGadgetDrupal
+   */
+  protected $jmwsIdMyGadget = null;
 
   public function __construct(array $configuration, $plugin_id, $plugin_definition, GadgetDetector $gadgetDetector) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->gadgetDetector = $gadgetDetector;
+    $this->jmwsIdMyGadget = $this->gadgetDetector->jmwsIdMyGadget;
   }
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -56,6 +64,10 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
     $this->configuration['enabled'] = (bool)$form_state->getValue('enabled');
   }
 
+  /**
+   * Returns a render array with the block markup.
+   * @return type
+   */
   public function build() {
     if ($this->configuration['enabled']) {
       // $message = $this->t('@to was the last person hugged', [
@@ -69,9 +81,10 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
       $message = $this->t('This module is not enabled.');
     }
 
-  $message .= '<br />Oops, apparently class_exists() does NOT work well with autoloading!';
+    $supportedGadgetDetectors = $this->jmwsIdMyGadget->getSupportedGadgetDetectors();
+    $message .= '<br />$supportedGadgetDetectors[2] = ' . $supportedGadgetDetectors[2];
 
-	return [
+    return [
       '#markup' => $message,
     ];
   }
