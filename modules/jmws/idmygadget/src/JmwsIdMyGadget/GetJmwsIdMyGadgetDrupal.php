@@ -8,30 +8,71 @@ namespace Drupal\idmygadget\JmwsIdMyGadget {
    *
    */
   class GetJmwsIdMyGadgetDrupal {
-    public function __construct( $createdBy='' ) {
-      error_log( $createdBy . ' created this GetJmwsIdMyGadgetDrupal object.' );
+    /**
+     * String representing one of the supported gadget detectors
+     * e.g. 'mobile_detect'
+     * @var type string
+     */
+    protected $gadgetDetectorString = '';
+
+    /**
+     * Use the gadget detector string to construct the corresponding gadget detector type
+     *
+     * @param type string $gadgetDetectorString
+     */
+    public function __construct( $gadgetDetectorString='' ) {
+      $this->gadgetDetectorString = $gadgetDetectorString;
+      error_log( 'GetJmwsIdMyGadgetDrupal constructor: $gadgetDetectorString = "' . $gadgetDetectorString . '"' );
+      $this->getJmwsIdMyGadget();
     }
 
     /**
-     * Returns the global service object created in the non-namespaced code below
+     * The first time this is called (from the constructor) we call the global function in the
+     *   non-namespaced code below to create and set it in the global namespace, and of course return it.
+     * Subsequent calls return the global service object previously created
      * @global type $jmwsIdMyGadget
      * @return type
      */
     public function getJmwsIdMyGadget() {
       global $jmwsIdMyGadget;
+
+      if( $jmwsIdMyGadget == null ) {
+        // $jmwsIdMyGadget = createSetAndGetJmwsIdMyGadget( $this->gadgetDetectorString );
+        $jmwsIdMyGadget = new \JmwsIdMyGadgetDrupal( $this->gadgetDetectorString );
+      }
+
       return $jmwsIdMyGadget;
     }
   }
 }
 //
 // This code is in the global namespace
-// This is where we create the jmwsIdMyGadget object, which is global (as it is in WP and Joomla)
+// It should be run only once, when the class above is instantiated.
 //
 namespace {
-  global $jmwsIdMyGadget;
+  /**
+   * The global jmwsIdMyGadget object
+   * As of Drupal 8, globals are a big no-no, but this is how we do it in WP and Joomla and
+   *   the name should be suffficiently unique to avoid collisions.  Hopefully.
+   */
   require_once 'JmwsIdMyGadgetDrupal.php';
-  $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal( 'tera_wurfl' );
-  $supportedGadgetDetectors = $jmwsIdMyGadget->getSupportedGadgetDetectors();
-  error_log( 'Global namespace in GetJmwsIdMyGadgetDrupal.php: $supportedGadgetDetectors[0] = ' . $supportedGadgetDetectors[0] );
+  $jmwsIdMyGadget = null;
+  /**
+   * Create and set (first time only) and always return the jmwsIdMyGadget object,
+   *   which is global (as it is in WP and Joomla).
+   *
+   * @global JmwsIdMyGadgetDrupal $jmwsIdMyGadget
+   * @param type string $gadgetDetectorString
+   * @return \JmwsIdMyGadgetDrupal object
+   */
+  function createSetAndGetJmwsIdMyGadget( $gadgetDetectorString='' ) {
+    global $jmwsIdMyGadget;
 
+    if( $jmwsIdMyGadget == null ) {
+      // $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal( $gadgetDetectorString );
+      error_log( 'global fcn createSetAndGetJmwsIdMyGadget in GetJmwsIdMyGadgetDrupal.php: $gadgetDetectorString "' . $gadgetDetectorString . '"' );
+    }
+
+    return $jmwsIdMyGadget;
+  }
 }
