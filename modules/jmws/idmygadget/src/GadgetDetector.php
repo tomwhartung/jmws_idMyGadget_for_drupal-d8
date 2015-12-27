@@ -3,14 +3,20 @@
 namespace Drupal\idmygadget;
 
 use Drupal\Core\State\StateInterface;
-use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget;
-use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal;
 
 // require 'JmwsIdMyGadget/JmwsIdMyGadgetDrupal.php';
+// use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget;
+// use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal;
+
+use Drupal\idmygadget\JmwsIdMyGadget\GetJmwsIdMyGadgetDrupal;
 
 class GadgetDetector {
 
-  public $jmwsIdMyGadget;
+  /**
+   * The Service: device detection via the selected detector, via IdMyGadget
+   * @var type JmwsIdMyGadgetDrupal
+   */
+  public $jmwsIdMyGadget = null;
 
   /**
    * @var \Drupal\Core\State\StateInterface
@@ -20,15 +26,13 @@ class GadgetDetector {
   public function __construct(StateInterface $state) {
     $this->state = $state;
 
-	//
-	// $this->jmwsIdMyGadget = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
-	// $this->jmwsIdMyGadget = new Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadgetDrupal();
-	// In this case, it is not enough to create an object of the base class.  
-	// We still get an error when trying to use the un-namespaced idMyGadget code.
-	// And I am not quite ready to namespace all that right now....
-	//
-	// $wtfSeriously = new \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget();
-	// $this->jmwsIdMyGadget = new JmwsIdMyGadgetDrupal();
+    $getService = new GetJmwsIdMyGadgetDrupal( 'GadgetDector class constructor');
+    $this->jmwsIdMyGadget = $getService->getJmwsIdMyGadget();
+
+    $supportedGadgetDetectors = $this->jmwsIdMyGadget->getSupportedGadgetDetectors();
+    // $supportedGadgetDetectors = $jmwsIdMyGadget->supportedGadgetDetectors;
+    error_log( 'GadgetDetector constructor, $supportedGadgetDetectors[1] = ' . $supportedGadgetDetectors[1] );
+
   }
 
   public function addHug($target_name) {
