@@ -70,8 +70,10 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
    */
   public function build() {
     if ($this->configuration['enabled']) {
-      $sanityCheckString = $this->jmwsIdMyGadget->getSanityCheckString();
-      $message = $this->t( $sanityCheckString );
+      // $sanityCheckString = $this->jmwsIdMyGadget->getSanityCheckString();
+      // $message = $this->t( $sanityCheckString );
+      $sanityCheckText = $this->jmwsIdMyGadget->getSanityCheckText();
+      $message = $this->t( $sanityCheckText );
     }
     else {
       $message = $this->t('This module is not enabled.');
