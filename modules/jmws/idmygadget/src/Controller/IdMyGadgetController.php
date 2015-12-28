@@ -3,19 +3,19 @@
 namespace Drupal\idmygadget\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\idmygadget\GadgetDetector;
+use Drupal\idmygadget\IdMyGadgetService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\node\NodeInterface;
 
 class IdMyGadgetController extends ControllerBase {
 
   /**
-   * @var \Drupal\idmygadget\GadgetDetector
+   * @var \Drupal\idmygadget\IdMyGadgetService
    */
-  protected $gadgetDetector;
+  protected $idMyGadgetService;
 
-  public function __construct(GadgetDetector $gadgetDetector) {
-    $this->gadgetDetector = $gadgetDetector;
+  public function __construct(IdMyGadgetService $idMyGadgetService) {
+    $this->idMyGadgetService = $idMyGadgetService;
   }
 
   /**
@@ -29,7 +29,7 @@ class IdMyGadgetController extends ControllerBase {
     );
   }
   public static function create(ContainerInterface $container) {
-    return new static($container->get('idmygadget.gadget_detector'));
+    return new static($container->get('idmygadget.idmygadget_service'));
   }
 
   public function idMyGadget() {
@@ -67,7 +67,7 @@ class IdMyGadgetController extends ControllerBase {
   }
 
   public function hug($to, $from, $count) {
-    $this->gadgetDetector->addHug($to);
+    $this->idMyGadgetService->addHug($to);
     if (!$count) {
       $count = $this->config('idmygadget.settings')->get('default_count');
     }
