@@ -26,8 +26,8 @@ class GadgetDetector {
   public function __construct(StateInterface $state) {
     $this->state = $state;
 
-    $gadgetDetectorString = $this->getGadgetDetectorString();
-    $getJmwsIdMyGadgetDrupal = new GetJmwsIdMyGadgetDrupal( $gadgetDetectorString );
+    $gadgetDetectorIndex = $this->getGadgetDetectorIndex();
+    $getJmwsIdMyGadgetDrupal = new GetJmwsIdMyGadgetDrupal( $gadgetDetectorIndex );
     $this->jmwsIdMyGadget = $getJmwsIdMyGadgetDrupal->getJmwsIdMyGadget();
 
   }
@@ -41,16 +41,9 @@ class GadgetDetector {
     return $this->state->get('idmygadget.last_recipient');
   }
 
-  public function getGadgetDetectorString() {
-    $supportedGadgetDetectors = array(
-      'detect_mobile_browsers',   // note that this is used as the default throughout
-      'mobile_detect',
-      'tera_wurfl',
-      'no_detection'      // defaults to desktop (allows for isolating responsive behavior)
-   );
-
+  public function getGadgetDetectorIndex() {
     $config = \Drupal::config('idmygadget.settings');
     $detectorIndex = $config->get('idmygadget_gadget_detector');
-    return $supportedGadgetDetectors[$detectorIndex];
+    return $detectorIndex;
   }
 }
