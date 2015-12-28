@@ -13,16 +13,16 @@ namespace Drupal\idmygadget\JmwsIdMyGadget {
      * e.g. 'mobile_detect'
      * @var type string
      */
-    protected $gadgetDetectorString = '';
+    protected $gadgetDetectorIndex = 0;
 
     /**
      * Use the gadget detector string to construct the corresponding gadget detector type
      *
-     * @param type string $gadgetDetectorString
+     * @param type string $gadgetDetectorIndex
      */
-    public function __construct( $gadgetDetectorString='' ) {
-      $this->gadgetDetectorString = $gadgetDetectorString;
-      error_log( 'GetJmwsIdMyGadgetDrupal constructor: $gadgetDetectorString = "' . $gadgetDetectorString . '"' );
+    public function __construct( $gadgetDetectorIndex=0 ) {
+      $this->gadgetDetectorIndex = $gadgetDetectorIndex;
+      error_log( 'GetJmwsIdMyGadgetDrupal constructor: $gadgetDetectorIndex = "' . $gadgetDetectorIndex . '"' );
       $this->getJmwsIdMyGadget();
     }
 
@@ -37,8 +37,7 @@ namespace Drupal\idmygadget\JmwsIdMyGadget {
       global $jmwsIdMyGadget;
 
       if( $jmwsIdMyGadget == null ) {
-        // $jmwsIdMyGadget = createSetAndGetJmwsIdMyGadget( $this->gadgetDetectorString );
-        $jmwsIdMyGadget = new \JmwsIdMyGadgetDrupal( $this->gadgetDetectorString );
+        $jmwsIdMyGadget = createSetAndGetJmwsIdMyGadget( $this->gadgetDetectorIndex );
       }
 
       return $jmwsIdMyGadget;
@@ -50,27 +49,28 @@ namespace Drupal\idmygadget\JmwsIdMyGadget {
 // It should be run only once, when the class above is instantiated.
 //
 namespace {
+  require_once 'JmwsIdMyGadgetDrupal.php';
   /**
    * The global jmwsIdMyGadget object
    * As of Drupal 8, globals are a big no-no, but this is how we do it in WP and Joomla and
    *   the name should be suffficiently unique to avoid collisions.  Hopefully.
    */
-  require_once 'JmwsIdMyGadgetDrupal.php';
   $jmwsIdMyGadget = null;
   /**
    * Create and set (first time only) and always return the jmwsIdMyGadget object,
    *   which is global (as it is in WP and Joomla).
    *
    * @global JmwsIdMyGadgetDrupal $jmwsIdMyGadget
-   * @param type string $gadgetDetectorString
+   * @param type string $gadgetDetectorIndex
    * @return \JmwsIdMyGadgetDrupal object
    */
-  function createSetAndGetJmwsIdMyGadget( $gadgetDetectorString='' ) {
+  function createSetAndGetJmwsIdMyGadget( $gadgetDetectorIndex=0 ) {
     global $jmwsIdMyGadget;
 
     if( $jmwsIdMyGadget == null ) {
-      // $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal( $gadgetDetectorString );
-      error_log( 'global fcn createSetAndGetJmwsIdMyGadget in GetJmwsIdMyGadgetDrupal.php: $gadgetDetectorString "' . $gadgetDetectorString . '"' );
+      $gadgetDetectorString = JmwsIdMyGadgetDrupal::$supportedGadgetDetectors[$gadgetDetectorIndex];
+      $jmwsIdMyGadget = new JmwsIdMyGadgetDrupal( $gadgetDetectorString );
+      error_log( 'global fcn createSetAndGetJmwsIdMyGadget: $gadgetDetectorString "' . $gadgetDetectorString . '"' );
     }
 
     return $jmwsIdMyGadget;
