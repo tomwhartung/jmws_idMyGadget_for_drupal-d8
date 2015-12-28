@@ -10,7 +10,7 @@ use Drupal\Core\State\StateInterface;
 
 use Drupal\idmygadget\JmwsIdMyGadget\GetJmwsIdMyGadgetDrupal;
 
-class GadgetDetector {
+class IdMyGadgetService {
 
   /**
    * The Service: device detection via the selected detector, via IdMyGadget
