@@ -234,6 +234,18 @@ class JmwsIdMyGadget
 		$returnValue .= $this->usingJQueryMobile ? 'Y' : 'N';
 		return $returnValue;
 	}
+	/**
+	 * For development only! Please remove when code is stable.
+	 * Displaying these values while in development can ensure us that it is working the way it should
+	 * @return string
+	 */
+	public function getSanityCheckText()
+	{
+		$returnValue = '';
+		$returnValue .= 'Using detector ' . $this->getGadgetDetectorString();
+		$returnValue .= ' this looks like a ' . $this->getGadgetString();
+		return $returnValue;
+	}
 
 	/**
 	 * Returns TRUE if the desired detector (subclass) is installed, else FALSE
