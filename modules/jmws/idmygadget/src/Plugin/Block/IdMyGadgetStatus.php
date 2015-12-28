@@ -6,7 +6,7 @@ namespace Drupal\idmygadget\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\idmygadget\GadgetDetector;
+use Drupal\idmygadget\IdMyGadgetService;
 use Drupal\idmygadget\JmwsIdMyGadget;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -22,9 +22,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
-   * @var \Drupal\idmygadget\GadgetDetector
+   * @var \Drupal\idmygadget\IdMyGadgetService
    */
-  protected $gadgetDetector = null;
+  protected $idMyGadgetService = null;
   /**
    * The IdMyGadget object.  It encasulates all device detection capabilities in
    * a single global (for now) object, which we can access in this class via this data member.
@@ -33,16 +33,16 @@ class IdMyGadgetStatus extends BlockBase implements ContainerFactoryPluginInterf
    */
   protected $jmwsIdMyGadget = null;
 
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, GadgetDetector $gadgetDetector) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, IdMyGadgetService $idMyGadgetService) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->gadgetDetector = $gadgetDetector;
-    $this->jmwsIdMyGadget = $this->gadgetDetector->jmwsIdMyGadget;
+    $this->idMyGadgetService = $idMyGadgetService;
+    $this->jmwsIdMyGadget = $this->idMyGadgetService->jmwsIdMyGadget;
   }
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration, $plugin_id, $plugin_definition,
-      $container->get('idmygadget.gadget_detector')
+      $container->get('idmygadget.idmygadget_service')
     );
   }
 
