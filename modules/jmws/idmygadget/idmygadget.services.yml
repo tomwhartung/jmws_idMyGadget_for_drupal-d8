@@ -1,4 +1,4 @@
 services:
-  idmygadget.gadget_detector:
-    class: Drupal\idmygadget\GadgetDetector
+  idmygadget.idmygadget_service:
+    class: Drupal\idmygadget\IdMyGadgetService
     arguments: ['@state']
