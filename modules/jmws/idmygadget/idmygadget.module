@@ -9,7 +9,7 @@
  * Version: 1.0
  * Author URI: http://tomwhartung.com/
  */
-define( 'IDMYGADGET_MODULE_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'idMyGadget' );
+define( 'IDMYGADGET_MODULE_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'src/JmwsIdMyGadget' );
 // require_once( 'idMyGadget/JmwsIdMyGadgetDrupal.php' );
 // require_once 'jmws_idMyGadget_for_joomla/PhoneBurgerMenuIcon.php';
 
