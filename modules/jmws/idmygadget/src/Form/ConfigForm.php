@@ -44,6 +44,12 @@ class ConfigForm extends ConfigFormBase {
       '#required' => TRUE,
    );
 
+    $form['idmygadget_'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Experimental textfield input defined in ConfigForm class'),
+      '#default_value' => $config->get('exp_textfield'),
+    ];
+
     return parent::buildForm($form, $form_state);
   }
   /**
