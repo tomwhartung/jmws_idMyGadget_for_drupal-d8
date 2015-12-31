@@ -1,2 +1,11 @@
 idmygadget_gadget_detector: 'detect_mobile_devices'
 langcode: en
+
+idmygadget_show_site_name_phone: '0'
+langcode: en
+
+idmygadget_show_site_name_tablet: '0'
+langcode: en
+
+idmygadget_show_site_name_desktop: '0'
+langcode: en
