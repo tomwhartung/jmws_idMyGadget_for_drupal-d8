@@ -44,8 +44,8 @@ class ConfigForm extends ConfigFormBase {
       '#description' => $this->t('Select the 3rd party device detector to use for this site.'),
       '#required' => TRUE,
    );
-   // $formSiteNamePhones = $this->siteNameOptions( 'phone' );
-   // $form = array_merge( $form, $formSiteNamePhones );
+   $formSiteNamePhones = $this->siteNameOptions( 'phone' );
+   $form = array_merge( $form, $formSiteNamePhones );
 
     return parent::buildForm($form, $form_state);
   }
@@ -67,8 +67,9 @@ class ConfigForm extends ConfigFormBase {
   }
 
   protected function siteNameOptions( $gadgetType='desktop' ) {
+    $siteNameOptionsForm = array();
 /*
-    $form['idmygadget_'] = [
+    $siteNameOptionsForm['idmygadget_'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Experimental textfield input defined in ConfigForm class'),
       '#default_value' => $config->get('exp_textfield'),
@@ -82,7 +83,7 @@ class ConfigForm extends ConfigFormBase {
 
     $radioChoices = array( 'No', 'Yes' );  // NOTE: 'No' must be the zeroeth elt ;-)
     $settingName = 'idmygadget_show_site_name_' . $gadgetType;   // e.g., 'idmygadget_show_site_name_phone'
-    $form[$settingName] = array(
+    $siteNameOptionsForm[$settingName] = array(
       '#type' => 'radios',
       '#title' => t( 'Show Site Name on ' . $gadgetTypePluralUcfirst . '?' ),
       '#default_value' => $config->get( $settingName ),
@@ -93,7 +94,7 @@ class ConfigForm extends ConfigFormBase {
 
     $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
     $settingName = 'idmygadget_site_name_element_' . $gadgetType;     // e.g., 'idmygadget_site_name_element_phone'
-    $form[$settingName] = array(
+    $siteNameOptionsForm[$settingName] = array(
       '#type' => 'select',
       '#title' => t( 'Site Name Element ' . $gadgetTypeUcfirst ),
       '#default_value' => $config->get( $settingName ),
@@ -101,7 +102,8 @@ class ConfigForm extends ConfigFormBase {
       '#description' => t( 'Select the html element in which you want to display the name of this site in the header on ' . $gadgetTypePlural . '.' ),
       '#required' => FALSE,
     );
-  }
 
+    return $siteNameOptionsForm;
+  }
 
 }
