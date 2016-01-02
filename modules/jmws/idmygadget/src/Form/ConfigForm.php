@@ -62,6 +62,16 @@ class ConfigForm extends ConfigFormBase {
 
     $config = $this->config('idmygadget.settings');
     $config->set('idmygadget_gadget_detector', $form_state->getValue('idmygadget_gadget_detector'));
+    // $config->set('idmygadget_', $form_state->getValue('idmygadget_'));
+
+    $gadgetTypes = array( 'phone', 'tablet', 'desktop' );
+    foreach( $gadgetTypes as $gadgetType ) {
+      $settingName = 'idmygadget_show_site_name_' . $gadgetType;      // e.g., 'idmygadget_show_site_name_phone'
+      $config->set( $settingName, $form_state->getValue($settingName) );
+      $settingName = 'idmygadget_site_name_element_' . $gadgetType;   // e.g., 'idmygadget_site_name_element_phone'
+      $config->set( $settingName, $form_state->getValue($settingName) );
+    }
+
     $config->save();
   }
   /**
