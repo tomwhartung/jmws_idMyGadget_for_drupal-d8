@@ -4,3 +4,6 @@ idmygadget_show_site_name_phone: '0'
 idmygadget_show_site_name_tablet: '1'
 idmygadget_show_site_name_desktop: '0'
 
+idmygadget_site_name_element_phone: '2'
+idmygadget_site_name_element_tablet: '3'
+idmygadget_site_name_element_desktop: '4'
