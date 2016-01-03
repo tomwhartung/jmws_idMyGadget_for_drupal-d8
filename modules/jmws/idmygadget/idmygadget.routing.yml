@@ -5,3 +5,10 @@ idmygadget.config:
     _title: 'IdMyGadget Configuration (_title in idmygadget.routing.yml)'
   requirements:
     _permission: 'configure_idmygadget'
+idmygadget.config.phone:
+  path: /admin/config/system/idmygadget/phone
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormPhone'
+    _title: 'IdMyGadget Configuration - Phones'
+  requirements:
+    _permission: 'configure_idmygadget'
