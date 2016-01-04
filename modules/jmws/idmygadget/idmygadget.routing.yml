@@ -9,7 +9,7 @@ idmygadget.config:
 idmygadget.config.all:
   path: /admin/config/system/idmygadget/all
   defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormAll'
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetAll'
     _title: 'IdMyGadget Configuration - All Options'
   requirements:
     _permission: 'configure_idmygadget'
@@ -17,7 +17,7 @@ idmygadget.config.all:
 idmygadget.config.gadget_detector:
   path: /admin/config/system/idmygadget/gadget_detector
   defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormGadgetDetector'
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetDetector'
     _title: 'IdMyGadget Configuration - Gadget Detector'
   requirements:
     _permission: 'configure_idmygadget'
@@ -25,7 +25,7 @@ idmygadget.config.gadget_detector:
 idmygadget.config.phone:
   path: /admin/config/system/idmygadget/phone
   defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormPhone'
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetPhone'
     _title: 'IdMyGadget Configuration - Phones'
   requirements:
     _permission: 'configure_idmygadget'
@@ -33,7 +33,7 @@ idmygadget.config.phone:
 idmygadget.config.tablet:
   path: /admin/config/system/idmygadget/tablet
   defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormTablet'
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetTablet'
     _title: 'IdMyGadget Configuration - Tablet'
   requirements:
     _permission: 'configure_idmygadget'
@@ -41,7 +41,7 @@ idmygadget.config.tablet:
 idmygadget.config.desktop:
   path: /admin/config/system/idmygadget/desktop
   defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormDesktop'
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetDesktop'
     _title: 'IdMyGadget Configuration - Desktops'
   requirements:
     _permission: 'configure_idmygadget'
