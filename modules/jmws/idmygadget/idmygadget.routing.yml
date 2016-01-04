@@ -6,6 +6,22 @@ idmygadget.config:
   requirements:
     _permission: 'configure_idmygadget'
 
+idmygadget.config.all:
+  path: /admin/config/system/idmygadget/all
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormAll'
+    _title: 'IdMyGadget Configuration - All Options'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+idmygadget.config.gadget_detector:
+  path: /admin/config/system/idmygadget/gadget_detector
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormGadgetDetector'
+    _title: 'IdMyGadget Configuration - Gadget Detector'
+  requirements:
+    _permission: 'configure_idmygadget'
+
 idmygadget.config.phone:
   path: /admin/config/system/idmygadget/phone
   defaults:
