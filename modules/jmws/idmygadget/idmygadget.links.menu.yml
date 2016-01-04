@@ -1,5 +1,24 @@
 idmygadget.config:
   title: 'IdMyGadget Configuration'
-  description: 'Configure the IdMyGadget module: set the device detector.'
+  description: 'Configure the IdMyGadget module: original options page.'
   route_name: idmygadget.config
   parent: system.admin_config_system
+
+idmygadget.config.all:
+  title: 'IdMyGadget: Set All Options'
+  description: 'Configure the IdMyGadget module: set all options.'
+  route_name: idmygadget.config.all
+  parent: system.admin_config_system
+
+idmygadget.config.gadget_detector:
+  title: 'IdMyGadget: Set Gadget Detector'
+  description: 'Configure the IdMyGadget module: set the third-party gadget detector to use.'
+  route_name: idmygadget.config.gadget_detector
+  parent: system.admin_config_system
+
+idmygadget.config.phone:
+  title: 'IdMyGadget: Options for Phones'
+  description: 'Configure the IdMyGadget module: set options to use for phones.'
+  route_name: idmygadget.config.phone
+  parent: system.admin_config_system
+
