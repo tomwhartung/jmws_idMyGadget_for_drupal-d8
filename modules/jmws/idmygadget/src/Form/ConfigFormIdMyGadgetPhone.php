@@ -8,7 +8,6 @@ namespace Drupal\idmygadget\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-// use Drupal\idMyGadget\JmwsIdMyGadget;
 
 class ConfigFormIdMyGadgetPhone extends ConfigFormIdMyGadgetBase {
 
@@ -34,10 +33,8 @@ class ConfigFormIdMyGadgetPhone extends ConfigFormIdMyGadgetBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
-
     $config = $this->config('idmygadget.settings');
 
-    // $gadgetTypes = array( 'phone', 'tablet', 'desktop' );
     $settingName = 'idmygadget_show_site_name_phone';
     $config->set( $settingName, $form_state->getValue($settingName) );
     $settingName = 'idmygadget_site_name_element_phone';
@@ -51,5 +48,4 @@ class ConfigFormIdMyGadgetPhone extends ConfigFormIdMyGadgetBase {
   public function getEditableConfigNames() {
     return ['idmygadget.settings'];
   }
-
 }
