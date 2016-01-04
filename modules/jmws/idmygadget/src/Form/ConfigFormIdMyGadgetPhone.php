@@ -10,7 +10,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 // use Drupal\idMyGadget\JmwsIdMyGadget;
 
-class ConfigFormPhone extends ConfigFormIdMyGadgetBase {
+class ConfigFormIdMyGadgetPhone extends ConfigFormIdMyGadgetBase {
 
   /**
    * {@inheritdoc}
