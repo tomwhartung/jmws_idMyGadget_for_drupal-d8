@@ -2,7 +2,7 @@ idmygadget.config:
   path: /admin/config/system/idmygadget
   defaults:
     _form: 'Drupal\idmygadget\Form\ConfigForm'
-    _title: 'IdMyGadget Configuration (_title in idmygadget.routing.yml)'
+    _title: 'IdMyGadget Configuration (Original Options Page)'
   requirements:
     _permission: 'configure_idmygadget'
 
