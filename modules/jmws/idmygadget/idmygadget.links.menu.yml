@@ -1,24 +1,67 @@
+idmygadget:
+  title: 'IdMyGadget'
+  description: 'IdMyGadget Opts.'
+  route_name: idmygadget
+  parent: system
+
 idmygadget.config:
   title: 'IdMyGadget Configuration'
-  description: 'Configure the IdMyGadget module: original options page.'
+  description: 'Configure IdMyGadget: try to create an options page.'
   route_name: idmygadget.config
-  parent: system.admin_config_system
+  parent: system
 
 idmygadget.config.all:
   title: 'IdMyGadget: Set All Options'
-  description: 'Configure the IdMyGadget module: set all options.'
+  description: 'Configure IdMyGadget: set all options.'
   route_name: idmygadget.config.all
-  parent: system.admin_config_system
+  parent: system.idmygadget
 
 idmygadget.config.gadget_detector:
   title: 'IdMyGadget: Set Gadget Detector'
-  description: 'Configure the IdMyGadget module: set the third-party gadget detector to use.'
+  description: 'Configure IdMyGadget: set the third-party gadget detector to use.'
   route_name: idmygadget.config.gadget_detector
-  parent: system.admin_config_system
+  parent: system.idmygadget
 
 idmygadget.config.phone:
   title: 'IdMyGadget: Options for Phones'
-  description: 'Configure the IdMyGadget module: set options to use for phones.'
+  description: 'Configure IdMyGadget: set options to use for phones.'
   route_name: idmygadget.config.phone
+  parent: system.idmygadget
+
+
+idmygadget.config.system:
+  title: 'IdMyGadget System Configuration'
+  description: 'Configure the IdMyGadget module: original options page.'
+  route_name: idmygadget.config.system
+  parent: system
+
+idmygadget.config.system.all:
+  title: 'IdMyGadget System: Set All Options'
+  description: 'Configure the IdMyGadget module: set all options.'
+  route_name: idmygadget.config.system.all
+  parent: system.admin_config_system
+
+idmygadget.config.system.gadget_detector:
+  title: 'IdMyGadget System: Set Gadget Detector'
+  description: 'Configure the IdMyGadget module: set the third-party gadget detector to use.'
+  route_name: idmygadget.config.system.gadget_detector
+  parent: system.admin_config_system
+
+idmygadget.config.system.phone:
+  title: 'IdMyGadget System: Options for Phones'
+  description: 'Configure the IdMyGadget module: set options to use for phones.'
+  route_name: idmygadget.config.system.phone
+  parent: system.admin_config_system
+
+idmygadget.config.system.tablet:
+  title: 'IdMyGadget System: Options for Tablets'
+  description: 'Configure the IdMyGadget module: set options to use for tablets.'
+  route_name: idmygadget.config.system.tablet
+  parent: system.admin_config_system
+
+idmygadget.config.system.desktop:
+  title: 'IdMyGadget System: Options for Desktops'
+  description: 'Configure the IdMyGadget module: set options to use for desktops.'
+  route_name: idmygadget.config.system.desktop
   parent: system.admin_config_system
 
