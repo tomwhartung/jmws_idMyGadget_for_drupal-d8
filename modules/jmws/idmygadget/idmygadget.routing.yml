@@ -5,10 +5,27 @@ idmygadget.config:
     _title: 'IdMyGadget Configuration (_title in idmygadget.routing.yml)'
   requirements:
     _permission: 'configure_idmygadget'
+
 idmygadget.config.phone:
   path: /admin/config/system/idmygadget/phone
   defaults:
     _form: 'Drupal\idmygadget\Form\ConfigFormPhone'
     _title: 'IdMyGadget Configuration - Phones'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+idmygadget.config.tablet:
+  path: /admin/config/system/idmygadget/tablet
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormTablet'
+    _title: 'IdMyGadget Configuration - Tablet'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+idmygadget.config.desktop:
+  path: /admin/config/system/idmygadget/desktop
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormDesktop'
+    _title: 'IdMyGadget Configuration - Desktops'
   requirements:
     _permission: 'configure_idmygadget'
