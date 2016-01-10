@@ -44,7 +44,6 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	 */
 	public function getSanityCheckString( $extra='' )
 	{
-		$returnValue = '<p>';
 		$returnValue .= parent::getSanityCheckString() . '/';
 
 		// $jqmDataThemeIndex = variable_get( 'idmg_jqm_data_theme' );   // WARNING: drupal-specific (but we are just checking sanity)
@@ -52,7 +51,6 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$returnValue .= '/' . $jqmDataThemeIndex;
 		$returnValue .= '/' . $this->jqmDataThemeAttribute;
 		$returnValue .= '/' . $extra;
-		$returnValue .= '</p>';
 		return $returnValue;
 	}
 
