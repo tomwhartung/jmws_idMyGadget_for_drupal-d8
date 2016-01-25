@@ -1,57 +1,3 @@
-idmygadget:
-  path: /admin/idmygadget
-  defaults:
-    _title: 'IdMyGadget Opts Pg'
-  requirements:
-    _permission: 'configure_idmygadget'
-
-idmygadget.config:
-  path: /admin/config/idmygadget
-  defaults:
-    _title: 'IdMyGadget Options Page'
-  requirements:
-    _permission: 'configure_idmygadget'
-
-idmygadget.config.all:
-  path: /admin/config/idmygadget/all
-  defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetAll'
-    _title: 'IdMyGadget Configuration - All Options'
-  requirements:
-    _permission: 'configure_idmygadget'
-
-idmygadget.config.gadget_detector:
-  path: /admin/config/idmygadget/gadget_detector
-  defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetDetector'
-    _title: 'IdMyGadget Configuration - Gadget Detector'
-  requirements:
-    _permission: 'configure_idmygadget'
-
-idmygadget.config.phone:
-  path: /admin/config/idmygadget/phone
-  defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetPhone'
-    _title: 'IdMyGadget Configuration - Phones'
-  requirements:
-    _permission: 'configure_idmygadget'
-
-idmygadget.config.tablet:
-  path: /admin/config/idmygadget/tablet
-  defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetTablet'
-    _title: 'IdMyGadget Configuration - Tablets'
-  requirements:
-    _permission: 'configure_idmygadget'
-
-idmygadget.config.desktop:
-  path: /admin/config/idmygadget/desktop
-  defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetDesktop'
-    _title: 'IdMyGadget Configuration - Desktops'
-  requirements:
-    _permission: 'configure_idmygadget'
-
 idmygadget.config.system:
   path: /admin/config/system/idmygadget
   defaults:
@@ -97,6 +43,73 @@ idmygadget.config.system.desktop:
   defaults:
     _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetDesktop'
     _title: 'IdMyGadget Configuration System - Desktops'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+###
+### Unused: saved for when I figure out how to have our own options page...
+###
+#
+# Failed attempt (did not really expect it to work) to create an option in the admin main menu
+# I did not really expect this to work, and do not really need it
+#
+idmygadget:
+  path: /admin/idmygadget
+  defaults:
+    _title: 'IdMyGadget Opts Pg'
+  requirements:
+    _permission: 'configure_idmygadget'
+#
+# Failed attempt to create a new section under the Admin -> Configuration page
+# I did not really expect this to work, but it would be nice to figure out how to do it
+#
+idmygadget.config:
+  path: /admin/config/idmygadget
+  defaults:
+    _title: 'IdMyGadget Options Page'
+  requirements:
+    _permission: 'configure_idmygadget'
+#
+# More failed attempts, kept around mainly so that we don't waste time trying them again, or
+# in case we figure out how to get one of the above ideas to work
+#
+idmygadget.config.all:
+  path: /admin/config/idmygadget/all
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetAll'
+    _title: 'IdMyGadget Configuration - All Options'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+idmygadget.config.gadget_detector:
+  path: /admin/config/idmygadget/gadget_detector
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetDetector'
+    _title: 'IdMyGadget Configuration - Gadget Detector'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+idmygadget.config.phone:
+  path: /admin/config/idmygadget/phone
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetPhone'
+    _title: 'IdMyGadget Configuration - Phones'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+idmygadget.config.tablet:
+  path: /admin/config/idmygadget/tablet
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetTablet'
+    _title: 'IdMyGadget Configuration - Tablets'
+  requirements:
+    _permission: 'configure_idmygadget'
+
+idmygadget.config.desktop:
+  path: /admin/config/idmygadget/desktop
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetDesktop'
+    _title: 'IdMyGadget Configuration - Desktops'
   requirements:
     _permission: 'configure_idmygadget'
 
