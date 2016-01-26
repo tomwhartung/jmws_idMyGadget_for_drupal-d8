@@ -25,7 +25,8 @@ class ConfigFormIdMyGadgetDesktop extends ConfigFormIdMyGadgetBase {
 
     $formSiteNameOptions = $this->siteNameOptions( 'desktop' );
     $formSiteTitleOptions = $this->siteTitleOptions( 'desktop' );
-    $form = array_merge( $form, $formSiteNameOptions, $formSiteTitleOptions );
+    $formTagLineOptions = $this->tagLineOptions( 'desktop' );
+    $form = array_merge( $form, $formSiteNameOptions, $formSiteTitleOptions, $formTagLineOptions );
 
     return parent::buildForm($form, $form_state);
   }
@@ -44,6 +45,11 @@ class ConfigFormIdMyGadgetDesktop extends ConfigFormIdMyGadgetBase {
     $settingName = 'idmygadget_site_title_desktop';
     $config->set( $settingName, $form_state->getValue($settingName) );
     $settingName = 'idmygadget_site_title_element_desktop';
+    $config->set( $settingName, $form_state->getValue($settingName) );
+
+    $settingName = 'idmygadget_tag_line_desktop';
+    $config->set( $settingName, $form_state->getValue($settingName) );
+    $settingName = 'idmygadget_tag_line_element_desktop';
     $config->set( $settingName, $form_state->getValue($settingName) );
 
     $config->save();
