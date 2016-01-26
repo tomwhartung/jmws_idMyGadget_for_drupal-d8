@@ -56,6 +56,33 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
   }
 
   /**
+   * Returns an array of options for whether to display the jQuery Mobile Navigation in the
+   * header and footer on the specified gadget type
+   * @param type $gadgetType e.g., phone, tablet, or desktop
+   * @return type array
+   */
+  protected function phoneNavOptions( $gadgetType='desktop' ) {
+    $phoneNavOptionsForm = array();
+    $gadgetTypePlural = $gadgetType . 's';
+    $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
+
+    $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_phone_nav_on_' . $gadgetTypePlural;   // e.g., 'idmygadget_phone_nav_on_phones'
+    $phoneNavOptionsForm[$settingName] = array(
+      '#type' => 'radios',
+      '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
+      '#default_value' => $config->get( $settingName ),
+      '#options' => $this->radioChoices,
+      '#description' =>
+         t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
+      '#required' => TRUE,
+    );
+
+    return $phoneNavOptionsForm;
+  }
+
+  /**
    * Returns an array of options for how to handle the site name on the specified gadget type
    * @param type $gadgetType e.g., phone, tablet, or desktop
    * @return type array
