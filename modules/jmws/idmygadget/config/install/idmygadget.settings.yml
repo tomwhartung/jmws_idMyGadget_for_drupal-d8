@@ -1,9 +1,22 @@
 idmygadget_gadget_detector: '0'
 
-idmygadget_show_site_name_phone: '0'
-idmygadget_show_site_name_tablet: '1'
-idmygadget_show_site_name_desktop: '0'
-
+idmygadget_show_site_name_phone: false
 idmygadget_site_name_element_phone: '2'
+idmygadget_site_title_phone: 'site title phone'
+idmygadget_site_title_element_phone: '4'
+idmygadget_tag_line_phone: 'tag line phone'
+idmygadget_tag_line_element_phone: '6'
+
+idmygadget_show_site_name_tablet: true
 idmygadget_site_name_element_tablet: '3'
+idmygadget_site_title_tablet: 'site title tablet'
+idmygadget_site_title_element_tablet: '5'
+idmygadget_tag_line_tablet: 'tag line tablet'
+idmygadget_tag_line_element_tablet: '7'
+
+idmygadget_show_site_name_desktop: false
 idmygadget_site_name_element_desktop: '4'
+idmygadget_site_title_desktop: 'site title desktop'
+idmygadget_site_title_element_desktop: '6'
+idmygadget_tag_line_desktop: 'tag line desktop'
+idmygadget_tag_line_element_desktop: '8'
