@@ -118,13 +118,47 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#default_value' => $config->get( $settingName ),
     ];
 
-    $settingName = 'idmygadget_site_title_element_' . $gadgetType;     // e.g., 'idmygadget_site_title_element_phone'
+    $settingName = 'idmygadget_site_title_element_' . $gadgetType;  // e.g., 'idmygadget_site_title_element_phone'
     $siteTitleOptionsForm[$settingName] = array(
       '#type' => 'select',
       '#title' => t( $gadgetTypePluralUcfirst . ': Site Title Element' ),
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->validElements,
       '#description' => t( 'Select the html element in which you want to display the site title on ' . $gadgetTypePlural . '.' ),
+      '#required' => FALSE,
+    );
+
+    return $siteTitleOptionsForm;
+  }
+
+  /**
+   * Returns an array of options for how to handle the tag line on the specified gadget type
+   * @param type $gadgetType e.g., phone, tablet, or desktop
+   * @return type array
+   */
+  protected function tagLineOptions( $gadgetType='desktop' ) {
+    $siteTitleOptionsForm = array();
+    $gadgetTypePlural = $gadgetType . 's';
+    // $gadgetTypeUcfirst = ucfirst( $gadgetType );
+    $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
+
+    $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
+    $siteTitleOptionsForm[$settingName] = [
+      '#type' => 'textfield',
+      '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line' ),
+      '#description' => t( 'Specify the tag line, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
+      '#default_value' => $config->get( $settingName ),
+    ];
+
+    $settingName = 'idmygadget_tag_line_element_' . $gadgetType;  // e.g., 'idmygadget_tag_line_element_phone'
+    $siteTitleOptionsForm[$settingName] = array(
+      '#type' => 'select',
+      '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line Element' ),
+      '#default_value' => $config->get( $settingName ),
+      '#options' => $this->validElements,
+      '#description' => t( 'Select the html element in which you want to display the tag line on ' . $gadgetTypePlural . '.' ),
       '#required' => FALSE,
     );
 
