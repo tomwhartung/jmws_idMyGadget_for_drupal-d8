@@ -55,6 +55,11 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     return ['idmygadget.settings'];
   }
 
+  /**
+   * Returns an array of options for how to handle the site name on the specified gadget type
+   * @param type $gadgetType e.g., phone, tablet, or desktop
+   * @return type array
+   */
   protected function siteNameOptions( $gadgetType='desktop' ) {
     $siteNameOptionsForm = array();
 /*
