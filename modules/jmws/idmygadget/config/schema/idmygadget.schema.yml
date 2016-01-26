@@ -7,6 +7,9 @@ idmygadget.settings:
     idmygadget_gadget_detector:
       type: integer
       label: 'Gadget detector to use'
+    idmygadget_phone_nav_on_phones:
+      type: boolean
+      label: 'Show jQuery mobile phone nav on phones?'
     idmygadget_show_site_name_phone:
       type: boolean
       label: 'Show the site name on phones?'
@@ -25,6 +28,9 @@ idmygadget.settings:
     idmygadget_tag_line_element_phone:
       type: integer
       label: 'Element to use for the tag line on phones'
+    idmygadget_phone_nav_on_tablets:
+      type: boolean
+      label: 'Show jQuery mobile phone nav on tablets?'
     idmygadget_show_site_name_tablet:
       type: boolean
       label: 'Show the site name on tablets?'
@@ -43,6 +49,9 @@ idmygadget.settings:
     idmygadget_tag_line_element_tablet:
       type: integer
       label: 'Element to use for the tag line on tablets'
+    idmygadget_phone_nav_on_desktops:
+      type: boolean
+      label: 'Show jQuery mobile phone nav on desktops?'
     idmygadget_show_site_name_desktop:
       type: boolean
       label: 'Show the site name on desktops?'
