@@ -1,33 +1,3 @@
-idmygadget:
-  title: 'IdMyGadget'
-  description: 'IdMyGadget Opts.'
-  route_name: idmygadget
-  parent: system
-
-idmygadget.config:
-  title: 'IdMyGadget Configuration'
-  description: 'Configure IdMyGadget: try to create an options page.'
-  route_name: idmygadget.config
-  parent: system
-
-idmygadget.config.all:
-  title: 'IdMyGadget: Set All Options'
-  description: 'Configure IdMyGadget: set all options.'
-  route_name: idmygadget.config.all
-  parent: system.idmygadget
-
-idmygadget.config.gadget_detector:
-  title: 'IdMyGadget: Set Gadget Detector'
-  description: 'Configure IdMyGadget: set the third-party gadget detector to use.'
-  route_name: idmygadget.config.gadget_detector
-  parent: system.idmygadget
-
-idmygadget.config.phone:
-  title: 'IdMyGadget: Options for Phones'
-  description: 'Configure IdMyGadget: set options to use for phones.'
-  route_name: idmygadget.config.phone
-  parent: system.idmygadget
-
 
 idmygadget.config.system:
   title: 'IdMyGadget System Configuration'
@@ -64,4 +34,44 @@ idmygadget.config.system.desktop:
   description: 'Configure the IdMyGadget module: set options to use for desktops.'
   route_name: idmygadget.config.system.desktop
   parent: system.admin_config_system
+
+###
+### Unused: saved for when I figure out how to have our own options page...
+###
+#
+# Failed attempts to create a new section under the Admin -> Configuration page
+# I did not really expect these to work, but it would be nice to figure out how to do it
+#
+idmygadget:
+  title: 'IdMyGadget'
+  description: 'IdMyGadget Opts. (unused)'
+  route_name: idmygadget
+  parent: system
+
+idmygadget.config:
+  title: 'IdMyGadget Configuration (unused)'
+  description: 'Configure IdMyGadget: try to create an options page.'
+  route_name: idmygadget.config
+  parent: system
+#
+# More failed attempts, kept around mainly so that we don't waste time trying them again, or
+# in case we figure out how to get one of the above ideas to work
+#
+idmygadget.config.all:
+  title: 'IdMyGadget: Set All Options (unused)'
+  description: 'Configure IdMyGadget: set all options.'
+  route_name: idmygadget.config.all
+  parent: system.idmygadget
+
+idmygadget.config.gadget_detector:
+  title: 'IdMyGadget: Set Gadget Detector (unused)'
+  description: 'Configure IdMyGadget: set the third-party gadget detector to use.'
+  route_name: idmygadget.config.gadget_detector
+  parent: system.idmygadget
+
+idmygadget.config.phone:
+  title: 'IdMyGadget: Options for Phones (unused)'
+  description: 'Configure IdMyGadget: set options to use for phones.'
+  route_name: idmygadget.config.phone
+  parent: system.idmygadget
 
