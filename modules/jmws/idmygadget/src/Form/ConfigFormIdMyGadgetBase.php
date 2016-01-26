@@ -78,7 +78,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $settingName = 'idmygadget_show_site_name_' . $gadgetType;   // e.g., 'idmygadget_show_site_name_phone'
     $siteNameOptionsForm[$settingName] = array(
       '#type' => 'radios',
-      '#title' => t( 'Show Site Name on ' . $gadgetTypePluralUcfirst . '?' ),
+      '#title' => t( $gadgetTypePluralUcfirst . ': Show Site Name?' ),
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->radioChoices,
       '#description' => t( 'Select whether you want the name of this site to display in the header on ' . $gadgetTypePlural . '.' ),
@@ -88,7 +88,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $settingName = 'idmygadget_site_name_element_' . $gadgetType;     // e.g., 'idmygadget_site_name_element_phone'
     $siteNameOptionsForm[$settingName] = array(
       '#type' => 'select',
-      '#title' => t( 'Site Name Element ' . $gadgetTypeUcfirst ),
+      '#title' => t( $gadgetTypePluralUcfirst . ': Site Name Element' ),
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->validElements,
       '#description' => t( 'Select the html element in which you want to display the name of this site in the header on ' . $gadgetTypePlural . '.' ),
