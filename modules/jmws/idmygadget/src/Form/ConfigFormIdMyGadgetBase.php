@@ -90,7 +90,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#title' => t( $gadgetTypePluralUcfirst . ': Site Name Element' ),
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->validElements,
-      '#description' => t( 'Select the html element in which you want to display the name of this site in the header on ' . $gadgetTypePlural . '.' ),
+      '#description' => t( 'Select the html element in which you want to display the name of this site on ' . $gadgetTypePlural . '.' ),
       '#required' => FALSE,
     );
 
@@ -124,7 +124,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#title' => t( $gadgetTypePluralUcfirst . ': Site Title Element' ),
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->validElements,
-      '#description' => t( 'Select the html element in which you want to display the name of this site in the header on ' . $gadgetTypePlural . '.' ),
+      '#description' => t( 'Select the html element in which you want to display the site title on ' . $gadgetTypePlural . '.' ),
       '#required' => FALSE,
     );
 
