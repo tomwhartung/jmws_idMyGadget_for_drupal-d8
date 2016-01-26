@@ -62,13 +62,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
    */
   protected function siteNameOptions( $gadgetType='desktop' ) {
     $siteNameOptionsForm = array();
-/*
-    $siteNameOptionsForm['idmygadget_'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Experimental textfield input defined in ConfigForm class'),
-      '#default_value' => $config->get('exp_textfield'),
-    ];
- */
     $gadgetTypePlural = $gadgetType . 's';
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
 
@@ -137,7 +130,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
    * @return type array
    */
   protected function tagLineOptions( $gadgetType='desktop' ) {
-    $siteTitleOptionsForm = array();
+    $tagLineOptionsForm = array();
     $gadgetTypePlural = $gadgetType . 's';
     // $gadgetTypeUcfirst = ucfirst( $gadgetType );
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
@@ -145,7 +138,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
-    $siteTitleOptionsForm[$settingName] = [
+    $tagLineOptionsForm[$settingName] = [
       '#type' => 'textfield',
       '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line' ),
       '#description' => t( 'Specify the tag line, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
@@ -153,7 +146,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     ];
 
     $settingName = 'idmygadget_tag_line_element_' . $gadgetType;  // e.g., 'idmygadget_tag_line_element_phone'
-    $siteTitleOptionsForm[$settingName] = array(
+    $tagLineOptionsForm[$settingName] = array(
       '#type' => 'select',
       '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line Element' ),
       '#default_value' => $config->get( $settingName ),
@@ -162,7 +155,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#required' => FALSE,
     );
 
-    return $siteTitleOptionsForm;
+    return $tagLineOptionsForm;
   }
 
 }
