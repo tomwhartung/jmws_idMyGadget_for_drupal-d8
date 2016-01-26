@@ -10,7 +10,6 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 // use Drupal\idMyGadget\JmwsIdMyGadget;
 
-// class ConfigFormIdMyGadget extends ConfigFormBase {
 class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
 
   /**
@@ -42,7 +41,8 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
 
     foreach( $this->gadgetTypes as $gadgetType ) {
       $formSiteNameOptions = $this->siteNameOptions( $gadgetType );
-      $form = array_merge( $form, $formSiteNameOptions );
+      $formSiteTitleOptions = $this->siteTitleOptions( $gadgetType );
+      $form = array_merge( $form, $formSiteNameOptions, $formSiteTitleOptions );
     }
     // $form = array_merge( $form, $formSiteNamePhones );
 
