@@ -115,7 +115,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#type' => 'textfield',
       '#title' => t( $gadgetTypePluralUcfirst . ': Site Title' ),
       '#description' => t( 'Specify the site title, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
-      '#default_value' => '',
+      '#default_value' => $config->get( $settingName ),
     ];
 
     $settingName = 'idmygadget_site_title_element_' . $gadgetType;     // e.g., 'idmygadget_site_title_element_phone'
