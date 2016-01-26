@@ -70,7 +70,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     ];
  */
     $gadgetTypePlural = $gadgetType . 's';
-    $gadgetTypeUcfirst = ucfirst( $gadgetType );
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
 
     $config = $this->config('idmygadget.settings');
@@ -96,6 +95,40 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     );
 
     return $siteNameOptionsForm;
+  }
+
+  /**
+   * Returns an array of options for how to handle the site title on the specified gadget type
+   * @param type $gadgetType e.g., phone, tablet, or desktop
+   * @return type array
+   */
+  protected function siteTitleOptions( $gadgetType='desktop' ) {
+    $siteTitleOptionsForm = array();
+    $gadgetTypePlural = $gadgetType . 's';
+    // $gadgetTypeUcfirst = ucfirst( $gadgetType );
+    $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
+
+    $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_site_title_' . $gadgetType;   // e.g., 'idmygadget_site_title_phone'
+    $siteTitleOptionsForm[$settingName] = [
+      '#type' => 'textfield',
+      '#title' => t( $gadgetTypePluralUcfirst . ': Site Title' ),
+      '#description' => t( 'Specify the site title, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
+      '#default_value' => '',
+    ];
+
+    $settingName = 'idmygadget_site_title_element_' . $gadgetType;     // e.g., 'idmygadget_site_title_element_phone'
+    $siteTitleOptionsForm[$settingName] = array(
+      '#type' => 'select',
+      '#title' => t( $gadgetTypePluralUcfirst . ': Site Title Element' ),
+      '#default_value' => $config->get( $settingName ),
+      '#options' => $this->validElements,
+      '#description' => t( 'Select the html element in which you want to display the name of this site in the header on ' . $gadgetTypePlural . '.' ),
+      '#required' => FALSE,
+    );
+
+    return $siteTitleOptionsForm;
   }
 
 }
