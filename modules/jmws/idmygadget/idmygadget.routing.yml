@@ -6,11 +6,23 @@
 ##   requirements:
 ##     _permission: 'configure_idmygadget'
 
+#
+# This is needed else we get an missing route error
+# TODO: Ensure it links to a page that "makes sense"
+#
+idmygadget.config.system:
+  path: /admin/config/system/idmygadget
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetAll'
+    _title: 'IdMyGadget Configuration - All Options'
+  requirements:
+    _permission: 'configure_idmygadget'
+
 idmygadget.config.system.all:
   path: /admin/config/system/idmygadget/all
   defaults:
     _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetAll'
-    _title: 'IdMyGadget Configuration System - All Options'
+    _title: 'IdMyGadget Configuration System.All - All Options'
   requirements:
     _permission: 'configure_idmygadget'
 
