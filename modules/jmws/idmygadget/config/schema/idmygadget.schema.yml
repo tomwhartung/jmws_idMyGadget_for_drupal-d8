@@ -1,13 +1,63 @@
 # Schema for the configuration files of the idmygadget module.
 
 idmygadget.settings:
-  type: module_settings
-  label: 'IdMyGadget settings'
-
-idmygadget.idmygadget_gadget_detector:
   type: config_object
-  label: 'Gadget Detector'
+  label: 'IdMyGadget settings'
   mapping:
     idmygadget_gadget_detector:
-      type: string
+      type: integer
       label: 'Gadget detector to use'
+    idmygadget_show_site_name_phone:
+      type: boolean
+      label: 'Show the site name on phones?'
+    idmygadget_site_name_element_phone:
+      type: integer
+      label: 'Element to use for the site name on phones'
+    idmygadget_site_title_phone:
+      type: string
+      label: 'Site title on phones'
+    idmygadget_site_title_element_phone:
+      type: integer
+      label: 'Element to use for the site title on phones'
+    idmygadget_tag_line_phone:
+      type: string
+      label: 'Tag line on phones'
+    idmygadget_tag_line_element_phone:
+      type: integer
+      label: 'Element to use for the tag line on phones'
+    idmygadget_show_site_name_tablet:
+      type: boolean
+      label: 'Show the site name on tablets?'
+    idmygadget_site_name_element_tablet:
+      type: integer
+      label: 'Element to use for the site name on tablets'
+    idmygadget_site_title_tablet:
+      type: string
+      label: 'Site title on tablets'
+    idmygadget_site_title_element_tablet:
+      type: integer
+      label: 'Element to use for the site title on tablets'
+    idmygadget_tag_line_tablet:
+      type: string
+      label: 'Tag line on tablets'
+    idmygadget_tag_line_element_tablet:
+      type: integer
+      label: 'Element to use for the tag line on tablets'
+    idmygadget_show_site_name_desktop:
+      type: boolean
+      label: 'Show the site name on desktops?'
+    idmygadget_site_name_element_desktop:
+      type: integer
+      label: 'Element to use for the site name on desktops'
+    idmygadget_site_title_desktop:
+      type: string
+      label: 'Site title on desktops'
+    idmygadget_site_title_element_desktop:
+      type: integer
+      label: 'Element to use for the site title on desktops'
+    idmygadget_tag_line_desktop:
+      type: string
+      label: 'Tag line on desktops'
+    idmygadget_tag_line_element_desktop:
+      type: integer
+      label: 'Element to use for the tag line on desktops'
