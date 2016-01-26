@@ -1,6 +1,9 @@
 <?php
 /**
  * Defines the configuration form for options in the admin back end
+ * **************************************************************
+ * THIS CLASS IS OBSOLETE AND USEFUL AS AN EXAMPLE ONLY
+ * **************************************************************
  * Based on hugs example from Drupal Con LA Crash Course video
  * Reference:https://www.drupal.org/node/2206551
  */
