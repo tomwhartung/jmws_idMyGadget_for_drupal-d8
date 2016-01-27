@@ -23,10 +23,15 @@ class ConfigFormIdMyGadgetTablet extends ConfigFormIdMyGadgetBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('idmygadget.settings');
 
+    $formPhoneNavOptions = $this->phoneNavOptions( 'tablet' );
     $formSiteNameOptions = $this->siteNameOptions( 'tablet' );
     $formSiteTitleOptions = $this->siteTitleOptions( 'tablet' );
     $formTagLineOptions = $this->tagLineOptions( 'tablet' );
-    $form = array_merge( $form, $formSiteNameOptions, $formSiteTitleOptions, $formTagLineOptions );
+    $form = array_merge( $form,
+      $formPhoneNavOptions,
+      $formSiteNameOptions,
+      $formSiteTitleOptions,
+      $formTagLineOptions );
 
     return parent::buildForm($form, $form_state);
   }
@@ -36,6 +41,9 @@ class ConfigFormIdMyGadgetTablet extends ConfigFormIdMyGadgetBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
     $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_phone_nav_on_tablets';
+    $config->set( $settingName, $form_state->getValue($settingName) );
 
     $settingName = 'idmygadget_show_site_name_tablet';
     $config->set( $settingName, $form_state->getValue($settingName) );
