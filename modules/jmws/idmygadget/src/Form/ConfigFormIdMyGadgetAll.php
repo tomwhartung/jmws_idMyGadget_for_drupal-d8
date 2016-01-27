@@ -40,10 +40,15 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
     );
 
     foreach( $this->gadgetTypes as $gadgetType ) {
+      $formPhoneNavOptions = $this->phoneNavOptions( $gadgetType );
       $formSiteNameOptions = $this->siteNameOptions( $gadgetType );
       $formSiteTitleOptions = $this->siteTitleOptions( $gadgetType );
       $formTagLineOptions = $this->tagLineOptions( $gadgetType );
-      $form = array_merge( $form, $formSiteNameOptions, $formSiteTitleOptions, $formTagLineOptions );
+      $form = array_merge( $form,
+        $formPhoneNavOptions,
+        $formSiteNameOptions,
+        $formSiteTitleOptions,
+        $formTagLineOptions );
     }
     // $form = array_merge( $form, $formSiteNamePhones );
 
@@ -60,6 +65,9 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
     // $config->set('idmygadget_', $form_state->getValue('idmygadget_'));
 
     foreach( $this->gadgetTypes as $gadgetType ) {
+      $gadgetTypePlural = $gadgetType . 's';
+      $settingName = 'idmygadget_phone_nav_on_' . $gadgetTypePlural;  // e.g., 'idmygadget_phone_nav_on_phones'
+      $config->set( $settingName, $form_state->getValue($settingName) );
       $settingName = 'idmygadget_show_site_name_' . $gadgetType;      // e.g., 'idmygadget_show_site_name_phone'
       $config->set( $settingName, $form_state->getValue($settingName) );
       $settingName = 'idmygadget_site_name_element_' . $gadgetType;   // e.g., 'idmygadget_site_name_element_phone'
