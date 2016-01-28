@@ -20,6 +20,9 @@ class ConfigFormIdMyGadgetPhoneNav extends ConfigFormIdMyGadgetBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $formJqmDataTheme= $this->jqmDataThemeOption();
+    $form = array_merge( $form, $formJqmDataTheme );
+
     foreach( $this->gadgetTypes as $gadgetType ) {
       $formPhoneNavOptions = $this->phoneNavOptions( $gadgetType );
       $form = array_merge( $form, $formPhoneNavOptions );
@@ -33,8 +36,7 @@ class ConfigFormIdMyGadgetPhoneNav extends ConfigFormIdMyGadgetBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
     $config = $this->config('idmygadget.settings');
-
-    // $config->set('idmygadget_jqm_data_theme', $form_state->getValue('idmygadget_jqm_data_theme'));
+    $config->set('idmygadget_jqm_data_theme', $form_state->getValue('idmygadget_jqm_data_theme'));
 
     foreach( $this->gadgetTypes as $gadgetType ) {
       $gadgetTypePlural = $gadgetType . 's';
