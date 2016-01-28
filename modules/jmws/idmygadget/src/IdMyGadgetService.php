@@ -32,15 +32,6 @@ class IdMyGadgetService {
 
   }
 
-  public function addHug($target_name) {
-    $this->state->set('idmygadget.last_recipient', $target_name);
-    return $this;
-  }
-
-  public function getLastRecipient() {
-    return $this->state->get('idmygadget.last_recipient');
-  }
-
   public function getGadgetDetectorIndex() {
     $config = \Drupal::config('idmygadget.settings');
     $detectorIndex = $config->get('idmygadget_gadget_detector');
