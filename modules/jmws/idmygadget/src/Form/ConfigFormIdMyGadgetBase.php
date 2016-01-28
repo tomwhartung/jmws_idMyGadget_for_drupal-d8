@@ -58,6 +58,26 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
   }
 
   /**
+   * Add a section to the module's Settings screen that contains
+   * radio buttons allowing the admin to set the device detector.
+   * This shows up under Configuration -> IdMyGadget -> Gadget Detector
+   */
+  protected function gadgetDetectorOption() {
+    $gadgetDetectorOptionForm = array();
+    $config = $this->config('idmygadget.settings');
+
+    $gadgetDetectorOptionForm['idmygadget_gadget_detector'] = array(
+      '#type' => 'radios',
+      '#title' => t('Gadget Detector'),
+      // '#default_value' => $this->supportedGadgetDetectors[0],
+      '#default_value' => $config->get('idmygadget_gadget_detector'),
+      '#options' => $this->supportedGadgetDetectors,
+      '#description' => $this->t('Select the 3rd party device detector to use for this site.'),
+      '#required' => TRUE,
+    );
+    return $gadgetDetectorOptionForm;
+  }
+  /**
    * Returns an array of options for whether to display the jQuery Mobile Navigation in the
    * header and footer on the specified gadget type
    * @param type $gadgetType e.g., phone, tablet, or desktop
@@ -67,7 +87,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $phoneNavOptionsForm = array();
     $gadgetTypePlural = $gadgetType . 's';
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
-
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_phone_nav_on_' . $gadgetTypePlural;   // e.g., 'idmygadget_phone_nav_on_phones'
@@ -105,7 +124,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $siteNameOptionsForm = array();
     $gadgetTypePlural = $gadgetType . 's';
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
-
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_show_site_name_' . $gadgetType;   // e.g., 'idmygadget_show_site_name_phone'
@@ -153,7 +171,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePlural = $gadgetType . 's';
     // $gadgetTypeUcfirst = ucfirst( $gadgetType );
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
-
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_site_title_' . $gadgetType;   // e.g., 'idmygadget_site_title_phone'
@@ -187,7 +204,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePlural = $gadgetType . 's';
     // $gadgetTypeUcfirst = ucfirst( $gadgetType );
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
-
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
