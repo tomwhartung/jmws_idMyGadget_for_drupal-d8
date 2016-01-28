@@ -69,9 +69,20 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_phone_nav_on_' . $gadgetTypePlural;   // e.g., 'idmygadget_phone_nav_on_phones'
+    // $defaultValue = $config->get( $settingName );
+    // $defaultValue = isset( $defaultValue ) ? $defaultValue : '0';
+    // $defaultValue = isset( $defaultValue ) ? $defaultValue : 0;
+    $existingValue = $config->get( $settingName );
+    if ( isset($existingValue) ) {
+      $defaultValue = $config->get( $settingName );
+    }
+    else {
+      $defaultValue = 0;
+    }
     $phoneNavOptionsForm[$settingName] = array(
       '#type' => 'radios',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
+      // '#default_value' => $defaultValue,
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->radioChoices,
       '#description' =>
@@ -95,9 +106,20 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_show_site_name_' . $gadgetType;   // e.g., 'idmygadget_show_site_name_phone'
+    // $defaultValue = $config->get( $settingName );
+    // $defaultValue = isset( $defaultValue ) ? $defaultValue : '1';
+    // $defaultValue = isset( $defaultValue ) ? $defaultValue : 1;
+    $existingValue = $config->get( $settingName );
+    if ( isset($existingValue) ) {
+      $defaultValue = $config->get( $settingName );
+    }
+    else {
+      $defaultValue = 1;
+    }
     $siteNameOptionsForm[$settingName] = array(
       '#type' => 'radios',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Site Name?' ),
+      // '#default_value' => $defaultValue,
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->radioChoices,
       '#description' => t( 'Select whether you want the name of this site to display in the header on ' . $gadgetTypePlural . '.' ),
