@@ -21,7 +21,9 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
 
   protected $gadgetTypes = array( 'phone', 'tablet', 'desktop' );
 
-  protected $radioChoices = array( 'No', 'Yes' );  // NOTE: 'No' must be the zeroeth elt ;-)
+  // protected $radioChoices = array( 'No', 'Yes' );
+  protected $radioChoices = array( 1 => 'No', 2 => 'Yes' );
+  // protected $radioChoices = array( '1' => 'No', '2' => 'Yes' );
 
   protected $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 
@@ -77,13 +79,14 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       $defaultValue = $config->get( $settingName );
     }
     else {
-      $defaultValue = 0;
+      // $defaultValue = 0;
+      $defaultValue = 1;
     }
     $phoneNavOptionsForm[$settingName] = array(
       '#type' => 'radios',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
-      // '#default_value' => $defaultValue,
-      '#default_value' => $config->get( $settingName ),
+      // '#default_value' => $config->get( $settingName ),
+      '#default_value' => $defaultValue,
       '#options' => $this->radioChoices,
       '#description' =>
          t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
@@ -114,13 +117,14 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       $defaultValue = $config->get( $settingName );
     }
     else {
-      $defaultValue = 1;
+      // $defaultValue = 1;
+      $defaultValue = 2;
     }
     $siteNameOptionsForm[$settingName] = array(
       '#type' => 'radios',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Site Name?' ),
-      // '#default_value' => $defaultValue,
-      '#default_value' => $config->get( $settingName ),
+      // '#default_value' => $config->get( $settingName ),
+      '#default_value' => $defaultValue,
       '#options' => $this->radioChoices,
       '#description' => t( 'Select whether you want the name of this site to display in the header on ' . $gadgetTypePlural . '.' ),
       '#required' => TRUE,
