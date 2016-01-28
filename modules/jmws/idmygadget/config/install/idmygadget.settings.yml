@@ -1,6 +1,7 @@
 idmygadget_gadget_detector: '0'
 
 idmygadget_phone_nav_on_phones: '0'
+idmygadget_jqm_data_theme: '3'
 idmygadget_show_site_name_phone: false
 idmygadget_site_name_element_phone: '2'
 idmygadget_site_title_phone: 'site title phone'
