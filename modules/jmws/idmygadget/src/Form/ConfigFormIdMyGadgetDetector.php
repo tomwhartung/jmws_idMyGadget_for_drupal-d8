@@ -22,23 +22,8 @@ class ConfigFormIdMyGadgetDetector extends ConfigFormIdMyGadgetBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('idmygadget.settings');
-
-    //
-    // Add a section to the module's Settings screen that contains
-    // radio buttons allowing the admin to set the device detector.
-    // This shows up under Configuration -> IdMyGadget -> Gadget Detector
-    //
-    $form['idmygadget_gadget_detector'] = array(
-      '#type' => 'radios',
-      '#title' => t('Gadget Detector'),
-      // '#default_value' => $this->supportedGadgetDetectors[0],
-      '#default_value' => $config->get('idmygadget_gadget_detector'),
-      '#options' => $this->supportedGadgetDetectors,
-      '#description' => $this->t('Select the 3rd party device detector to use for this site.'),
-      '#required' => TRUE,
-    );
-
+    $formGadgetDetector = $this->gadgetDetectorOption();
+    $form = array_merge( $form, $formGadgetDetector );
     return parent::buildForm($form, $form_state);
   }
   /**
