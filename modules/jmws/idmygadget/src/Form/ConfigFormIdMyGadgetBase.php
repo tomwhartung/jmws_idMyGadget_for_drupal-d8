@@ -27,6 +27,8 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
 
   protected $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 
+  protected $jqueryMobileThemeChoices = array( 'a', 'b', 'c', 'd', 'e', 'f' );
+
   /**
    * {@inheritdoc}
    */
@@ -76,6 +78,23 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#required' => TRUE,
     );
     return $gadgetDetectorOptionForm;
+  }
+
+  protected function jqmDataThemeOption() {
+    global $jmwsIdMyGadget;
+    $jqmDataThemeOptionForm = array();
+    $config = $this->config('idmygadget.settings');
+
+    $jqmDataThemeOptionForm['idmygadget_jqm_data_theme'] = array(
+      '#type' => 'select',
+      '#title' => t('jQuery Mobile Data Theme'),
+      '#default_value' => $config->get('idmygadget_jqm_data_theme'),
+      // '#options' => $jmwsIdMyGadget->jqueryMobileThemeChoices,
+      '#options' => $this->jqueryMobileThemeChoices,
+      '#description' => $this->t('Select the jQuery Mobile Data Theme to use.'),
+      '#required' => TRUE,
+    );
+    return $jqmDataThemeOptionForm;
   }
   /**
    * Returns an array of options for whether to display the jQuery Mobile Navigation in the
