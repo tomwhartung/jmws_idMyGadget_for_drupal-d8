@@ -7,6 +7,9 @@ idmygadget.settings:
     idmygadget_gadget_detector:
       type: integer
       label: 'Gadget detector to use'
+    idmygadget_jqm_data_theme:
+      type: integer
+      label: 'The jQuery Mobile data theme'
     idmygadget_phone_nav_on_phones:
       type: boolean
       label: 'Show jQuery mobile phone nav on phones?'
