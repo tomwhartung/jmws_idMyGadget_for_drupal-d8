@@ -47,9 +47,12 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$returnValue = '';
 		$returnValue .= parent::getSanityCheckString() . '/';
 
-		// $jqmDataThemeIndex = variable_get( 'idmg_jqm_data_theme' );   // WARNING: drupal-specific (but we are just checking sanity)
-		$jqmDataThemeIndex = '?';
-		$returnValue .= '/' . $jqmDataThemeIndex;
+		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
+		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
+		$jqmDataThemeLetter = parent::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
+
+	//	$returnValue .= '/' . $jqmDataThemeIndex . '-' . $jqmDataThemeLetter;
+		$returnValue .= '/' . $jqmDataThemeLetter;
 		$returnValue .= '/' . $this->jqmDataThemeAttribute;
 		$returnValue .= '/' . $extra;
 		return $returnValue;
