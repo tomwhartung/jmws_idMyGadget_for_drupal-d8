@@ -35,6 +35,12 @@ idmygadget.config.system.desktop:
   route_name: idmygadget.config.system.desktop
   parent: system.admin_config_system
 
+idmygadget.config.system.phone_nav:
+  title: 'IdMyGadget - Phone Nav Options'
+  description: 'Configure the IdMyGadget module: set which devices display jQuery Mobile Phone Header and Footer Nav.'
+  route_name: idmygadget.config.system.phone_nav
+  parent: system.admin_config_system
+
 ###
 ### Unused: saved for when I figure out how to have our own options page...
 ###
