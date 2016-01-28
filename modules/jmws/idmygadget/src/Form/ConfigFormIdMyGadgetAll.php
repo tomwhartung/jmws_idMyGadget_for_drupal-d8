@@ -25,6 +25,9 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
     $formGadgetDetector = $this->gadgetDetectorOption();
     $form = array_merge( $form, $formGadgetDetector );
 
+    $formJqmDataTheme= $this->jqmDataThemeOption();
+    $form = array_merge( $form, $formJqmDataTheme );
+
     foreach( $this->gadgetTypes as $gadgetType ) {
       $formPhoneNavOptions = $this->phoneNavOptions( $gadgetType );
       $formSiteNameOptions = $this->siteNameOptions( $gadgetType );
@@ -47,7 +50,7 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
 
     $config = $this->config('idmygadget.settings');
     $config->set('idmygadget_gadget_detector', $form_state->getValue('idmygadget_gadget_detector'));
-    // $config->set('idmygadget_', $form_state->getValue('idmygadget_'));
+    $config->set('idmygadget_jqm_data_theme', $form_state->getValue('idmygadget_jqm_data_theme'));
 
     foreach( $this->gadgetTypes as $gadgetType ) {
       $gadgetTypePlural = $gadgetType . 's';
