@@ -5,8 +5,6 @@
  * Reference:https://www.drupal.org/node/2206551
  */
 namespace Drupal\idmygadget\Form;
-
-use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 class ConfigFormIdMyGadgetPhone extends ConfigFormIdMyGadgetBase {
@@ -21,8 +19,6 @@ class ConfigFormIdMyGadgetPhone extends ConfigFormIdMyGadgetBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('idmygadget.settings');
-
     $formPhoneNavOptions = $this->phoneNavOptions( 'phone' );
     $formSiteNameOptions = $this->siteNameOptions( 'phone' );
     $formSiteTitleOptions = $this->siteTitleOptions( 'phone' );
