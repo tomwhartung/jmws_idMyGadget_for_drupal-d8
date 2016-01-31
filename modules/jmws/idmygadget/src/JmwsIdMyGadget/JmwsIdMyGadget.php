@@ -235,7 +235,7 @@ class JmwsIdMyGadget
 		$returnValue = '';
 		$returnValue .= $this->getGadgetDetectorStringChar() . '/';
 		$returnValue .= $this->getGadgetStringChar() . '/';
-		$returnValue .= $this->usingJQueryMobile ? 'Y' : 'N';
+		$returnValue .= $this->usingJQueryMobile ? 'Jqm' : 'NoJqm';
 		return $returnValue;
 	}
 	/**
