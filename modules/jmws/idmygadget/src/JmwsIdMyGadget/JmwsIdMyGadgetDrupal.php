@@ -33,6 +33,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		error_log( 'Creating a JmwsIdMyGadgetDrupal object for detector "' . $gadgetDetectorString . '" - note we want to do this only once!' );
 		$this->idMyGadgetDir = IDMYGADGET_MODULE_DIR;
 		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
+		$this->initializeJQueryMobileVars();
 		$this->translateStaticArrays();
 	}
 
@@ -49,11 +50,13 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 
 		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
 		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
-		$jqmDataThemeLetter = parent::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
 
-	//	$returnValue .= '/' . $jqmDataThemeIndex . '-' . $jqmDataThemeLetter;
-		$returnValue .= '/' . $jqmDataThemeLetter;
-		$returnValue .= '/' . $this->jqmDataThemeAttribute;
+		if ( $this->jqmDataThemeLetter == null )  // supposedly set in constructor but...
+		{
+			$this->setJqmDataThemeLetter();
+		}
+
+		$returnValue .= '/' . $this->jqmDataThemeLetter;
 		$returnValue .= '/' . $extra;
 		return $returnValue;
 	}
@@ -240,18 +243,22 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		// Not worrying about the phone burger stuff right now,
 		// so this logic will probably change as time progresses
 		//
+		$config = \Drupal::config('idmygadget.settings');
 		if ( $this->isPhone() ) {
 			$this->usingJQueryMobile = TRUE;
-			$phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_phones', 0);
+			// $phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_phones', 0);
+			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_phones');
 		}
 		else if ( $this->isTablet() ) {
-			$phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_tablets', 0);
+			// $phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_tablets', 0);
+			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_tablets');
 			if ( $phoneNavOnThisDevice ) {
 				$this->usingJQueryMobile = TRUE;
 			}
 		}
 		else {
-			$phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_desktops', 0);
+			// $phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_desktops', 0);
+			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_desktops');
 			if ( $phoneNavOnThisDevice ) {
 				$this->usingJQueryMobile = TRUE;
 			}
@@ -266,8 +273,30 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	 */
 	protected function setJqmDataThemeAttribute()
 	{
-		$jqmDataThemeIndex = variable_get( 'idmg_jqm_data_theme' );
-		$jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
-		$this->jqmDataThemeAttribute = 'data-theme="' . $jqmDataThemeLetter . '"';
+		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
+		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
+
+		if ( $this->jqmDataThemeLetter == null )
+		{
+			$this->setJqmDataThemeLetter();
+		}
+		$this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
+	}
+	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme Letter
+	 */
+	protected function setJqmDataThemeLetter()
+	{
+		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
+		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
+
+		if ( isset($jqmDataThemeIndex) && is_numeric($jqmDataThemeIndex) )
+		{
+			$this->jqmDataThemeLetter = parent::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
+		}
+		else
+		{
+			$this->jqmDataThemeLetter = parent::$jqueryMobileThemeChoices[0];
+		}
 	}
 }
