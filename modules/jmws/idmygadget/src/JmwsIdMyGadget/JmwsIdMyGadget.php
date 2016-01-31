@@ -98,6 +98,10 @@ class JmwsIdMyGadget
 		'footer' => '',
 	);
 	/**
+	 * The data theme letter is set in the CMS's admin page and used in the sanity check string
+	 */
+	public $jqmDataThemeLetter = null;
+	/**
 	 * Data role and theme attributes determine how the jQuery Mobile widgets appear
 	 */
 	public $jqmDataThemeAttribute = '';
@@ -269,6 +273,7 @@ class JmwsIdMyGadget
 	public function initializeJQueryMobileVars()
 	{
 		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile
+		$this->setJqmDataThemeLetter();
 
 		if ( $this->usingJQueryMobile )
 		{
