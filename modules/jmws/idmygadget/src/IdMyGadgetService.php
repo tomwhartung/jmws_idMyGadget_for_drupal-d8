@@ -29,7 +29,6 @@ class IdMyGadgetService {
     $gadgetDetectorIndex = $this->getGadgetDetectorIndex();
     $getJmwsIdMyGadgetDrupal = new GetJmwsIdMyGadgetDrupal( $gadgetDetectorIndex );
     $this->jmwsIdMyGadget = $getJmwsIdMyGadgetDrupal->getJmwsIdMyGadget();
-
   }
 
   public function getGadgetDetectorIndex() {

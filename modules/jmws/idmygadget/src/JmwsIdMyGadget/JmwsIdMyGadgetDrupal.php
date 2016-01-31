@@ -48,9 +48,6 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$returnValue = '';
 		$returnValue .= parent::getSanityCheckString() . '/';
 
-		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
-		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
-
 		if ( $this->jqmDataThemeLetter == null )  // supposedly set in constructor but...
 		{
 			$this->setJqmDataThemeLetter();
