@@ -1,7 +1,11 @@
 
 jquery-mobile:
   remote: http://jquery.com/
-  version: 1.x
+  version: 1.4.5
+  license:
+    name: MIT
+    url: https://jquery.org/license/
+    gpl-compatible: true
   css:
     theme:
       http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css { type: external, minified: true }
