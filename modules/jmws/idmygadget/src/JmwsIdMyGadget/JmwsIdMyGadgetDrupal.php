@@ -48,7 +48,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$returnValue = '';
 		$returnValue .= parent::getSanityCheckString() . '/';
 
-		if ( $this->jqmDataThemeLetter == null )  // supposedly set in constructor but...
+		if ( $this->jqmDataThemeLetter == null )  // supposedly set in constructor but let's be safe
 		{
 			$this->setJqmDataThemeLetter();
 		}
@@ -273,7 +273,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
 		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
 
-		if ( $this->jqmDataThemeLetter == null )
+		if ( $this->jqmDataThemeLetter == null )     // supposedly set in constructor but let's be safe
 		{
 			$this->setJqmDataThemeLetter();
 		}
