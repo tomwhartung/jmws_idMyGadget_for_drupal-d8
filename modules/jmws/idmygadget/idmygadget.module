@@ -25,6 +25,9 @@ function idMyGadget_page_alter( &$page ) {
   print '<p>Hi from function idMyGadget_page_alter in idMyGadget.module!!</p>';
 }
 
+/**
+ * Add the jquery mobile css and js
+ */
 function idmygadget_page_attachments_alter(&$page) {
   global $jmwsIdMyGadget;
   // if ( $jmwsIdMyGadget->usingJQueryMobile ) {
