@@ -1,0 +1,11 @@
+
+jquery-mobile:
+  remote: http://jquery.com/
+  version: 1.x
+  css:
+    theme:
+      http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css { type: external, minified: true }
+  js:
+    http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js { type: external, minified: true }
+  dependencies:
+    - core/jquery
