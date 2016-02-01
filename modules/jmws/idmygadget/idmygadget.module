@@ -25,3 +25,9 @@ function idMyGadget_page_alter( &$page ) {
   print '<p>Hi from function idMyGadget_page_alter in idMyGadget.module!!</p>';
 }
 
+function idmygadget_page_attachments_alter(&$page) {
+  global $jmwsIdMyGadget;
+  // if ( $jmwsIdMyGadget->usingJQueryMobile ) {
+    $page['#attached']['library'][] = 'idmygadget/jquery-mobile';
+  // }
+}
