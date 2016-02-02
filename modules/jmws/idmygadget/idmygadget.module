@@ -29,8 +29,14 @@ function idMyGadget_page_alter( &$page ) {
  * Add the jquery mobile css and js
  */
 function idmygadget_page_attachments_alter(&$page) {
-  global $jmwsIdMyGadget;
-  // if ( $jmwsIdMyGadget->usingJQueryMobile ) {
+  // global $jmwsIdMyGadget;
+  // $jmwsIdMyGadget = createSetAndGetJmwsIdMyGadget();
+  require_once 'src/IdMyGadgetService.php';
+  $idMyGadgetService = new Drupal\idmygadget\IdMyGadgetService();
+  $jmwsIdMyGadget = $idMyGadgetService->$jmwsIdMyGadget;
+  error_log('idmygadget_page_attachments_alter');
+
+  if ( $jmwsIdMyGadget->usingJQueryMobile ) {
     $page['#attached']['library'][] = 'idmygadget/jquery-mobile';
-  // }
+  }
 }
