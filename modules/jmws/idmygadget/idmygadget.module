@@ -30,11 +30,10 @@ function idMyGadget_page_alter( &$page ) {
  */
 function idmygadget_page_attachments_alter(&$page) {
   global $jmwsIdMyGadget;
-  // $jmwsIdMyGadget = createSetAndGetJmwsIdMyGadget();
-  // require_once 'src/IdMyGadgetService.php';
-  // $idMyGadgetService = new Drupal\idmygadget\IdMyGadgetService();
-  // $jmwsIdMyGadget = $idMyGadgetService->$jmwsIdMyGadget;
+  //
+  // If the $jmwsIdMyGadget global object does not exist, create the service and get it
   // Reference: https://api.drupal.org/api/drupal/core!core.api.php/group/container/8
+  //
   if ( is_object($jmwsIdMyGadget) ) {
     error_log('idmygadget_page_attachments_alter: global object exists');
   }
@@ -42,8 +41,12 @@ function idmygadget_page_attachments_alter(&$page) {
     $jmwsIdMyGadget = \Drupal::service('idmygadget.idmygadget_service');
     error_log('idmygadget_page_attachments_alter: created the global object wtf');
   }
-
+  //
+  // If we are using jQuery Mobile (based on the value of various admin parameters),
+  //   attach the css and js
+  //
   if ( $jmwsIdMyGadget->usingJQueryMobile ) {
     $page['#attached']['library'][] = 'idmygadget/jquery-mobile';
+    error_log('idmygadget_page_attachments_alter: attaching jQuery Mobile css and js');
   }
 }
