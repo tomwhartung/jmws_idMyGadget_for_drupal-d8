@@ -38,7 +38,8 @@ function idmygadget_page_attachments_alter(&$page) {
     error_log('idmygadget_page_attachments_alter: global object exists');
   }
   else {
-    $jmwsIdMyGadget = \Drupal::service('idmygadget.idmygadget_service');
+    $idMyGadgetService = \Drupal::service('idmygadget.idmygadget_service');
+    $jmwsIdMyGadget = $idMyGadgetService->jmwsIdMyGadget;
     error_log('idmygadget_page_attachments_alter: created the global object wtf');
   }
   //
