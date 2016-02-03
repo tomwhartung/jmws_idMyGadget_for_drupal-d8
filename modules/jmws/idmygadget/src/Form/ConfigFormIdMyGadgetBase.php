@@ -106,7 +106,11 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
     $config = $this->config('idmygadget.settings');
     $helpText = '.  (Add file manually and enter the name relative to sites/default/files.)';
-
+    //
+    // As the helpText says: add the file manually (or set it as a header in another theme) then
+    // enter the name of it (relative to sites/default/files) in the text field.
+    // For details, see the comment below.
+    //
     $settingName = 'idmygadget_logo_file_' . $gadgetType;   // e.g., 'idmygadget_logo_file_phone'
     $logoFileOptionsForm[$settingName] = [
         '#type' => 'textfield',
@@ -115,9 +119,12 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
         '#default_value' => $config->get( $settingName ),
     ];
     //
-    // Right now, the file uplad feature does not work.
+    // Right now, the file upload feature does not work.
     // At this time, I am unable to find adequate documentation, and
     //   unfortunately I do not have the time for further research and experimentation
+    // Most of the documentation I am seeing has to do with enabling users to upload their
+    //   files in the front end.  And I tried (spent about a day!) reverse-engineering
+    //   what the themes (stark and bartik) do, to no avail.  (Drupal seems to be for insiders only sometimes.)
     // Note that the Reference below, which inspired this code, at this time is flagged as "Incomplete" and
     //  pertains to Drupal 6 (but nonetheless works to an extent), so I do not want to spend a lot of time
     //  messing around with something that ultimately is not absolutely necessary, and may well not work anyway...
