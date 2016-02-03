@@ -20,11 +20,13 @@ class ConfigFormIdMyGadgetDesktop extends ConfigFormIdMyGadgetBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $formPhoneNavOptions = $this->phoneNavOptions( 'desktop' );
+    $formLogoFileOptions = $this->logoFileOptions( 'desktop' );
     $formSiteNameOptions = $this->siteNameOptions( 'desktop' );
     $formSiteTitleOptions = $this->siteTitleOptions( 'desktop' );
     $formTagLineOptions = $this->tagLineOptions( 'desktop' );
     $form = array_merge( $form,
       $formPhoneNavOptions,
+      $formLogoFileOptions,
       $formSiteNameOptions,
       $formSiteTitleOptions,
       $formTagLineOptions );
@@ -39,6 +41,8 @@ class ConfigFormIdMyGadgetDesktop extends ConfigFormIdMyGadgetBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_phone_nav_on_desktops';
+    $config->set( $settingName, $form_state->getValue($settingName) );
+    $settingName = 'idmygadget_logo_file_desktop';
     $config->set( $settingName, $form_state->getValue($settingName) );
 
     $settingName = 'idmygadget_show_site_name_desktop';
