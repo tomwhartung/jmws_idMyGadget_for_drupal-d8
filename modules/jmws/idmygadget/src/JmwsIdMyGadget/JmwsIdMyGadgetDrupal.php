@@ -66,6 +66,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	public function getLogoNameTitleDescriptionHtml( $front_page='' )
 	{
 		global $base_url;
+		$config = \Drupal::config('idmygadget.settings');
 
 		if ( $front_page === '' )
 		{
@@ -75,7 +76,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$logoNameTitleDescription = '';  // the return value of this method
 		$logoFile = '';
 		$logoImgSrc = $base_url . '/sites/default/files/';
-		$siteName = variable_get( 'site_name', '' );
+		$siteName = $config->get( 'site_name' );
 		$siteTitle = '';
 		$siteDescription = '';
 		$nameTitleSloganOpen = '<div id="name-and-slogan" class="name-and-slogan">';
@@ -87,9 +88,9 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 
 		if ( $this->isPhone() )
 		{
-			$logoFile = variable_get( 'idmg_logo_file_phone' );
-			$siteTitle = variable_get( 'idmg_site_title_phone' );
-			$siteDescription = variable_get('idmg_site_description_phone');
+			$logoFile = $config->get( 'idmygadget_logo_file_phone' );
+			$siteTitle = $config->get( 'idmygadget_site_title_phone' );
+			$siteDescription = $config->get('idmygadget_site_description_phone');
 			$logoNameTitleDescription .= $nameTitleSloganOpen;  // NOTE: includes logo; see README.md
 			if ( strlen($logoFile) > 0 )
 			{
@@ -99,9 +100,9 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-phone">';
-			if ( variable_get('idmg_show_site_name_phone') )   // NOTE: 'No' must be the zeroeth elt
+			if ( $config->get('idmygadget_show_site_name_phone') )   // NOTE: 'No' must be the zeroeth elt
 			{
-				$siteNameElement = parent::$validElements[variable_get('idmg_site_name_element_phone')];
+				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_phone')];
 				$logoNameTitleDescription .= '<' . $siteNameElement . ' id="site-name" class="site-name-phone">';
 				$logoNameTitleDescription .= $textAnchorTagOpen;
 				$logoNameTitleDescription .= $siteName;
@@ -110,7 +111,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 			}
 			if ( strlen($siteTitle) > 0 )
 			{
-				$siteTitleElement = parent::$validElements[variable_get('idmg_site_title_element_phone')];
+				$siteTitleElement = parent::$validElements[$config->get('idmygadget_site_title_element_phone')];
 				$logoNameTitleDescription .= '<' . $siteTitleElement . ' class="site-title-phone">';
 				$logoNameTitleDescription .= $textAnchorTagOpen;
 				$logoNameTitleDescription .= $siteTitle;
@@ -120,7 +121,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-phone -->';
 			if ( strlen($siteDescription) > 0 )
 			{
-				$siteDescriptionElement = parent::$validElements[variable_get('idmg_site_description_element_phone')];
+				$siteDescriptionElement = parent::$validElements[$config->get('idmygadget_site_description_element_phone')];
 				$logoNameTitleDescription .= '<' . $siteDescriptionElement . ' id="site-slogan" class="site-description-phone">';
 				$logoNameTitleDescription .= $siteDescription;
 				$logoNameTitleDescription .= '</' . $siteDescriptionElement . '>';
@@ -129,9 +130,9 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		}
 		else if ( $this->isTablet() )
 		{
-			$logoFile = variable_get( 'idmg_logo_file_tablet' );
-			$siteTitle = variable_get('idmg_site_title_tablet');
-			$siteDescription = variable_get('idmg_site_description_tablet');
+			$logoFile = $config->get( 'idmygadget_logo_file_tablet' );
+			$siteTitle = $config->get('idmygadget_site_title_tablet');
+			$siteDescription = $config->get('idmygadget_site_description_tablet');
 			$logoNameTitleDescription .= $nameTitleSloganOpen;  // NOTE: includes logo; see README.md
 			if ( strlen($logoFile) > 0 )
 			{
@@ -141,9 +142,9 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-tablet">';
-			if ( variable_get('idmg_show_site_name_tablet') )   // NOTE: 'No' must be the zeroeth elt
+			if ( $config->get('idmygadget_show_site_name_tablet') )   // NOTE: 'No' must be the zeroeth elt
 			{
-				$siteNameElement = parent::$validElements[variable_get('idmg_site_name_element_tablet')];
+				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_tablet')];
 				$logoNameTitleDescription .= '<' . $siteNameElement . ' id="site-name" class="site-name-tablet">';
 				$logoNameTitleDescription .= $textAnchorTagOpen;
 				$logoNameTitleDescription .= $siteName;
@@ -152,7 +153,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 			}
 			if ( strlen($siteTitle) > 0 )
 			{
-				$siteTitleElement = parent::$validElements[variable_get('idmg_site_title_element_tablet')];
+				$siteTitleElement = parent::$validElements[$config->get('idmygadget_site_title_element_tablet')];
 				$logoNameTitleDescription .= '<' . $siteTitleElement . ' class="site-title-tablet">';
 				$logoNameTitleDescription .= $textAnchorTagOpen;
 				$logoNameTitleDescription .= $siteTitle;
@@ -162,7 +163,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-tablet -->';
 			if ( strlen($siteDescription) > 0 )
 			{
-				$siteDescriptionElement = parent::$validElements[variable_get('idmg_site_description_element_tablet')];
+				$siteDescriptionElement = parent::$validElements[$config->get('idmygadget_site_description_element_tablet')];
 				$logoNameTitleDescription .= '<' . $siteDescriptionElement . ' id="site-slogan" class="site-description-tablet">';
 				$logoNameTitleDescription .= $siteDescription;
 				$logoNameTitleDescription .= '</' . $siteDescriptionElement . '>';
@@ -171,9 +172,9 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		}
 		else
 		{
-			$logoFile = variable_get( 'idmg_logo_file_desktop' );
-			$siteTitle = variable_get('idmg_site_title_desktop');
-			$siteDescription = variable_get('idmg_site_description_desktop');
+			$logoFile = $config->get( 'idmygadget_logo_file_desktop' );
+			$siteTitle = $config->get('idmygadget_site_title_desktop');
+			$siteDescription = $config->get('idmygadget_site_description_desktop');
 			$logoNameTitleDescription .= $nameTitleSloganOpen;  // NOTE: includes logo; see README.md
 			if ( strlen($logoFile) > 0 )
 			{
@@ -183,9 +184,9 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-desktop">';
-			if ( variable_get('idmg_show_site_name_desktop') )   // NOTE: 'No' must be the zeroeth elt
+			if ( $config->get('idmygadget_show_site_name_desktop') )   // NOTE: 'No' must be the zeroeth elt
 			{
-				$siteNameElement = parent::$validElements[variable_get('idmg_site_name_element_desktop')];
+				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_desktop')];
 				$logoNameTitleDescription .= '<' . $siteNameElement . ' id="site-name" class="site-name-desktop">';
 				$logoNameTitleDescription .= $textAnchorTagOpen;
 				$logoNameTitleDescription .= $siteName;
@@ -194,7 +195,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 			}
 			if ( strlen($siteTitle) > 0 )
 			{
-				$siteTitleElement = parent::$validElements[variable_get('idmg_site_title_element_desktop')];
+				$siteTitleElement = parent::$validElements[$config->get('idmygadget_site_title_element_desktop')];
 				$logoNameTitleDescription .= '<' . $siteTitleElement . ' class="site-title-desktop">';
 				$logoNameTitleDescription .= $textAnchorTagOpen;
 				$logoNameTitleDescription .= $siteTitle;
@@ -204,7 +205,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-desktop -->';
 			if ( strlen($siteDescription) > 0 )
 			{
-				$siteDescriptionElement = parent::$validElements[variable_get('idmg_site_description_element_desktop')];
+				$siteDescriptionElement = parent::$validElements[$config->get('idmygadget_site_description_element_desktop')];
 				$logoNameTitleDescription .= '<' . $siteDescriptionElement . ' id="site-slogan" class="site-description-desktop">';
 				$logoNameTitleDescription .= $siteDescription;
 				$logoNameTitleDescription .= '</' . $siteDescriptionElement . '>';
