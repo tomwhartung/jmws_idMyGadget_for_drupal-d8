@@ -30,11 +30,13 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
 
     foreach( $this->gadgetTypes as $gadgetType ) {
       $formPhoneNavOptions = $this->phoneNavOptions( $gadgetType );
+      $formLogoFileOptions = $this->logoFileOptions( $gadgetType );
       $formSiteNameOptions = $this->siteNameOptions( $gadgetType );
       $formSiteTitleOptions = $this->siteTitleOptions( $gadgetType );
       $formTagLineOptions = $this->tagLineOptions( $gadgetType );
       $form = array_merge( $form,
         $formPhoneNavOptions,
+        $formLogoFileOptions,
         $formSiteNameOptions,
         $formSiteTitleOptions,
         $formTagLineOptions );
@@ -55,6 +57,8 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
     foreach( $this->gadgetTypes as $gadgetType ) {
       $gadgetTypePlural = $gadgetType . 's';
       $settingName = 'idmygadget_phone_nav_on_' . $gadgetTypePlural;  // e.g., 'idmygadget_phone_nav_on_phones'
+      $config->set( $settingName, $form_state->getValue($settingName) );
+      $settingName = 'idmygadget_logo_file_' . $gadgetType;           // e.g., 'idmygadget_logo_file_phone'
       $config->set( $settingName, $form_state->getValue($settingName) );
       $settingName = 'idmygadget_show_site_name_' . $gadgetType;      // e.g., 'idmygadget_show_site_name_phone'
       $config->set( $settingName, $form_state->getValue($settingName) );
