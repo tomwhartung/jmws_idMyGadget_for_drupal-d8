@@ -105,14 +105,26 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePlural = $gadgetType . 's';
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
     $config = $this->config('idmygadget.settings');
+    $helpText = '.  (Add file manually and enter the name relative to sites/default/files.)';
 
     $settingName = 'idmygadget_logo_file_' . $gadgetType;   // e.g., 'idmygadget_logo_file_phone'
     $logoFileOptionsForm[$settingName] = [
         '#type' => 'textfield',
         '#title' => t( $gadgetTypePluralUcfirst . ': Logo File for Header' ),
-        '#description' => t( 'The logo image file for the header on ' . $gadgetTypePlural . ' (blank for none).' ),
+        '#description' => t( 'The logo image file for the header on ' . $gadgetTypePlural . $helpText),
         '#default_value' => $config->get( $settingName ),
     ];
+    //
+    // Right now, the file uplad feature does not work.
+    // At this time, I am unable to find adequate documentation, and
+    //   unfortunately I do not have the time for further research and experimentation
+    // Note that the Reference below, which inspired this code, at this time is flagged as "Incomplete" and
+    //  pertains to Drupal 6 (but nonetheless works to an extent), so I do not want to spend a lot of time
+    //  messing around with something that ultimately is not absolutely necessary, and may well not work anyway...
+    //   Reference: https://www.drupal.org/node/347251
+    // Also note that this reference includes some code for processing the submit button that I have not used
+    // Really I need to finish this up and get on with a real job that pays real money!
+    //
     $settingName = 'idmygadget_logo_file_upload_' . $gadgetType;   // e.g., 'idmygadget_logo_file_upload_phone'
     // If this #attribute is not present, upload will fail on submit
     $logoFileOptionsForm['#attributes']['enctype'] = 'multipart/form-data';
