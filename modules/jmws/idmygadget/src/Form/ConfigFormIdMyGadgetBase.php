@@ -97,6 +97,30 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     return $jqmDataThemeOptionForm;
   }
   /**
+   *
+   *
+   */
+  protected function logoFileOptions( $gadgetType='desktop' ) {
+    $logoFileOptionsForm = array();
+    $gadgetTypePlural = $gadgetType . 's';
+    $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
+    $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_logo_file_' . $gadgetType;   // e.g., 'idmygadget_logo_file_phone'
+
+   // If this #attribute is not present, upload will fail on submit
+    $logoFileOptionsForm['#attributes']['enctype'] = 'multipart/form-data';
+    $logoFileOptionsForm[$settingName] = array(
+    '#title' => t('Upload logo file for ' . $gadgetTypePlural),
+    '#type'  => 'file',
+  );
+  $logoFileOptionsForm['submit_upload'] = array(
+    '#type'  =>  'submit',
+    '#value'  =>  'Submit'
+  );
+  return $logoFileOptionsForm;
+  }
+  /**
    * Returns an array of options for whether to display the jQuery Mobile Navigation in the
    * header and footer on the specified gadget type
    * @param type $gadgetType e.g., phone, tablet, or desktop
