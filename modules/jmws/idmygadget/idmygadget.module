@@ -31,16 +31,13 @@ function idMyGadget_page_alter( &$page ) {
 function idmygadget_page_attachments_alter(&$page) {
   global $jmwsIdMyGadget;
   //
-  // If the $jmwsIdMyGadget global object does not exist, create the service and get it
+  // If the $jmwsIdMyGadget global object does not exist, and at one point we were getting that error,
+  //   create the service and get it
   // Reference: https://api.drupal.org/api/drupal/core!core.api.php/group/container/8
   //
-  if ( is_object($jmwsIdMyGadget) ) {
-    error_log('idmygadget_page_attachments_alter: global object exists');
-  }
-  else {
+  if ( ! is_object($jmwsIdMyGadget) ) {
     $idMyGadgetService = \Drupal::service('idmygadget.idmygadget_service');
     $jmwsIdMyGadget = $idMyGadgetService->jmwsIdMyGadget;
-    error_log('idmygadget_page_attachments_alter: created the global object wtf');
   }
   //
   // If we are using jQuery Mobile (based on the value of various admin parameters),
