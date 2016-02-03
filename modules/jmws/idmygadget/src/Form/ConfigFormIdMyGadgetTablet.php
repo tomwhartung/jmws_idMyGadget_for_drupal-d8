@@ -20,11 +20,13 @@ class ConfigFormIdMyGadgetTablet extends ConfigFormIdMyGadgetBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $formPhoneNavOptions = $this->phoneNavOptions( 'tablet' );
+    $formLogoFileOptions = $this->logoFileOptions( 'tablet' );
     $formSiteNameOptions = $this->siteNameOptions( 'tablet' );
     $formSiteTitleOptions = $this->siteTitleOptions( 'tablet' );
     $formTagLineOptions = $this->tagLineOptions( 'tablet' );
     $form = array_merge( $form,
       $formPhoneNavOptions,
+      $formLogoFileOptions,
       $formSiteNameOptions,
       $formSiteTitleOptions,
       $formTagLineOptions );
@@ -39,6 +41,8 @@ class ConfigFormIdMyGadgetTablet extends ConfigFormIdMyGadgetBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_phone_nav_on_tablets';
+    $config->set( $settingName, $form_state->getValue($settingName) );
+    $settingName = 'idmygadget_logo_file_tablet';
     $config->set( $settingName, $form_state->getValue($settingName) );
 
     $settingName = 'idmygadget_show_site_name_tablet';
