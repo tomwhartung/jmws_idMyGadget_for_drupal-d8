@@ -13,6 +13,9 @@ idmygadget.settings:
     idmygadget_phone_nav_on_phones:
       type: boolean
       label: 'Show jQuery mobile phone nav on phones?'
+    idmygadget_logo_file_phone:
+      type: string
+      label: 'Logo file on phones (leave blank for none)'
     idmygadget_show_site_name_phone:
       type: boolean
       label: 'Show the site name on phones?'
@@ -34,6 +37,9 @@ idmygadget.settings:
     idmygadget_phone_nav_on_tablets:
       type: boolean
       label: 'Show jQuery mobile phone nav on tablets?'
+    idmygadget_logo_file_tablet:
+      type: string
+      label: 'Logo file on tablets (leave blank for none)'
     idmygadget_show_site_name_tablet:
       type: boolean
       label: 'Show the site name on tablets?'
@@ -55,6 +61,9 @@ idmygadget.settings:
     idmygadget_phone_nav_on_desktops:
       type: boolean
       label: 'Show jQuery mobile phone nav on desktops?'
+    idmygadget_logo_file_desktop:
+      type: string
+      label: 'Logo file on desktops (leave blank for none)'
     idmygadget_show_site_name_desktop:
       type: boolean
       label: 'Show the site name on desktops?'
