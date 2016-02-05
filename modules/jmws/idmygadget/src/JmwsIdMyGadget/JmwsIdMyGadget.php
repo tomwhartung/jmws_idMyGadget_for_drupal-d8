@@ -145,7 +145,7 @@ class JmwsIdMyGadget
 	 */
 	public function __construct( $gadgetDetectorString=null, $debugging=FALSE, $allowOverridesInUrl=TRUE )
 	{
-		error_log( 'Creating a base JmwsIdMyGadget object for detector "' . $gadgetDetectorString . '" - note we want to do this only once!' );
+	//	error_log( 'Creating a base JmwsIdMyGadget object for detector "' . $gadgetDetectorString . '" - note we want to do this only once!' );
 		require_once 'gadget_detectors/all_detectors/getIdMyGadgetStringAllDevices.php';
 
 		if ( $gadgetDetectorString === null )
