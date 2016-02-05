@@ -33,13 +33,13 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
       $formLogoFileOptions = $this->logoFileOptions( $gadgetType );
       $formSiteNameOptions = $this->siteNameOptions( $gadgetType );
       $formSiteTitleOptions = $this->siteTitleOptions( $gadgetType );
-      $formTagLineOptions = $this->tagLineOptions( $gadgetType );
+      $formSiteSloganOptions = $this->siteSloganOptions( $gadgetType );
       $form = array_merge( $form,
         $formPhoneNavOptions,
         $formLogoFileOptions,
         $formSiteNameOptions,
         $formSiteTitleOptions,
-        $formTagLineOptions );
+        $formSiteSloganOptions );
     }
 
     return parent::buildForm($form, $form_state);
@@ -68,9 +68,9 @@ class ConfigFormIdMyGadgetAll extends ConfigFormIdMyGadgetBase {
       $config->set( $settingName, $form_state->getValue($settingName) );
       $settingName = 'idmygadget_site_title_element_' . $gadgetType;  // e.g., 'idmygadget_site_name_element_phone'
       $config->set( $settingName, $form_state->getValue($settingName) );
-      $settingName = 'idmygadget_tag_line_' . $gadgetType;            // e.g., 'idmygadget_show_tag_line_phone'
+      $settingName = 'idmygadget_site_slogan_' . $gadgetType;            // e.g., 'idmygadget_show_site_slogan_phone'
       $config->set( $settingName, $form_state->getValue($settingName) );
-      $settingName = 'idmygadget_tag_line_element_' . $gadgetType;    // e.g., 'idmygadget_tag_line_element_phone'
+      $settingName = 'idmygadget_site_slogan_element_' . $gadgetType;    // e.g., 'idmygadget_site_slogan_element_phone'
       $config->set( $settingName, $form_state->getValue($settingName) );
     }
 
