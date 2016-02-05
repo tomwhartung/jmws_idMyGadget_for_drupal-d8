@@ -277,7 +277,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $settingName = 'idmygadget_tag_line_element_' . $gadgetType;  // e.g., 'idmygadget_tag_line_element_phone'
     $tagLineOptionsForm[$settingName] = array(
       '#type' => 'select',
-      '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line Element' ),
+      '#title' => t( $gadgetTypePluralUcfirst . ': Slogan Element' ),
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->validElements,
       '#description' => t( 'Select the html element in which you want to display the tag line on ' . $gadgetTypePlural . '.' ),
@@ -287,7 +287,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
     $tagLineOptionsForm[$settingName] = [
       '#type' => 'textfield',
-      '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line' ),
+      '#title' => t( $gadgetTypePluralUcfirst . ': Slogan' ),
       '#description' => t( 'Specify the tag line, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
       '#default_value' => $config->get( $settingName ),
     ];
