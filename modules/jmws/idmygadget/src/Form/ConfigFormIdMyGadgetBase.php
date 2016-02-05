@@ -274,7 +274,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
     $config = $this->config('idmygadget.settings');
 
-    $settingName = 'idmygadget_tag_line_element_' . $gadgetType;  // e.g., 'idmygadget_tag_line_element_phone'
+    $settingName = 'idmygadget_site_slogan_element_' . $gadgetType;  // e.g., 'idmygadget_site_slogan_element_phone'
     $siteSloganOptionsForm[$settingName] = array(
       '#type' => 'select',
       '#title' => t( $gadgetTypePluralUcfirst . ': Slogan Element' ),
@@ -284,7 +284,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#required' => FALSE,
     );
 
-    $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
+    $settingName = 'idmygadget_site_slogan_' . $gadgetType;   // e.g., 'idmygadget_site_slogan_phone'
     $siteSloganOptionsForm[$settingName] = [
       '#type' => 'textfield',
       '#title' => t( $gadgetTypePluralUcfirst . ': Slogan' ),
