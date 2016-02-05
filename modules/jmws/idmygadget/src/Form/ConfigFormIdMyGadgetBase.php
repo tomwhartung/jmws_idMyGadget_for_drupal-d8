@@ -112,7 +112,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     // For details, see the comment below.
     //
     $settingName = 'idmygadget_logo_file_' . $gadgetType;   // e.g., 'idmygadget_logo_file_phone'
-    $logoFileOptionsForm[$settingName] = [
+    $logoFileOptionsForm[$gadgetType][$settingName] = [
         '#type' => 'textfield',
         '#title' => t( $gadgetTypePluralUcfirst . ': Logo File for Header' ),
         '#description' => t( 'The logo image file for the header on ' . $gadgetTypePlural . $helpText),
@@ -135,11 +135,11 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $settingName = 'idmygadget_logo_file_upload_' . $gadgetType;   // e.g., 'idmygadget_logo_file_upload_phone'
     // If this #attribute is not present, upload will fail on submit
     $logoFileOptionsForm['#attributes']['enctype'] = 'multipart/form-data';
-    $logoFileOptionsForm[$settingName] = array(
+    $logoFileOptionsForm[$gadgetType][$settingName] = array(
       '#title' => t('Upload logo file for ' . $gadgetTypePlural),
       '#type'  => 'file',
     );
-    $logoFileOptionsForm['submit_upload'] = array(
+    $logoFileOptionsForm[$gadgetType]['submit_upload'] = array(
       '#type'  =>  'submit',
       '#value'  =>  'Submit'
     );
@@ -169,7 +169,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     //   // $defaultValue = 0;
     //   $defaultValue = 1;
     // }
-    $phoneNavOptionsForm[$settingName] = array(
+    $phoneNavOptionsForm[$gadgetType][$settingName] = array(
       '#type' => 'radios',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
       // '#default_value' => $defaultValue,
@@ -195,7 +195,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_site_name_element_' . $gadgetType;     // e.g., 'idmygadget_site_name_element_phone'
-    $siteNameOptionsForm[$settingName] = array(
+    $siteNameOptionsForm[$gadgetType][$settingName] = array(
         '#type' => 'select',
         '#title' => t( $gadgetTypePluralUcfirst . ': Site Name Element' ),
         '#default_value' => $config->get( $settingName ),
@@ -216,7 +216,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     //   // $defaultValue = 1;
     //   $defaultValue = 2;
     // }
-    $siteNameOptionsForm[$settingName] = array(
+    $siteNameOptionsForm[$gadgetType][$settingName] = array(
       '#type' => 'radios',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Site Name?' ),
       // '#default_value' => $defaultValue,
@@ -242,7 +242,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_site_title_element_' . $gadgetType;  // e.g., 'idmygadget_site_title_element_phone'
-    $siteTitleOptionsForm[$settingName] = array(
+    $siteTitleOptionsForm[$gadgetType][$settingName] = array(
         '#type' => 'select',
         '#title' => t( $gadgetTypePluralUcfirst . ': Site Title Element' ),
         '#default_value' => $config->get( $settingName ),
@@ -252,7 +252,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     );
 
     $settingName = 'idmygadget_site_title_' . $gadgetType;   // e.g., 'idmygadget_site_title_phone'
-    $siteTitleOptionsForm[$settingName] = [
+    $siteTitleOptionsForm[$gadgetType][$settingName] = [
       '#type' => 'textfield',
       '#title' => t( $gadgetTypePluralUcfirst . ': Site Title' ),
       '#description' => t( 'Specify the site title, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
@@ -275,7 +275,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_site_slogan_element_' . $gadgetType;  // e.g., 'idmygadget_site_slogan_element_phone'
-    $siteSloganOptionsForm[$settingName] = array(
+    $siteSloganOptionsForm[$gadgetType][$settingName] = array(
       '#type' => 'select',
       '#title' => t( $gadgetTypePluralUcfirst . ': Slogan Element' ),
       '#default_value' => $config->get( $settingName ),
@@ -285,7 +285,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     );
 
     $settingName = 'idmygadget_site_slogan_' . $gadgetType;   // e.g., 'idmygadget_site_slogan_phone'
-    $siteSloganOptionsForm[$settingName] = [
+    $siteSloganOptionsForm[$gadgetType][$settingName] = [
       '#type' => 'textfield',
       '#title' => t( $gadgetTypePluralUcfirst . ': Slogan' ),
       '#description' => t( 'Specify the tag line, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
