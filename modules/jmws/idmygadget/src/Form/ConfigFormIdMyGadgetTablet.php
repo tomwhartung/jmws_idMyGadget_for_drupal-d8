@@ -23,13 +23,13 @@ class ConfigFormIdMyGadgetTablet extends ConfigFormIdMyGadgetBase {
     $formLogoFileOptions = $this->logoFileOptions( 'tablet' );
     $formSiteNameOptions = $this->siteNameOptions( 'tablet' );
     $formSiteTitleOptions = $this->siteTitleOptions( 'tablet' );
-    $formTagLineOptions = $this->tagLineOptions( 'tablet' );
+    $formSiteSloganOptions = $this->siteSloganOptions( 'tablet' );
     $form = array_merge( $form,
       $formPhoneNavOptions,
       $formLogoFileOptions,
       $formSiteNameOptions,
       $formSiteTitleOptions,
-      $formTagLineOptions );
+      $formSiteSloganOptions );
 
     return parent::buildForm($form, $form_state);
   }
@@ -55,9 +55,9 @@ class ConfigFormIdMyGadgetTablet extends ConfigFormIdMyGadgetBase {
     $settingName = 'idmygadget_site_title_element_tablet';
     $config->set( $settingName, $form_state->getValue($settingName) );
 
-    $settingName = 'idmygadget_tag_line_tablet';
+    $settingName = 'idmygadget_site_slogan_tablet';
     $config->set( $settingName, $form_state->getValue($settingName) );
-    $settingName = 'idmygadget_tag_line_element_tablet';
+    $settingName = 'idmygadget_site_slogan_element_tablet';
     $config->set( $settingName, $form_state->getValue($settingName) );
 
     $config->save();
