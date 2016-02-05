@@ -66,6 +66,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	public function getLogoNameTitleDescriptionHtml( $front_page='' )
 	{
 		global $base_url;
+		$siteName = Drupal::config('system.site')->get('name');
 		$config = \Drupal::config('idmygadget.settings');
 
 		if ( $front_page === '' )
@@ -76,7 +77,8 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$logoNameTitleDescription = '';  // the return value of this method
 		$logoFile = '';
 		$logoImgSrc = $base_url . '/sites/default/files/';
-		$siteName = $config->get( 'site_name' );
+		// $siteName = $config->get( 'site_name' );
+		// $siteName = 'Site Name hey wtf dude';
 		$siteTitle = '';
 		$siteDescription = '';
 		$nameTitleSloganOpen = '<div id="name-and-slogan" class="name-and-slogan">';
