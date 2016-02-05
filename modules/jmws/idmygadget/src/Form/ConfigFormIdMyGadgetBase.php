@@ -267,15 +267,15 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
    * @param type $gadgetType e.g., phone, tablet, or desktop
    * @return type array
    */
-  protected function tagLineOptions( $gadgetType='desktop' ) {
-    $tagLineOptionsForm = array();
+  protected function siteSloganOptions( $gadgetType='desktop' ) {
+    $siteSloganOptionsForm = array();
     $gadgetTypePlural = $gadgetType . 's';
     // $gadgetTypeUcfirst = ucfirst( $gadgetType );
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_tag_line_element_' . $gadgetType;  // e.g., 'idmygadget_tag_line_element_phone'
-    $tagLineOptionsForm[$settingName] = array(
+    $siteSloganOptionsForm[$settingName] = array(
       '#type' => 'select',
       '#title' => t( $gadgetTypePluralUcfirst . ': Slogan Element' ),
       '#default_value' => $config->get( $settingName ),
@@ -285,13 +285,13 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     );
 
     $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
-    $tagLineOptionsForm[$settingName] = [
+    $siteSloganOptionsForm[$settingName] = [
       '#type' => 'textfield',
       '#title' => t( $gadgetTypePluralUcfirst . ': Slogan' ),
       '#description' => t( 'Specify the tag line, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
       '#default_value' => $config->get( $settingName ),
     ];
 
-    return $tagLineOptionsForm;
+    return $siteSloganOptionsForm;
   }
 }
