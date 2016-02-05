@@ -194,6 +194,16 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
     $config = $this->config('idmygadget.settings');
 
+    $settingName = 'idmygadget_site_name_element_' . $gadgetType;     // e.g., 'idmygadget_site_name_element_phone'
+    $siteNameOptionsForm[$settingName] = array(
+        '#type' => 'select',
+        '#title' => t( $gadgetTypePluralUcfirst . ': Site Name Element' ),
+        '#default_value' => $config->get( $settingName ),
+        '#options' => $this->validElements,
+        '#description' => t( 'Select the html element in which you want to display the name of this site on ' . $gadgetTypePlural . '.' ),
+        '#required' => FALSE,
+    );
+
     $settingName = 'idmygadget_show_site_name_' . $gadgetType;   // e.g., 'idmygadget_show_site_name_phone'
     // $defaultValue = $config->get( $settingName );
     // $defaultValue = isset( $defaultValue ) ? $defaultValue : '1';
@@ -216,16 +226,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#required' => TRUE,
     );
 
-    $settingName = 'idmygadget_site_name_element_' . $gadgetType;     // e.g., 'idmygadget_site_name_element_phone'
-    $siteNameOptionsForm[$settingName] = array(
-      '#type' => 'select',
-      '#title' => t( $gadgetTypePluralUcfirst . ': Site Name Element' ),
-      '#default_value' => $config->get( $settingName ),
-      '#options' => $this->validElements,
-      '#description' => t( 'Select the html element in which you want to display the name of this site on ' . $gadgetTypePlural . '.' ),
-      '#required' => FALSE,
-    );
-
     return $siteNameOptionsForm;
   }
 
@@ -241,6 +241,16 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
     $config = $this->config('idmygadget.settings');
 
+    $settingName = 'idmygadget_site_title_element_' . $gadgetType;  // e.g., 'idmygadget_site_title_element_phone'
+    $siteTitleOptionsForm[$settingName] = array(
+        '#type' => 'select',
+        '#title' => t( $gadgetTypePluralUcfirst . ': Site Title Element' ),
+        '#default_value' => $config->get( $settingName ),
+        '#options' => $this->validElements,
+        '#description' => t( 'Select the html element in which you want to display the site title on ' . $gadgetTypePlural . '.' ),
+        '#required' => FALSE,
+    );
+
     $settingName = 'idmygadget_site_title_' . $gadgetType;   // e.g., 'idmygadget_site_title_phone'
     $siteTitleOptionsForm[$settingName] = [
       '#type' => 'textfield',
@@ -248,16 +258,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#description' => t( 'Specify the site title, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
       '#default_value' => $config->get( $settingName ),
     ];
-
-    $settingName = 'idmygadget_site_title_element_' . $gadgetType;  // e.g., 'idmygadget_site_title_element_phone'
-    $siteTitleOptionsForm[$settingName] = array(
-      '#type' => 'select',
-      '#title' => t( $gadgetTypePluralUcfirst . ': Site Title Element' ),
-      '#default_value' => $config->get( $settingName ),
-      '#options' => $this->validElements,
-      '#description' => t( 'Select the html element in which you want to display the site title on ' . $gadgetTypePlural . '.' ),
-      '#required' => FALSE,
-    );
 
     return $siteTitleOptionsForm;
   }
@@ -274,14 +274,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
     $config = $this->config('idmygadget.settings');
 
-    $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
-    $tagLineOptionsForm[$settingName] = [
-      '#type' => 'textfield',
-      '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line' ),
-      '#description' => t( 'Specify the tag line, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
-      '#default_value' => $config->get( $settingName ),
-    ];
-
     $settingName = 'idmygadget_tag_line_element_' . $gadgetType;  // e.g., 'idmygadget_tag_line_element_phone'
     $tagLineOptionsForm[$settingName] = array(
       '#type' => 'select',
@@ -292,7 +284,14 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#required' => FALSE,
     );
 
+    $settingName = 'idmygadget_tag_line_' . $gadgetType;   // e.g., 'idmygadget_tag_line_phone'
+    $tagLineOptionsForm[$settingName] = [
+      '#type' => 'textfield',
+      '#title' => t( $gadgetTypePluralUcfirst . ': Tag Line' ),
+      '#description' => t( 'Specify the tag line, if any, to use in the header on ' . $gadgetTypePlural . '.' ),
+      '#default_value' => $config->get( $settingName ),
+    ];
+
     return $tagLineOptionsForm;
   }
-
 }
