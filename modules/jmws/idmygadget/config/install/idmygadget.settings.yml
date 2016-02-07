@@ -1,7 +1,7 @@
 idmygadget_gadget_detector: '1'
 idmygadget_jqm_data_theme: '3'
 
-idmygadget_phone_nav_on_phones: '0'
+idmygadget_phone_nav_on_phones: '1'
 idmygadget_logo_file_phone: ''
 idmygadget_show_site_name_phone: false
 idmygadget_site_name_element_phone: '2'
@@ -14,7 +14,7 @@ idmygadget_phone_nav_on_tablets: '0'
 idmygadget_logo_file_tablet: ''
 idmygadget_show_site_name_tablet: true
 idmygadget_site_name_element_tablet: '3'
-idmygadget_site_title_tablet: 'the .install file'
+idmygadget_site_title_tablet: ''
 idmygadget_site_title_element_tablet: '5'
 idmygadget_site_slogan_tablet: 'To Live Is to Learn'
 idmygadget_site_slogan_element_tablet: '7'
