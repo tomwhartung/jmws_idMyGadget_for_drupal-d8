@@ -161,6 +161,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     // $defaultValue = $config->get( $settingName );
     // $defaultValue = isset( $defaultValue ) ? $defaultValue : '0';
     // $defaultValue = isset( $defaultValue ) ? $defaultValue : 0;
+    // -----
     // $existingValue = $config->get( $settingName );
     // if ( isset($existingValue) ) {
     //   $defaultValue = $config->get( $settingName );
@@ -168,6 +169,15 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     // else {
     //   // $defaultValue = 0;
     //   $defaultValue = 1;
+    // }
+    // -----
+    // $existingValue = $config->get( $settingName );
+    // if ( isset($existingValue)  && $existingValue ) {
+    //     $defaultValue = 'true';
+    // }
+    // else {
+    //   // $defaultValue = 0;
+    //   $defaultValue = 'false';
     // }
     $phoneNavOptionsForm[$settingName] = array(
       '#type' => 'radios',
