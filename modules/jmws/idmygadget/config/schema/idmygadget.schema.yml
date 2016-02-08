@@ -16,69 +16,69 @@ idmygadget.settings:
     idmygadget_logo_file_phone:
       type: string
       label: 'Logo file on phones (leave blank for none)'
-    idmygadget_show_site_name_phone:
-      type: boolean
-      label: 'Show the site name on phones?'
     idmygadget_site_name_element_phone:
       type: integer
       label: 'Element to use for the site name on phones'
-    idmygadget_site_title_phone:
-      type: string
-      label: 'Site title on phones'
+    idmygadget_show_site_name_phone:
+      type: boolean
+      label: 'Show the site name on phones?'
     idmygadget_site_title_element_phone:
       type: integer
       label: 'Element to use for the site title on phones'
-    idmygadget_site_slogan_phone:
+    idmygadget_site_title_phone:
       type: string
-      label: 'Tag line on phones'
+      label: 'Site title on phones'
     idmygadget_site_slogan_element_phone:
       type: integer
       label: 'Element to use for the tag line on phones'
+    idmygadget_site_slogan_phone:
+      type: string
+      label: 'Slogan (tag line) on phones'
     idmygadget_phone_nav_on_tablets:
       type: boolean
       label: 'Show jQuery mobile phone nav on tablets?'
     idmygadget_logo_file_tablet:
       type: string
       label: 'Logo file on tablets (leave blank for none)'
-    idmygadget_show_site_name_tablet:
-      type: boolean
-      label: 'Show the site name on tablets?'
     idmygadget_site_name_element_tablet:
       type: integer
       label: 'Element to use for the site name on tablets'
-    idmygadget_site_title_tablet:
-      type: string
-      label: 'Site title on tablets'
+    idmygadget_show_site_name_tablet:
+      type: boolean
+      label: 'Show the site name on tablets?'
     idmygadget_site_title_element_tablet:
       type: integer
       label: 'Element to use for the site title on tablets'
-    idmygadget_site_slogan_tablet:
+    idmygadget_site_title_tablet:
       type: string
-      label: 'Tag line on tablets'
+      label: 'Site title on tablets'
     idmygadget_site_slogan_element_tablet:
       type: integer
       label: 'Element to use for the tag line on tablets'
+    idmygadget_site_slogan_tablet:
+      type: string
+      label: 'Slogan (tag line) on tablets'
     idmygadget_phone_nav_on_desktops:
       type: boolean
       label: 'Show jQuery mobile phone nav on desktops?'
     idmygadget_logo_file_desktop:
       type: string
       label: 'Logo file on desktops (leave blank for none)'
-    idmygadget_show_site_name_desktop:
-      type: boolean
-      label: 'Show the site name on desktops?'
     idmygadget_site_name_element_desktop:
       type: integer
       label: 'Element to use for the site name on desktops'
-    idmygadget_site_title_desktop:
-      type: string
-      label: 'Site title on desktops'
+    idmygadget_show_site_name_desktop:
+      type: boolean
+      label: 'Show the site name on desktops?'
     idmygadget_site_title_element_desktop:
       type: integer
       label: 'Element to use for the site title on desktops'
-    idmygadget_site_slogan_desktop:
+    idmygadget_site_title_desktop:
       type: string
-      label: 'Tag line on desktops'
+      label: 'Site title on desktops'
     idmygadget_site_slogan_element_desktop:
       type: integer
       label: 'Element to use for the tag line on desktops'
+    idmygadget_site_slogan_desktop:
+      type: string
+      label: 'Slogan (tag line) on desktops'
