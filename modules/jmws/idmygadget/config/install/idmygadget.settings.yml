@@ -3,27 +3,27 @@ idmygadget_jqm_data_theme: '3'
 
 idmygadget_phone_nav_on_phones: '1'
 idmygadget_logo_file_phone: ''
-idmygadget_show_site_name_phone: false
 idmygadget_site_name_element_phone: '2'
-idmygadget_site_title_phone: 'tomhartung.com'
+idmygadget_show_site_name_phone: false
 idmygadget_site_title_element_phone: '4'
-idmygadget_site_slogan_phone: 'Always Learning'
+idmygadget_site_title_phone: 'tomhartung.com'
 idmygadget_site_slogan_element_phone: '6'
+idmygadget_site_slogan_phone: 'Always Learning'
 
 idmygadget_phone_nav_on_tablets: '0'
 idmygadget_logo_file_tablet: ''
-idmygadget_show_site_name_tablet: true
 idmygadget_site_name_element_tablet: '3'
-idmygadget_site_title_tablet: ''
+idmygadget_show_site_name_tablet: true
 idmygadget_site_title_element_tablet: '5'
-idmygadget_site_slogan_tablet: 'To Live Is to Learn'
+idmygadget_site_title_tablet: ''
 idmygadget_site_slogan_element_tablet: '7'
+idmygadget_site_slogan_tablet: 'To Live Is to Learn'
 
 idmygadget_phone_nav_on_desktops: '0'
 idmygadget_logo_file_desktop: ''
-idmygadget_show_site_name_desktop: false
 idmygadget_site_name_element_desktop: '4'
-idmygadget_site_title_desktop: 'Keeping It Real on TomHartung.Com'
+idmygadget_show_site_name_desktop: false
 idmygadget_site_title_element_desktop: '6'
-idmygadget_site_slogan_desktop: 'I Want to See and Hear, Everything'
+idmygadget_site_title_desktop: 'Keeping It Real on TomHartung.Com'
 idmygadget_site_slogan_element_desktop: '8'
+idmygadget_site_slogan_desktop: 'I Want to See and Hear, Everything'
