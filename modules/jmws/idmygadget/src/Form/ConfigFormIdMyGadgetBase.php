@@ -179,6 +179,19 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     //   // $defaultValue = 0;
     //   $defaultValue = 'false';
     // }
+    // -----
+    // $existingValue = $config->get( $settingName );
+    // if ( isset($existingValue)  && $existingValue ) {
+    //     $defaultValue = 'true';
+    // }
+    // else {
+    //   // $defaultValue = '';
+    //   // $defaultValue = FALSE;
+    //   // $defaultValue = 'No';
+    //   // $defaultValue = '0';  // we keep trying this because '0' is the value I see in the source.  srslywtf.
+    //   // $defaultValue = 0;    // we keep trying this because '0' is the value I see in the source.  srslywtf.
+    //   $defaultValue = false;   // at this point I am willing to try anything.  srslywtf.
+    // }
     $phoneNavOptionsForm[$settingName] = array(
       '#type' => 'radios',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
