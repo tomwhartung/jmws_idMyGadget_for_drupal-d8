@@ -20,6 +20,18 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		'jmws_wp_vqsg_ot_idMyGadget',
 		'jmws_twentyfifteen_idMyGadget'
 	);
+
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneHeaderNavThisDevice = FALSE;
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone footer nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneFooterNavThisDevice = FALSE;
+
 	/**
 	 * Translated version of the radio button choices defined (as static) in the parent class
 	 */
@@ -46,14 +58,17 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	public function getSanityCheckString( $extra='' )
 	{
 		$returnValue = '';
-		$returnValue .= parent::getSanityCheckString() . '/';
+		$returnValue .= parent::getSanityCheckString();
 
 		if ( $this->jqmDataThemeLetter == null )  // supposedly set in constructor but let's be safe
 		{
 			$this->setJqmDataThemeLetter();
 		}
 
-		$returnValue .= '/' . $this->jqmDataThemeLetter;
+		$phoneHeaderNavTorF = $this->phoneHeaderNavThisDevice ? 'T' : 'F';
+		$phoneFooterNavTorF = $this->phoneFooterNavThisDevice ? 'T' : 'F';
+		$returnValue .= '/"' . $this->jqmDataThemeLetter . '"';
+		$returnValue .= '/' . $phoneHeaderNavTorF . '-' . $phoneFooterNavTorF;
 		$returnValue .= '/' . $extra;
 		return $returnValue;
 	}
