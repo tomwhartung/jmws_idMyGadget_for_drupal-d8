@@ -272,13 +272,13 @@ class JmwsIdMyGadget
 	 */
 	public function initializeJQueryMobileVars()
 	{
-		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile
+		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile and other important variables
 		$this->setJqmDataThemeLetter();
 
 		if ( $this->usingJQueryMobile )
 		{
 			$this->setJqmDataRoles();            // if we're using it, set the data roles and ...
-			$this->setJqmDataThemeAttribute();   // the theme attribute (a, b, c, etc.)
+			$this->setJqmDataThemeAttribute();   // the theme attribute (else leave them blank!)
 		}
 	}
 
