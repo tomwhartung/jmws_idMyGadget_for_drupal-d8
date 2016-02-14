@@ -152,6 +152,27 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
   }
 
   /**
+   * Add a text field (for now) allowing the admin to set the color of the hamburger menu icon.
+   * TODO: Update to use a color picker, when we have time to research how, and play around with it long enough to get it to work.
+   */
+  protected function hamburgerMenuIconColorOptions( $leftOrRight='left' ) {
+    $hamburgerMenuIconOptionForm = array();
+    $leftOrRightUcfirst = ucfirst( $leftOrRight );
+    $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_color';   // e.g., 'idmygadget_hamburger_menu_icon_left_color'
+    $hamburgerMenuIconOptionForm[$settingName] = array(
+        '#type' => 'textfield',
+        '#title' => t( $leftOrRightUcfirst . ' Hamburger Menu Icon Color:' ),
+        '#size' => 10,
+        '#maxlength' => 25,
+        '#default_value' => $config->get( $settingName ),
+        '#description' => $this->t('Enter a valid color to use for the Hamburger Menu Icon on the ' . $leftOrRight . ' side (hex #RRGGBB or color name).'),
+    );
+    return $hamburgerMenuIconOptionForm;
+  }
+
+  /**
    * Add a drop down select element allowing the admin to set the line cap of the hamburger menu icon.
    */
   protected function hamburgerMenuIconLineCapOptions( $leftOrRight='left' ) {
