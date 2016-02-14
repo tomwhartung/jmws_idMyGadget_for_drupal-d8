@@ -37,8 +37,8 @@ idmygadget.config.system.gadget_detector:
 idmygadget.config.system.hamburger_nav:
   path: /admin/config/system/idmygadget/hamburger_nav
   defaults:
-    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetHamburgerNav'
-    _title: 'IdMyGadget Configuration System - Hamburger Nav'
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetHamburgerMenuIcon'
+    _title: 'IdMyGadget Configuration System - Hamburger Menu Icon'
   requirements:
     _permission: 'configure_idmygadget'
 
