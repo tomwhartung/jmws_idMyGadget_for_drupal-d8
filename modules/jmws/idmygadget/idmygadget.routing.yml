@@ -34,6 +34,14 @@ idmygadget.config.system.gadget_detector:
   requirements:
     _permission: 'configure_idmygadget'
 
+idmygadget.config.system.hamburger_nav:
+  path: /admin/config/system/idmygadget/hamburger_nav
+  defaults:
+    _form: 'Drupal\idmygadget\Form\ConfigFormIdMyGadgetHamburgerNav'
+    _title: 'IdMyGadget Configuration System - Hamburger Nav'
+  requirements:
+    _permission: 'configure_idmygadget'
+
 idmygadget.config.system.phone_nav:
   path: /admin/config/system/idmygadget/phone_nav
   defaults:
