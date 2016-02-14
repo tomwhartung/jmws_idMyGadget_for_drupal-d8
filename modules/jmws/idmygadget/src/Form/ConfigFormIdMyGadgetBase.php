@@ -29,6 +29,8 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
 
   protected $jqueryMobileThemeChoices = array( 'a', 'b', 'c', 'd', 'e', 'f' );
 
+  protected $hamburgerMenuIconSizeChoices = array( '55x55', '11x11', '22x22', '33x33', '44x44', '66x66', '77x77', '88x88' );
+
   /**
    * {@inheritdoc}
    */
@@ -150,9 +152,10 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
   }
 
   /**
-   * Returns an array of options for whether to display the jQuery Mobile Navigation in the
-   * header and footer on the specified gadget type
+   * Returns an array of options for whether to display the left or right hamburger menu icon on
+   * the specified gadget type
    * @param type $gadgetType e.g., phone, tablet, or desktop
+   * @param type $leftOrRight i.e.g., 'left', or 'right'
    * @return type array
    */
   protected function hamburgerNavGadgetTypeOptions( $gadgetType='desktop', $leftOrRight='left' ) {
@@ -172,6 +175,26 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
         t( 'Select whether to display the ' . $leftOrRightUcfirst . ' Hamburger Menu Icon on ' . $gadgetTypePlural . '.' ),
     );
     return $hamburgerNavOptionsForm;
+  }
+
+  /**
+   * Add options that include:
+   * o a drop down select element allowing the admin to set the size of the hamburger menu icon.
+   */
+  protected function hamburgerMenuIconSizeOptions( $leftOrRight='left' ) {
+    $hamburgerMenuIconOptionForm = array();
+    $leftOrRightUcfirst = ucfirst( $leftOrRight );
+    $config = $this->config('idmygadget.settings');
+  
+    $settingName = 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_size';   // e.g., 'idmygadget_hamburger_menu_icon_left_size'
+    $hamburgerMenuIconOptionForm[$settingName] = array(
+        '#type' => 'select',
+        '#title' => t( $leftOrRightUcfirst . ' Hamburger Menu Icon Size:' ),
+        '#default_value' => $config->get( $settingName ),
+        '#options' => $this->hamburgerMenuIconSizeChoices,
+        '#description' => $this->t('Select the size of the Hamburger Menu Icon on the ' . $leftOrRight . ' side.'),
+    );
+    return $hamburgerMenuIconOptionForm;
   }
 
   /**
