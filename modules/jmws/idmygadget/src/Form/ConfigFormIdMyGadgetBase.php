@@ -152,13 +152,32 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
   }
 
   /**
+   * Add a drop down select element allowing the admin to set the line cap of the hamburger menu icon.
+   */
+  protected function hamburgerMenuIconLineCapOptions( $leftOrRight='left' ) {
+    $hamburgerMenuIconOptionForm = array();
+    $leftOrRightUcfirst = ucfirst( $leftOrRight );
+    $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_line_cap';   // e.g., 'idmygadget_hamburger_menu_icon_left_line_cap'
+    $hamburgerMenuIconOptionForm[$settingName] = array(
+        '#type' => 'select',
+        '#title' => t( $leftOrRightUcfirst . ' Hamburger Menu Icon Line Cap:' ),
+        '#default_value' => $config->get( $settingName ),
+        '#options' => $this->hamburgerMenuIconLineCapChoices,
+        '#description' => $this->t('Select the line cap to use for the Hamburger Menu Icon on the ' . $leftOrRight . ' side.'),
+    );
+    return $hamburgerMenuIconOptionForm;
+  }
+
+  /**
    * Add a drop down select element allowing the admin to set the line size of the hamburger menu icon.
    */
   protected function hamburgerMenuIconLineSizeOptions( $leftOrRight='left' ) {
     $hamburgerMenuIconOptionForm = array();
     $leftOrRightUcfirst = ucfirst( $leftOrRight );
     $config = $this->config('idmygadget.settings');
-
+  
     $settingName = 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_line_size';   // e.g., 'idmygadget_hamburger_menu_icon_left_line_size'
     $hamburgerMenuIconOptionForm[$settingName] = array(
         '#type' => 'select',
