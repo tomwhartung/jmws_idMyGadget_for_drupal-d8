@@ -39,6 +39,9 @@ class ConfigFormIdMyGadgetHamburgerMenuIcon extends ConfigFormIdMyGadgetBase {
     $formHamburgerMenuIconSizeOptions = $this->hamburgerMenuIconSizeOptions( $leftOrRight );
     $formHamburgerMenuIconOptions = array_merge( $formHamburgerMenuIconOptions, $formHamburgerMenuIconSizeOptions );
 
+    $formHamburgerMenuIconLineCapOptions = $this->hamburgerMenuIconLineCapOptions( $leftOrRight );
+    $formHamburgerMenuIconOptions = array_merge( $formHamburgerMenuIconOptions, $formHamburgerMenuIconLineCapOptions );
+
     $formHamburgerMenuIconLineSizeOptions = $this->hamburgerMenuIconLineSizeOptions( $leftOrRight );
     $formHamburgerMenuIconOptions = array_merge( $formHamburgerMenuIconOptions, $formHamburgerMenuIconLineSizeOptions );
 
@@ -62,6 +65,11 @@ class ConfigFormIdMyGadgetHamburgerMenuIcon extends ConfigFormIdMyGadgetBase {
     $settingName = 'idmygadget_hamburger_menu_icon_left_size';
     $config->set( $settingName, $form_state->getValue($settingName) );
     $settingName = 'idmygadget_hamburger_menu_icon_right_size';
+    $config->set( $settingName, $form_state->getValue($settingName) );
+
+    $settingName = 'idmygadget_hamburger_menu_icon_left_line_cap';
+    $config->set( $settingName, $form_state->getValue($settingName) );
+    $settingName = 'idmygadget_hamburger_menu_icon_right_line_cap';
     $config->set( $settingName, $form_state->getValue($settingName) );
 
     $settingName = 'idmygadget_hamburger_menu_icon_left_line_size';
