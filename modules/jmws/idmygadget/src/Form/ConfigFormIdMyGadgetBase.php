@@ -31,6 +31,10 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
 
   protected $hamburgerMenuIconSizeChoices = array( '55x55', '11x11', '22x22', '33x33', '44x44', '66x66', '77x77', '88x88' );
 
+  protected $hamburgerMenuIconLineCapChoices = array( 'round', 'square', 'butt' );
+
+  protected $hamburgerMenuIconLineSizeChoices = array( 'normal', 'fat', 'thin' );
+
   /**
    * {@inheritdoc}
    */
@@ -101,55 +105,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     );
     return $jqmDataThemeOptionForm;
   }
-  /**
-   * Returns an array of options so that admins can enter the name of the logo file in the admin back end
-   * TODO: figure out how to do this properly, once appropriate documentation is available
-   */
-  protected function logoFileOptions( $gadgetType='desktop' ) {
-    $logoFileOptionsForm = array();
-    $gadgetTypePlural = $gadgetType . 's';
-    $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
-    $config = $this->config('idmygadget.settings');
-    $helpText = '.  (Add file manually and enter the name relative to sites/default/files.)';
-    //
-    // As the helpText says: add the file manually (or set it as a header in another theme) then
-    // enter the name of it (relative to sites/default/files) in the text field.
-    // For details, see the comment below.
-    //
-    $settingName = 'idmygadget_logo_file_' . $gadgetType;   // e.g., 'idmygadget_logo_file_phone'
-    $logoFileOptionsForm[$settingName] = [
-        '#type' => 'textfield',
-        '#title' => t( $gadgetTypePluralUcfirst . ': Logo File for Header' ),
-        '#description' => t( 'The logo image file for the header on ' . $gadgetTypePlural . $helpText),
-        '#default_value' => $config->get( $settingName ),
-    ];
-    // //
-    // // Right now, the file upload feature does not work.
-    // // At this time, I am unable to find adequate documentation, and
-    // //   unfortunately I do not have the time for further research and experimentation
-    // // Most of the documentation I am seeing has to do with enabling users to upload their
-    // //   files in the front end.  And I tried (spent about a day!) reverse-engineering
-    // //   what the themes (stark and bartik) do, to no avail.  (Drupal seems to be for insiders only sometimes.)
-    // // Note that the Reference below, which inspired this code, at this time is flagged as "Incomplete" and
-    // //  pertains to Drupal 6 (but nonetheless works to an extent), so I do not want to spend a lot of time
-    // //  messing around with something that ultimately is not absolutely necessary, and may well not work anyway...
-    // //   Reference: https://www.drupal.org/node/347251
-    // // Also note that this reference includes some code for processing the submit button that I have not used
-    // // Really I need to finish this up and get on with a real job that pays real money!
-    // //
-    // $settingName = 'idmygadget_logo_file_upload_' . $gadgetType;   // e.g., 'idmygadget_logo_file_upload_phone'
-    // // If this #attribute is not present, upload will fail on submit
-    // $logoFileOptionsForm['#attributes']['enctype'] = 'multipart/form-data';
-    // $logoFileOptionsForm[$settingName] = array(
-    //   '#title' => t('Upload logo file for ' . $gadgetTypePlural),
-    //   '#type'  => 'file',
-    // );
-    // $logoFileOptionsForm['submit_upload'] = array(
-    //   '#type'  =>  'submit',
-    //   '#value'  =>  'Submit'
-    // );
-    return $logoFileOptionsForm;
-  }
 
   /**
    * Returns an array of options for whether to display the left or right hamburger menu icon on
@@ -178,8 +133,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
   }
 
   /**
-   * Add options that include:
-   * o a drop down select element allowing the admin to set the size of the hamburger menu icon.
+   * Add a drop down select element allowing the admin to set the size of the hamburger menu icon.
    */
   protected function hamburgerMenuIconSizeOptions( $leftOrRight='left' ) {
     $hamburgerMenuIconOptionForm = array();
@@ -193,6 +147,25 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
         '#default_value' => $config->get( $settingName ),
         '#options' => $this->hamburgerMenuIconSizeChoices,
         '#description' => $this->t('Select the size of the Hamburger Menu Icon on the ' . $leftOrRight . ' side.'),
+    );
+    return $hamburgerMenuIconOptionForm;
+  }
+
+  /**
+   * Add a drop down select element allowing the admin to set the line size of the hamburger menu icon.
+   */
+  protected function hamburgerMenuIconLineSizeOptions( $leftOrRight='left' ) {
+    $hamburgerMenuIconOptionForm = array();
+    $leftOrRightUcfirst = ucfirst( $leftOrRight );
+    $config = $this->config('idmygadget.settings');
+
+    $settingName = 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_line_size';   // e.g., 'idmygadget_hamburger_menu_icon_left_line_size'
+    $hamburgerMenuIconOptionForm[$settingName] = array(
+        '#type' => 'select',
+        '#title' => t( $leftOrRightUcfirst . ' Hamburger Menu Icon Line Size:' ),
+        '#default_value' => $config->get( $settingName ),
+        '#options' => $this->hamburgerMenuIconLineSizeChoices,
+        '#description' => $this->t('Select the line size of the Hamburger Menu Icon on the ' . $leftOrRight . ' side.'),
     );
     return $hamburgerMenuIconOptionForm;
   }
@@ -267,6 +240,56 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
         t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
     );
     return $phoneNavOptionsForm;
+  }
+
+  /**
+   * Returns an array of options so that admins can enter the name of the logo file in the admin back end
+   * TODO: figure out how to do this properly, once appropriate documentation is available
+   */
+  protected function logoFileOptions( $gadgetType='desktop' ) {
+    $logoFileOptionsForm = array();
+    $gadgetTypePlural = $gadgetType . 's';
+    $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
+    $config = $this->config('idmygadget.settings');
+    $helpText = '.  (Add file manually and enter the name relative to sites/default/files.)';
+    //
+    // As the helpText says: add the file manually (or set it as a header in another theme) then
+    // enter the name of it (relative to sites/default/files) in the text field.
+    // For details, see the comment below.
+    //
+    $settingName = 'idmygadget_logo_file_' . $gadgetType;   // e.g., 'idmygadget_logo_file_phone'
+    $logoFileOptionsForm[$settingName] = [
+        '#type' => 'textfield',
+        '#title' => t( $gadgetTypePluralUcfirst . ': Logo File for Header' ),
+        '#description' => t( 'The logo image file for the header on ' . $gadgetTypePlural . $helpText),
+        '#default_value' => $config->get( $settingName ),
+    ];
+    // //
+    // // Right now, the file upload feature does not work.
+    // // At this time, I am unable to find adequate documentation, and
+    // //   unfortunately I do not have the time for further research and experimentation
+    // // Most of the documentation I am seeing has to do with enabling users to upload their
+    // //   files in the front end.  And I tried (spent about a day!) reverse-engineering
+    // //   what the themes (stark and bartik) do, to no avail.  (Drupal seems to be for insiders only sometimes.)
+    // // Note that the Reference below, which inspired this code, at this time is flagged as "Incomplete" and
+    // //  pertains to Drupal 6 (but nonetheless works to an extent), so I do not want to spend a lot of time
+    // //  messing around with something that ultimately is not absolutely necessary, and may well not work anyway...
+    // //   Reference: https://www.drupal.org/node/347251
+    // // Also note that this reference includes some code for processing the submit button that I have not used
+    // // Really I need to finish this up and get on with a real job that pays real money!
+    // //
+    // $settingName = 'idmygadget_logo_file_upload_' . $gadgetType;   // e.g., 'idmygadget_logo_file_upload_phone'
+    // // If this #attribute is not present, upload will fail on submit
+    // $logoFileOptionsForm['#attributes']['enctype'] = 'multipart/form-data';
+    // $logoFileOptionsForm[$settingName] = array(
+    //   '#title' => t('Upload logo file for ' . $gadgetTypePlural),
+    //   '#type'  => 'file',
+    // );
+    // $logoFileOptionsForm['submit_upload'] = array(
+    //   '#type'  =>  'submit',
+    //   '#value'  =>  'Submit'
+    // );
+    return $logoFileOptionsForm;
   }
 
   /**
