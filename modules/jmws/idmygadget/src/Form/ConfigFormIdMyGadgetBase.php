@@ -80,6 +80,9 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     return $gadgetDetectorOptionForm;
   }
 
+  /**
+   * Returns an array containing the option to set the jQuery Mobile data theme
+   */
   protected function jqmDataThemeOption() {
     global $jmwsIdMyGadget;
     $jqmDataThemeOptionForm = array();
@@ -97,8 +100,8 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     return $jqmDataThemeOptionForm;
   }
   /**
-   *
-   *
+   * Returns an array of options so that admins can enter the name of the logo file in the admin back end
+   * TODO: figure out how to do this properly, once appropriate documentation is available
    */
   protected function logoFileOptions( $gadgetType='desktop' ) {
     $logoFileOptionsForm = array();
