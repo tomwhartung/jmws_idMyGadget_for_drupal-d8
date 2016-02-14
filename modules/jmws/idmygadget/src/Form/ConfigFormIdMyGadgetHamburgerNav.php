@@ -19,15 +19,24 @@ class ConfigFormIdMyGadgetHamburgerNav extends ConfigFormIdMyGadgetBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    // $formJqmDataTheme= $this->jqmDataThemeOption();
-    $form = array_merge( $form, $formJqmDataTheme );
+    $formHamburgerMenuIconLeft = $this->hamburgerMenuIconOptions('left');
+    $formHamburgerMenuIconRight = $this->hamburgerMenuIconOptions('right');
+    $form = array_merge( $form, $formHamburgerMenuIconLeft );
+    $form = array_merge( $form, $formHamburgerMenuIconRight );
+    return parent::buildForm($form, $form_state);
+  }
+  /**
+   * {@inheritdoc}
+   */
+  public function hamburgerMenuIconOptions( $leftOrRight ) {
+    $formHamburgerMenuIconOptions = array();
 
     foreach( $this->gadgetTypes as $gadgetType ) {
-      // $formHamburgerNavOptions = $this->hamburgerNavOptions( $gadgetType );
-      $form = array_merge( $form, $formHamburgerNavOptions );
+      $formHamburgerNavGadgetTypeOptions = $this->hamburgerNavGadgetTypeOptions( $gadgetType, $leftOrRight );
+      $formHamburgerMenuIconOptions = array_merge( $formHamburgerMenuIconOptions, $formHamburgerNavGadgetTypeOptions );
     }
 
-    return parent::buildForm($form, $form_state);
+    return $formHamburgerMenuIconOptions;
   }
   /**
    * {@inheritdoc}
