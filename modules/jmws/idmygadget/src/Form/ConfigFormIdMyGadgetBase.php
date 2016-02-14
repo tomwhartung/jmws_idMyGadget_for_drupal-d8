@@ -205,17 +205,14 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     //   '#options' => $this->yesOrNoChoices,
     //   '#description' =>
     //      t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
-    //   '#required' => TRUE,
     // );
     $phoneNavOptionsForm[$settingName] = array(
         '#type' => 'select',
         '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
-        // '#default_value' => $defaultValue,
         '#default_value' => $config->get( $settingName ),
         '#options' => $this->yesOrNoChoices,
         '#description' =>
         t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
-        '#required' => TRUE,
     );
     return $phoneNavOptionsForm;
   }
@@ -238,29 +235,39 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
         '#default_value' => $config->get( $settingName ),
         '#options' => $this->validElements,
         '#description' => t( 'Select the html element in which you want to display the name of this site on ' . $gadgetTypePlural . '.' ),
-        '#required' => FALSE,
     );
 
     $settingName = 'idmygadget_show_site_name_' . $gadgetType;   // e.g., 'idmygadget_show_site_name_phone'
-    // $defaultValue = $config->get( $settingName );
-    // $defaultValue = isset( $defaultValue ) ? $defaultValue : '1';
-    // $defaultValue = isset( $defaultValue ) ? $defaultValue : 1;
-    // $existingValue = $config->get( $settingName );
-    // if ( isset($existingValue) ) {
-    //   $defaultValue = $config->get( $settingName );
-    // }
-    // else {
-    //   // $defaultValue = 1;
-    //   $defaultValue = 2;
-    // }
+    //
+    // Tried various ways to get the "No" option to show up as checked, when it is checked
+    // Could not find an example of '#type' boolean in the core code
+    // Going with a drop down select for now....
+    //
+    // // $defaultValue = $config->get( $settingName );
+    // // $defaultValue = isset( $defaultValue ) ? $defaultValue : '1';
+    // // $defaultValue = isset( $defaultValue ) ? $defaultValue : 1;
+    // // $existingValue = $config->get( $settingName );
+    // // if ( isset($existingValue) ) {
+    // //   $defaultValue = $config->get( $settingName );
+    // // }
+    // // else {
+    // //   // $defaultValue = 1;
+    // //   $defaultValue = 2;
+    // // }
+    // $siteNameOptionsForm[$settingName] = array(
+    //   '#type' => 'radios',
+    //   '#title' => t( $gadgetTypePluralUcfirst . ': Show Site Name?' ),
+    //   // '#default_value' => $defaultValue,
+    //   '#default_value' => $config->get( $settingName ),
+    //   '#options' => $this->yesOrNoChoices,
+    //   '#description' => t( 'Select whether you want the name of this site to display in the header on ' . $gadgetTypePlural . '.' ),
+    // );
     $siteNameOptionsForm[$settingName] = array(
-      '#type' => 'radios',
+      '#type' => 'select',
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Site Name?' ),
-      // '#default_value' => $defaultValue,
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->yesOrNoChoices,
       '#description' => t( 'Select whether you want the name of this site to display in the header on ' . $gadgetTypePlural . '.' ),
-      '#required' => TRUE,
     );
 
     return $siteNameOptionsForm;
@@ -285,7 +292,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
         '#default_value' => $config->get( $settingName ),
         '#options' => $this->validElements,
         '#description' => t( 'Select the html element in which you want to display the site title on ' . $gadgetTypePlural . '.' ),
-        '#required' => FALSE,
     );
 
     $settingName = 'idmygadget_site_title_' . $gadgetType;   // e.g., 'idmygadget_site_title_phone'
@@ -318,7 +324,6 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#default_value' => $config->get( $settingName ),
       '#options' => $this->validElements,
       '#description' => t( 'Select the html element in which you want to display the tag line on ' . $gadgetTypePlural . '.' ),
-      '#required' => FALSE,
     );
 
     $settingName = 'idmygadget_site_slogan_' . $gadgetType;   // e.g., 'idmygadget_site_slogan_phone'
