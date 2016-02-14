@@ -159,18 +159,19 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $hamburgerNavOptionsForm = array();
     $gadgetTypePlural = $gadgetType . 's';
     $gadgetTypePluralUcfirst = ucfirst( $gadgetTypePlural );
+    $leftOrRightUcfirst = ucfirst( $leftOrRight );
     $config = $this->config('idmygadget.settings');
 
-    $settingName = 'idmygadget_hamburger_nav_on_' . $gadgetTypePlural;   // e.g., 'idmygadget_hamburger_nav_on_phones'
-    $phoneNavOptionsForm[$settingName] = array(
+    $settingName = 'idmygadget_hamburger_nav_' . $leftOrRight . '_on_' . $gadgetTypePlural;   // e.g., 'idmygadget_hamburger_nav_left_on_phones'
+    $hamburgerNavOptionsForm[$settingName] = array(
         '#type' => 'select',
-        '#title' => t( 'Hamburger Menu Nav: show on ' . $gadgetTypePluralUcfirst . '?' ),
+        '#title' => t( $leftOrRightUcfirst . ' Hamburger Menu Icon: show on ' . $gadgetTypePluralUcfirst . '?' ),
         '#default_value' => $config->get( $settingName ),
         '#options' => $this->yesOrNoChoices,
         '#description' =>
-        t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
+        t( 'Select whether to display the ' . $leftOrRightUcfirst . ' Hamburger Menu Icon on ' . $gadgetTypePlural . '.' ),
     );
-    return $phoneNavOptionsForm;
+    return $hamburgerNavOptionsForm;
   }
 
   /**
