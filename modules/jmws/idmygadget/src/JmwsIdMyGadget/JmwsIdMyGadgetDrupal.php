@@ -14,12 +14,16 @@ require_once 'JmwsIdMyGadget.php';
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 {
 	/**
-	 * Array of themes that know how to use idMyGadget
+	 * Boolean: determines whether we want the hamburger menu icon in the upper left corner
+	 * of this page for this device.
+	 * Set based on options set in the back end.
+	 * Kept here so that modules can access it without us polluting the global namespace.
 	 */
-	public static $supportedThemes = array(
-		'jmws_wp_vqsg_ot_idMyGadget',
-		'jmws_twentyfifteen_idMyGadget'
-	);
+	public $phoneBurgerIconThisDeviceLeft = FALSE;
+	/**
+	 * Boolean: analogous to phoneBurgerIconThisDeviceLeft, but for the right side.
+	 */
+	public $phoneBurgerIconThisDeviceRight = FALSE;
 
 	/**
 	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
