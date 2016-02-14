@@ -7,7 +7,7 @@
 namespace Drupal\idmygadget\Form;
 use Drupal\Core\Form\FormStateInterface;
 
-class ConfigFormIdMyGadgetHamburgerNav extends ConfigFormIdMyGadgetBase {
+class ConfigFormIdMyGadgetHamburgerMenuIcon extends ConfigFormIdMyGadgetBase {
 
   /**
    * {@inheritdoc}
