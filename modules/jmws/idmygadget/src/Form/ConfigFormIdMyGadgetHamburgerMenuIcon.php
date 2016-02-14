@@ -30,11 +30,14 @@ class ConfigFormIdMyGadgetHamburgerMenuIcon extends ConfigFormIdMyGadgetBase {
    */
   public function hamburgerMenuIconOptions( $leftOrRight ) {
     $formHamburgerMenuIconOptions = array();
-
+    
     foreach( $this->gadgetTypes as $gadgetType ) {
       $formHamburgerNavGadgetTypeOptions = $this->hamburgerNavGadgetTypeOptions( $gadgetType, $leftOrRight );
       $formHamburgerMenuIconOptions = array_merge( $formHamburgerMenuIconOptions, $formHamburgerNavGadgetTypeOptions );
     }
+
+    $formHamburgerMenuIconSizeOptions = $this->hamburgerMenuIconSizeOptions( $leftOrRight );
+    $formHamburgerMenuIconOptions = array_merge( $formHamburgerMenuIconOptions, $formHamburgerMenuIconSizeOptions );
 
     return $formHamburgerMenuIconOptions;
   }
@@ -44,7 +47,6 @@ class ConfigFormIdMyGadgetHamburgerMenuIcon extends ConfigFormIdMyGadgetBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
     $config = $this->config('idmygadget.settings');
-    // $config->set('idmygadget_jqm_data_theme', $form_state->getValue('idmygadget_jqm_data_theme'));
 
     foreach( $this->gadgetTypes as $gadgetType ) {
       $gadgetTypePlural = $gadgetType . 's';
@@ -53,6 +55,11 @@ class ConfigFormIdMyGadgetHamburgerMenuIcon extends ConfigFormIdMyGadgetBase {
       $settingName = 'idmygadget_hamburger_nav_right_on_' . $gadgetTypePlural;   // e.g., 'idmygadget_hamburger_nav_right_on_phones'
       $config->set( $settingName, $form_state->getValue($settingName) );
     }
+
+    $settingName = 'idmygadget_hamburger_menu_icon_left_size';
+    $config->set( $settingName, $form_state->getValue($settingName) );
+    $settingName = 'idmygadget_hamburger_menu_icon_right_size';
+    $config->set( $settingName, $form_state->getValue($settingName) );
 
     $config->save();
   }
