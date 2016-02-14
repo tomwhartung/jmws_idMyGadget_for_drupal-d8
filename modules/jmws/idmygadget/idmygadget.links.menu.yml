@@ -17,6 +17,18 @@ idmygadget.config.system.gadget_detector:
   route_name: idmygadget.config.system.gadget_detector
   parent: system.admin_config_system
 
+idmygadget.config.system.hamburger_nav:
+  title: 'IdMyGadget - Hamburger Nav Options'
+  description: 'Configure the IdMyGadget module: set options for the left and right Hamburger Nav.'
+  route_name: idmygadget.config.system.hamburger_nav
+  parent: system.admin_config_system
+
+idmygadget.config.system.phone_nav:
+  title: 'IdMyGadget - Phone Nav Options'
+  description: 'Configure the IdMyGadget module: set which devices display jQuery Mobile Phone Header and Footer Nav.'
+  route_name: idmygadget.config.system.phone_nav
+  parent: system.admin_config_system
+
 idmygadget.config.system.phone:
   title: 'IdMyGadget - Options for Phones'
   description: 'Configure the IdMyGadget options to use for phones.'
@@ -33,12 +45,6 @@ idmygadget.config.system.desktop:
   title: 'IdMyGadget - Options for Desktops'
   description: 'Configure the IdMyGadget options to use for desktops.'
   route_name: idmygadget.config.system.desktop
-  parent: system.admin_config_system
-
-idmygadget.config.system.phone_nav:
-  title: 'IdMyGadget - Phone Nav Options'
-  description: 'Configure the IdMyGadget module: set which devices display jQuery Mobile Phone Header and Footer Nav.'
-  route_name: idmygadget.config.system.phone_nav
   parent: system.admin_config_system
 
 ###
