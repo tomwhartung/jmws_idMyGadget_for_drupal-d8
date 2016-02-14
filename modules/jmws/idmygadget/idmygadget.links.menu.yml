@@ -18,8 +18,8 @@ idmygadget.config.system.gadget_detector:
   parent: system.admin_config_system
 
 idmygadget.config.system.hamburger_nav:
-  title: 'IdMyGadget - Hamburger Nav Options'
-  description: 'Configure the IdMyGadget module: set options for the left and right Hamburger Nav.'
+  title: 'IdMyGadget - Hamburger Menu Icon Options'
+  description: 'Configure the IdMyGadget module: set options for the left and right Hamburger Menu Icons.'
   route_name: idmygadget.config.system.hamburger_nav
   parent: system.admin_config_system
 
