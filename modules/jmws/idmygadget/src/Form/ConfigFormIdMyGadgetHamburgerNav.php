@@ -48,8 +48,8 @@ class ConfigFormIdMyGadgetHamburgerNav extends ConfigFormIdMyGadgetBase {
 
     foreach( $this->gadgetTypes as $gadgetType ) {
       $gadgetTypePlural = $gadgetType . 's';
-      $settingName = 'idmygadget_phone_nav_on_' . $gadgetTypePlural;  // e.g., 'idmygadget_phone_nav_on_phones'
-      // $config->set( $settingName, $form_state->getValue($settingName) );
+      $settingName = 'idmygadget_hamburger_nav_on_' . $gadgetTypePlural;  // e.g., 'idmygadget_hamburger_nav_on_phones'
+      $config->set( $settingName, $form_state->getValue($settingName) );
     }
 
     $config->save();
