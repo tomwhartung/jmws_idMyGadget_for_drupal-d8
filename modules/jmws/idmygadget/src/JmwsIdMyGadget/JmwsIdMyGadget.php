@@ -53,7 +53,7 @@ class JmwsIdMyGadget
 	/**
 	 * Array of choices for yes/no radio buttons (e.g., show site name) on plugin page
 	 */
-	public static $radioChoices = array( 'No', 'Yes' );  // NOTE: 'No' must be the zeroeth elt ;-)
+	public static $radioChoices = array( 'No', 'Yes' );  // NOTE: 'No' must be the zeroeth elt (for joomla)
 	/**
 	 * Array of choices for lists of elements (e.g., site name, site title)
 	 */
@@ -62,6 +62,14 @@ class JmwsIdMyGadget
 	 * Array of choices for jQuery Mobile theme
 	 */
 	public static $jqueryMobileThemeChoices = array( 'a', 'b', 'c', 'd', 'e', 'f' );
+	/**
+	 * Array of choices for the size of the hamburger menu icon
+	 */
+	public static $hamburgerMenuIconSizeChoices = array( '55x55', '11x11', '22x22', '33x33', '44x44', '66x66', '77x77', '88x88' );
+	/**
+	 * Array of choices for the size of the hamburger menu icon line cap
+	 */
+	public $hamburgerMenuIconLineCapChoices = array( 'round', 'square', 'butt' );
 
 	/**
 	 * Used when this plugin/module is not installed or active, etc.
