@@ -21,9 +21,9 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
 
   protected $gadgetTypes = array( 'phone', 'tablet', 'desktop' );
 
-  protected $radioChoices = array( 'No', 'Yes' );
-  // protected $radioChoices = array( 1 => 'No', 2 => 'Yes' );
-  // protected $radioChoices = array( '1' => 'No', '2' => 'Yes' );
+  protected $yesOrNoChoices = array( 'No', 'Yes' );
+  // protected $yesOrNoChoices = array( 1 => 'No', 2 => 'Yes' );
+  // protected $yesOrNoChoices = array( '1' => 'No', '2' => 'Yes' );
 
   protected $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 
@@ -158,51 +158,65 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
     $config = $this->config('idmygadget.settings');
 
     $settingName = 'idmygadget_phone_nav_on_' . $gadgetTypePlural;   // e.g., 'idmygadget_phone_nav_on_phones'
-    // $defaultValue = $config->get( $settingName );
-    // $defaultValue = isset( $defaultValue ) ? $defaultValue : '0';
-    // $defaultValue = isset( $defaultValue ) ? $defaultValue : 0;
-    // -----
-    // $existingValue = $config->get( $settingName );
-    // if ( isset($existingValue) ) {
-    //   $defaultValue = $config->get( $settingName );
-    // }
-    // else {
-    //   // $defaultValue = 0;
-    //   $defaultValue = 1;
-    // }
-    // -----
-    // $existingValue = $config->get( $settingName );
-    // if ( isset($existingValue)  && $existingValue ) {
-    //     $defaultValue = 'true';
-    // }
-    // else {
-    //   // $defaultValue = 0;
-    //   $defaultValue = 'false';
-    // }
-    // -----
-    // $existingValue = $config->get( $settingName );
-    // if ( isset($existingValue)  && $existingValue ) {
-    //     $defaultValue = 'true';
-    // }
-    // else {
-    //   // $defaultValue = '';
-    //   // $defaultValue = FALSE;
-    //   // $defaultValue = 'No';
-    //   // $defaultValue = '0';  // we keep trying this because '0' is the value I see in the source.  srslywtf.
-    //   // $defaultValue = 0;    // we keep trying this because '0' is the value I see in the source.  srslywtf.
-    //   $defaultValue = false;   // at this point I am willing to try anything.  srslywtf.
-    // }
+    //
+    // Tried various ways to get the "No" option to show up as checked, when it is checked
+    // Could not find an example of '#type' boolean in the core code
+    // Going with a drop down select for now....
+    //
+    // // $defaultValue = $config->get( $settingName );
+    // // $defaultValue = isset( $defaultValue ) ? $defaultValue : '0';
+    // // $defaultValue = isset( $defaultValue ) ? $defaultValue : 0;
+    // // -----
+    // // $existingValue = $config->get( $settingName );
+    // // if ( isset($existingValue) ) {
+    // //   $defaultValue = $config->get( $settingName );
+    // // }
+    // // else {
+    // //   // $defaultValue = 0;
+    // //   $defaultValue = 1;
+    // // }
+    // // -----
+    // // $existingValue = $config->get( $settingName );
+    // // if ( isset($existingValue)  && $existingValue ) {
+    // //     $defaultValue = 'true';
+    // // }
+    // // else {
+    // //   // $defaultValue = 0;
+    // //   $defaultValue = 'false';
+    // // }
+    // // -----
+    // // $existingValue = $config->get( $settingName );
+    // // if ( isset($existingValue)  && $existingValue ) {
+    // //     $defaultValue = 'true';
+    // // }
+    // // else {
+    // //   // $defaultValue = '';
+    // //   // $defaultValue = FALSE;
+    // //   // $defaultValue = 'No';
+    // //   // $defaultValue = '0';  // we keep trying this because '0' is the value I see in the source.  srslywtf.
+    // //   // $defaultValue = 0;    // we keep trying this because '0' is the value I see in the source.  srslywtf.
+    // //   $defaultValue = false;   // at this point I am willing to try anything.  srslywtf.
+    // // }
+    // $phoneNavOptionsForm[$settingName] = array(
+    //   '#type' => 'radios',
+    //   '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
+    //   // '#default_value' => $defaultValue,
+    //   '#default_value' => $config->get( $settingName ),
+    //   '#options' => $this->yesOrNoChoices,
+    //   '#description' =>
+    //      t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
+    //   '#required' => TRUE,
+    // );
     $phoneNavOptionsForm[$settingName] = array(
-      '#type' => 'radios',
-      '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
-      // '#default_value' => $defaultValue,
-      '#default_value' => $config->get( $settingName ),
-      '#options' => $this->radioChoices,
-      '#description' =>
-         t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
-      '#required' => TRUE,
+        '#type' => 'select',
+        '#title' => t( $gadgetTypePluralUcfirst . ': Show Header and Footer Nav?' ),
+        // '#default_value' => $defaultValue,
+        '#default_value' => $config->get( $settingName ),
+        '#options' => $this->yesOrNoChoices,
+        '#description' =>
+        t( 'Select whether to display jQuery Mobile Navigation in the header and footer on ' . $gadgetTypePlural . '.' ),
+        '#required' => TRUE,
     );
-
     return $phoneNavOptionsForm;
   }
 
@@ -244,7 +258,7 @@ class ConfigFormIdMyGadgetBase extends ConfigFormBase {
       '#title' => t( $gadgetTypePluralUcfirst . ': Show Site Name?' ),
       // '#default_value' => $defaultValue,
       '#default_value' => $config->get( $settingName ),
-      '#options' => $this->radioChoices,
+      '#options' => $this->yesOrNoChoices,
       '#description' => t( 'Select whether you want the name of this site to display in the header on ' . $gadgetTypePlural . '.' ),
       '#required' => TRUE,
     );
