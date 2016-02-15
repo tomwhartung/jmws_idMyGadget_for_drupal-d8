@@ -2,7 +2,7 @@
 /*
  * @package jmws_idMyGadget_for_drupal
  *
- * Module Name: idMyGadget
+ * Module Name: idmygadget
  * Module URI:
  * Description: Integrate idMyGadget with a couple of drupal themes (to start).
  * Author: Tom W Hartung
@@ -10,20 +10,6 @@
  * Author URI: http://tomwhartung.com/
  */
 define( 'IDMYGADGET_MODULE_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'src/JmwsIdMyGadget' );
-// require_once( 'idMyGadget/JmwsIdMyGadgetDrupal.php' );
-// require_once 'jmws_idMyGadget_for_joomla/PhoneBurgerMenuIcon.php';
-
-// print '<p>Hi from jmws_idMyGadget_for_drupal!!</p>';
-
-/**
- * Check the idmygadget object, instantiating it if necessary, and check the installation
- */
-$jmwsIdMyGadget = null;
-function idMyGadget_page_alter( &$page ) {
-  global $jmwsIdMyGadget;
-
-  print '<p>Hi from function idMyGadget_page_alter in idMyGadget.module!!</p>';
-}
 
 /**
  * Add the jquery mobile css and js
