@@ -5,7 +5,6 @@
  *   because using the JS API to draw the phone burger menu is currently not working on phones
  *   except when we reload the page. It would be nice to be able to remove that someday....
  */
-namespace Drupal\idMyGadget;
 
 class PhoneBurgerMenuIcon
 {
