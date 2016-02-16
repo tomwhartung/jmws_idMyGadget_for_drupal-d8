@@ -37,7 +37,6 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	//	error_log( 'Creating a JmwsIdMyGadgetDrupal object for detector "' . $gadgetDetectorString . '" - note we want to do this only once!' );
 		$this->idMyGadgetDir = IDMYGADGET_MODULE_DIR;
 		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
-		$this->initializeJQueryMobileVars();
 		$this->translateStaticArrays();
 	}
 
@@ -272,17 +271,6 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 			$this->phoneHeaderNavThisDevice = TRUE;
 			$this->phoneFooterNavThisDevice = TRUE;
 		}
-	}
-	/**
-	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
-	 */
-	protected function setJqmDataThemeAttribute()
-	{
-		if ( $this->jqmDataThemeLetter == null )     // supposedly set in constructor but let's be safe
-		{
-			$this->setJqmDataThemeLetter();
-		}
-		$this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme Letter
