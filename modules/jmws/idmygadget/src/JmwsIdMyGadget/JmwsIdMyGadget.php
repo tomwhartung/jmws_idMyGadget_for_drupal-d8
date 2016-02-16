@@ -69,7 +69,11 @@ class JmwsIdMyGadget
 	/**
 	 * Array of choices for the size of the hamburger menu icon line cap
 	 */
-	public $hamburgerMenuIconLineCapChoices = array( 'round', 'square', 'butt' );
+	public static $hamburgerMenuIconLineCapChoices = array( 'round', 'square', 'butt' );
+	/**
+	 * Array of choices for the size of the hamburger menu icon line size
+	 */
+	public static $hamburgerMenuIconLineSizeChoices = array( 'normal', 'fat', 'thin' );
 
 	/**
 	 * Used when this plugin/module is not installed or active, etc.
@@ -459,8 +463,8 @@ class JmwsIdMyGadget
 			$this->phoneFooterNavThisDevice = TRUE;
 		}
 
-		$this->hamburgerIconThisDeviceLeft = $this->getHamburgerIconOnThisDevice(HamburgerMenuIcon::LEFT);
-		$this->hamburgerIconThisDeviceRight = $this->getHamburgerIconOnThisDevice(HamburgerMenuIcon::RIGHT);
+		$this->hamburgerIconThisDeviceLeft = $this->getHamburgerIconOnThisDevice( HamburgerMenuIcon::LEFT );
+		$this->hamburgerIconThisDeviceRight = $this->getHamburgerIconOnThisDevice( HamburgerMenuIcon::RIGHT );
 
 		if ( $this->isPhone() )
 		{
