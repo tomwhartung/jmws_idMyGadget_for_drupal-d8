@@ -87,11 +87,11 @@ class JmwsIdMyGadget
 	 * Set by the template, based on options set in the back end.
 	 * Kept here so that modules can access it without us polluting the global namespace.
 	 */
-	public $phoneBurgerIconThisDeviceLeft = FALSE;
+	public $hamburgerIconThisDeviceLeft = FALSE;
 	/**
-	 * Boolean: analogous to phoneBurgerIconThisDeviceLeft, but for the right side.
+	 * Boolean: analogous to hamburgerIconThisDeviceLeft, but for the right side.
 	 */
-	public $phoneBurgerIconThisDeviceRight = FALSE;
+	public $hamburgerIconThisDeviceRight = FALSE;
 
 	/**
 	 * We want to use jQuery Mobile data-role attributes only when we are using that library.
