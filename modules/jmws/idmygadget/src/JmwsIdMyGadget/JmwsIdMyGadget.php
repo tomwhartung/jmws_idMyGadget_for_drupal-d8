@@ -402,15 +402,20 @@ class JmwsIdMyGadget
 	  }
 	}
 	/**
-	 * Use the admin option to set the jQuery Mobile Data Theme attribute
+	 * Use the admin option to set the jQuery Mobile Data Theme Letter
 	 */
-	protected function setJqmDataThemeAttribute()
+	protected function setJqmDataThemeLetter()
 	{
-	  if ( $this->jqmDataThemeLetter == null )     // supposedly set in constructor but let's be safe
-	  {
-	    $this->setJqmDataThemeLetter();
-	  }
-	  $this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
+		$jqmDataThemeIndex = $this->getJqmDataThemeIndex();
+
+		if ( isset($jqmDataThemeIndex) && is_numeric($jqmDataThemeIndex) )
+		{
+			$this->jqmDataThemeLetter = self::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
+		}
+		else
+		{
+			$this->jqmDataThemeLetter = self::$jqueryMobileThemeChoices[0];
+		}
 	}
 
 	/**
@@ -422,5 +427,16 @@ class JmwsIdMyGadget
 		$this->jqmDataRole['header'] = 'data-role="header"';
 		$this->jqmDataRole['content'] = 'data-role="content"';
 		$this->jqmDataRole['footer'] = 'data-role="footer"';
+	}
+	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme attribute
+	 */
+	protected function setJqmDataThemeAttribute()
+	{
+	  if ( $this->jqmDataThemeLetter == null )     // supposedly set in constructor but let's be safe
+	  {
+	    $this->setJqmDataThemeLetter();
+	  }
+	  $this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
 	}
 }
