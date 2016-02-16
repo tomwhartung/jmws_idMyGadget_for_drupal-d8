@@ -31,26 +31,17 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	}
 
 	/**
-	 * For development only! Please remove when code is stable.
+	 * For development only! Consider removing when code is stable.
 	 * Displaying some values that can help us make sure we haven't inadvertently
 	 * broken something while we are actively working on this.
+	 * If something breaks, the sooner we know it the better!
 	 * @return string
 	 */
 	public function getSanityCheckString( $extra='' )
 	{
 		$returnValue = '';
-		$returnValue .= parent::getSanityCheckString();
+		$returnValue .= parent::getSanityCheckString( $extra );
 
-		if ( $this->jqmDataThemeLetter == null )  // supposedly set in constructor but let's be safe
-		{
-			$this->setJqmDataThemeLetter();
-		}
-
-		$phoneHeaderNavTorF = $this->phoneHeaderNavThisDevice ? 'T' : 'F';
-		$phoneFooterNavTorF = $this->phoneFooterNavThisDevice ? 'T' : 'F';
-		$returnValue .= '/"' . $this->jqmDataThemeLetter . '"';
-		$returnValue .= '/' . $phoneHeaderNavTorF . '-' . $phoneFooterNavTorF;
-		$returnValue .= '/' . $extra;
 		return $returnValue;
 	}
 
@@ -223,15 +214,6 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		}
 	}
 	/**
-	 * Return the index of the jQuery Mobile Data Theme Letter
-	 */
-	protected function getJqmDataThemeIndex()
-	{
-		$config = \Drupal::config('idmygadget.settings');
-		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');
-		return $jqmDataThemeIndex;
-	}
-	/**
 	 * Return a boolean indicating whether we want the jQuery Mobile Phone Nav on this device
 	 */
 	protected function getPhoneNavOnThisDevice()
@@ -265,17 +247,26 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 
 		if ( $this->isPhone() )
 		{
-			$phoneNavOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_phones');
+			$hamburgerIconOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_phones');
 		}
 		else if ( $this->isTablet() )
 		{
-			$phoneNavOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_tablets');
+			$hamburgerIconOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_tablets');
 		}
 		else
 		{
-			$phoneNavOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_desktops');
+			$hamburgerIconOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_desktops');
 		}
 
 		return $hamburgerIconOnThisDevice;
+	}
+	/**
+	 * Return the index of the jQuery Mobile Data Theme Letter
+	 */
+	protected function getJqmDataThemeIndex()
+	{
+		$config = \Drupal::config('idmygadget.settings');
+		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');
+		return $jqmDataThemeIndex;
 	}
 }
