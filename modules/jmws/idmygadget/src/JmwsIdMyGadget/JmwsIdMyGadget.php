@@ -248,14 +248,30 @@ class JmwsIdMyGadget
 	 * For development only! Please remove when code is stable.
 	 * Displaying some values that can help us make sure we haven't inadvertently
 	 * broken something while we are actively working on this.
+	 * If something breaks, the sooner we know it the better!
 	 * @return string
 	 */
-	public function getSanityCheckString()
+	public function getSanityCheckString( $extra='' )
 	{
 		$returnValue = '';
 		$returnValue .= $this->getGadgetDetectorStringChar() . '/';
 		$returnValue .= $this->getGadgetStringChar() . '/';
 		$returnValue .= $this->usingJQueryMobile ? 'Jqm' : 'NoJqm';
+		$returnValue .= '/"' . $this->jqmDataThemeLetter . '"';
+
+		$phnHorN = $this->phoneHeaderNavThisDevice ? 'H' : 'N';
+		$pfnForN = $this->phoneFooterNavThisDevice ? 'F' : 'N';
+		$returnValue .= '/PhoneNav:' . $phnHorN . '-' . $pfnForN;
+
+		$hmiLeftLorN = $this->hamburgerIconThisDeviceLeft ? 'L' : 'N';
+		$hmiRightRorN = $this->hamburgerIconThisDeviceRight ? 'R' : 'N';
+		$returnValue .= '/HMI:' . $hmiLeftLorN . '-' . $hmiRightRorN;
+
+		if ( strlen($extra) > 0 )
+		{
+			$returnValue .= '/' . $extra;
+		}
+
 		return $returnValue;
 	}
 	/**
@@ -268,6 +284,8 @@ class JmwsIdMyGadget
 		$returnValue = '';
 		$returnValue .= 'Using detector ' . $this->getGadgetDetectorString();
 		$returnValue .= ' this looks like a ' . $this->getGadgetString();
+		$returnValue .= '.';
+		$returnValue .= '.';
 		return $returnValue;
 	}
 
