@@ -273,20 +273,12 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		}
 	}
 	/**
-	 * Use the admin option to set the jQuery Mobile Data Theme Letter
+	 * Return the index of the jQuery Mobile Data Theme Letter
 	 */
-	protected function setJqmDataThemeLetter()
+	protected function getJqmDataThemeIndex()
 	{
 		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
 		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
-
-		if ( isset($jqmDataThemeIndex) && is_numeric($jqmDataThemeIndex) )
-		{
-			$this->jqmDataThemeLetter = parent::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
-		}
-		else
-		{
-			$this->jqmDataThemeLetter = parent::$jqueryMobileThemeChoices[0];
-		}
+		return $jqmDataThemeIndex;
 	}
 }
