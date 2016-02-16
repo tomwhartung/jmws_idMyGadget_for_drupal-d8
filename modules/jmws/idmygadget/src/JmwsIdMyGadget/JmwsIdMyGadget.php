@@ -420,7 +420,9 @@ class JmwsIdMyGadget
 	 * o the device we are on and
 	 * o the values of device-dependent options set by the admin
 	 */
-	protected function setUsingJQueryMobile() {
+	protected function setUsingJQueryMobile()
+	{
+		require_once 'HamburgerMenuIcon.php';
 		$this->usingJQueryMobile = FALSE;
 		$this->phoneHeaderNavThisDevice = FALSE;
 		$this->phoneFooterNavThisDevice = FALSE;
@@ -438,6 +440,9 @@ class JmwsIdMyGadget
 			$this->phoneHeaderNavThisDevice = TRUE;
 			$this->phoneFooterNavThisDevice = TRUE;
 		}
+
+		$this->hamburgerIconThisDeviceLeft = $this->getHamburgerIconOnThisDevice(HamburgerMenuIcon::LEFT);
+		$this->hamburgerIconThisDeviceRight = $this->getHamburgerIconOnThisDevice(HamburgerMenuIcon::RIGHT);
 
 		if ( $this->isPhone() )
 		{
