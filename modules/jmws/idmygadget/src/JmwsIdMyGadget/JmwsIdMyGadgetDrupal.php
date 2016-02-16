@@ -14,18 +14,6 @@ require_once 'JmwsIdMyGadget.php';
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 {
 	/**
-	 * Boolean: determines whether we want the hamburger menu icon in the upper left corner
-	 * of this page for this device.
-	 * Set based on options set in the back end.
-	 * Kept here so that modules can access it without us polluting the global namespace.
-	 */
-	public $phoneBurgerIconThisDeviceLeft = FALSE;
-	/**
-	 * Boolean: analogous to phoneBurgerIconThisDeviceLeft, but for the right side.
-	 */
-	public $phoneBurgerIconThisDeviceRight = FALSE;
-
-	/**
 	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
 	 * Added pretty much only for demo purposes, so people see why we don't use it.
 	 */
@@ -253,17 +241,17 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		$this->usingJQueryMobile = FALSE;
 		$this->phoneHeaderNavThisDevice = FALSE;
 		$this->phoneFooterNavThisDevice = FALSE;
-		$this->phoneBurgerIconThisDeviceLeft = FALSE;
-		$this->phoneBurgerIconThisDeviceRight = FALSE;
+		$this->hamburgerIconThisDeviceLeft = FALSE;
+		$this->hamburgerIconThisDeviceRight = FALSE;
 		$phoneNavOnThisDevice = FALSE;
 		//
-		// Not worrying about the phone burger stuff right now,
-		// so this logic will probably change as time progresses
+		// The logic for setting usingJQueryMobile is directly related to the
+		//   logic for setting the phone nav and hamburger menu icon *ThisDevice* variables,
+		//   so we do all this at the same time
 		//
 		$config = \Drupal::config('idmygadget.settings');
 		if ( $this->isPhone() ) {
 			$this->usingJQueryMobile = TRUE;
-			// $phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_phones', 0);
 			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_phones');
 		}
 		else if ( $this->isTablet() ) {
@@ -290,9 +278,6 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	 */
 	protected function setJqmDataThemeAttribute()
 	{
-		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
-		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
-
 		if ( $this->jqmDataThemeLetter == null )     // supposedly set in constructor but let's be safe
 		{
 			$this->setJqmDataThemeLetter();
