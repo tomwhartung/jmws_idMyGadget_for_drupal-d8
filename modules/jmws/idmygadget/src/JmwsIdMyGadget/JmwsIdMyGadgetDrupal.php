@@ -9,6 +9,7 @@
  * *THEN* we can reuse the rest of the code in this project for joomla and wordpress (and...?)
  */
 require_once 'JmwsIdMyGadget.php';
+require_once 'HamburgerMenuIcon.php';
 
 // class JmwsIdMyGadgetDrupal extends \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
@@ -231,7 +232,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		return $jqmDataThemeIndex;
 	}
 	/**
-	 * Return the index of the jQuery Mobile Data Theme Letter
+	 * Return a boolean indicating whether we want the jQuery Mobile Phone Nav on this device
 	 */
 	protected function getPhoneNavOnThisDevice()
 	{
@@ -252,5 +253,29 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		}
 
 		return $phoneNavOnThisDevice;
+	}
+	/**
+	 * Return a boolean indicating whether we want the hamburger menu icon
+	 *   (left or right or both) on this device
+	 */
+	protected function getHamburgerIconOnThisDevice($leftOrRight=HamburgerMenuIcon::LEFT)
+	{
+		$hamburgerIconOnThisDevice = FALSE;
+		$config = \Drupal::config('idmygadget.settings');
+
+		if ( $this->isPhone() )
+		{
+			$phoneNavOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_phones');
+		}
+		else if ( $this->isTablet() )
+		{
+			$phoneNavOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_tablets');
+		}
+		else
+		{
+			$phoneNavOnThisDevice = $config->get('idmygadget_hamburger_nav_' . $leftOrRight . '_on_desktops');
+		}
+
+		return $hamburgerIconOnThisDevice;
 	}
 }
