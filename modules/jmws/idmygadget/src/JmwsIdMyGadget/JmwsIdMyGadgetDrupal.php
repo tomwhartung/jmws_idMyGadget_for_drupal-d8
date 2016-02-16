@@ -14,17 +14,6 @@ require_once 'JmwsIdMyGadget.php';
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 {
 	/**
-	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
-	 * Added pretty much only for demo purposes, so people see why we don't use it.
-	 */
-	public $phoneHeaderNavThisDevice = FALSE;
-	/**
-	 * Boolean: whether the admins want the jQuery Mobile phone footer nav on this device
-	 * Added pretty much only for demo purposes, so people see why we don't use it.
-	 */
-	public $phoneFooterNavThisDevice = FALSE;
-
-	/**
 	 * Translated version of the radio button choices defined (as static) in the parent class
 	 */
 	public $translatedRadioChoices = array();
@@ -233,52 +222,35 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		}
 	}
 	/**
-	 * Decide whether we are using the jQuery Mobile js library,
-	 * based on the device we are on and the values of device-dependent options set by the admin
-	 */
-	protected function setUsingJQueryMobile() {
-		$this->usingJQueryMobile = FALSE;
-		$this->phoneHeaderNavThisDevice = FALSE;
-		$this->phoneFooterNavThisDevice = FALSE;
-		$this->hamburgerIconThisDeviceLeft = FALSE;
-		$this->hamburgerIconThisDeviceRight = FALSE;
-		$phoneNavOnThisDevice = FALSE;
-		//
-		// The logic for setting usingJQueryMobile is directly related to the
-		//   logic for setting the phone nav and hamburger menu icon *ThisDevice* variables,
-		//   so we do all this at the same time
-		//
-		$config = \Drupal::config('idmygadget.settings');
-		if ( $this->isPhone() ) {
-			$this->usingJQueryMobile = TRUE;
-			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_phones');
-		}
-		else if ( $this->isTablet() ) {
-			// $phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_tablets', 0);
-			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_tablets');
-			if ( $phoneNavOnThisDevice ) {
-				$this->usingJQueryMobile = TRUE;
-			}
-		}
-		else {
-			// $phoneNavOnThisDevice = variable_get('idmg_phone_nav_on_desktops', 0);
-			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_desktops');
-			if ( $phoneNavOnThisDevice ) {
-				$this->usingJQueryMobile = TRUE;
-			}
-		}
-		if( $phoneNavOnThisDevice ) {
-			$this->phoneHeaderNavThisDevice = TRUE;
-			$this->phoneFooterNavThisDevice = TRUE;
-		}
-	}
-	/**
 	 * Return the index of the jQuery Mobile Data Theme Letter
 	 */
 	protected function getJqmDataThemeIndex()
 	{
-		$config = \Drupal::config('idmygadget.settings');                   // D8-specific
-		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');     // D8-specific
+		$config = \Drupal::config('idmygadget.settings');
+		$jqmDataThemeIndex = $config->get('idmygadget_jqm_data_theme');
 		return $jqmDataThemeIndex;
+	}
+	/**
+	 * Return the index of the jQuery Mobile Data Theme Letter
+	 */
+	protected function getPhoneNavOnThisDevice()
+	{
+		$phoneNavOnThisDevice = FALSE;
+		$config = \Drupal::config('idmygadget.settings');
+
+		if ( $this->isPhone() )
+		{
+			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_phones');
+		}
+		else if ( $this->isTablet() )
+		{
+			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_tablets');
+		}
+		else
+		{
+			$phoneNavOnThisDevice = $config->get('idmygadget_phone_nav_on_desktops');
+		}
+
+		return $phoneNavOnThisDevice;
 	}
 }
