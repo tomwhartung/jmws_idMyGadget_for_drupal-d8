@@ -224,6 +224,7 @@ class JmwsIdMyGadget
 
 		$this->gadgetDetectorStringChar = substr( $this->gadgetDetectorString, 0, 1 );  // part of the sanity check string
 		$this->gadgetStringChar = substr( $this->gadgetString, 0, 1 );                  // part of the sanity check string
+		$this->initializeJQueryMobileVars();
 	}
 
 	/**
@@ -272,22 +273,6 @@ class JmwsIdMyGadget
 	public function isEnabled()
 	{
 		return $this->detectionEnabled;
-	}
-
-	/**
-	 * Determine whether we are using jQuery Mobile
-	 * If we are using it, get it set up, based on the values of our options
-	 */
-	public function initializeJQueryMobileVars()
-	{
-		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile and other important variables
-		$this->setJqmDataThemeLetter();
-
-		if ( $this->usingJQueryMobile )
-		{
-			$this->setJqmDataRoles();            // if we're using it, set the data roles and ...
-			$this->setJqmDataThemeAttribute();   // the theme attribute (else leave them blank!)
-		}
 	}
 
 	/**
@@ -394,6 +379,38 @@ class JmwsIdMyGadget
 	public function displayDeviceData()
 	{
 		return $this->idMyGadget->displayDeviceData();
+	}
+// ------------------------------------------------------------------
+// The methods in this section call methods in the subclasses
+// (for drupal and wp and maybe joomla) to read configuration options,
+// each in their own special way, and uses those values to set
+// important variables that determine what menus we display on the
+// device currently being used.
+	/**
+	 * Called by constructor:
+	 * Determine whether we are using jQuery Mobile and set many related variables in the process
+	 */
+	protected function initializeJQueryMobileVars()
+	{
+	  $this->setUsingJQueryMobile();
+	  $this->setJqmDataThemeLetter();
+
+	  if ( $this->usingJQueryMobile )
+	  {
+	    $this->setJqmDataRoles();            // if we're using it, set the data roles and ...
+	    $this->setJqmDataThemeAttribute();   // the theme attribute (else leave them blank!)
+	  }
+	}
+	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme attribute
+	 */
+	protected function setJqmDataThemeAttribute()
+	{
+	  if ( $this->jqmDataThemeLetter == null )     // supposedly set in constructor but let's be safe
+	  {
+	    $this->setJqmDataThemeLetter();
+	  }
+	  $this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
 	}
 
 	/**
