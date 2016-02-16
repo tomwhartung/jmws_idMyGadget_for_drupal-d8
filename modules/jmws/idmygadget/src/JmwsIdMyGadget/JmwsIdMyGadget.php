@@ -78,9 +78,20 @@ class JmwsIdMyGadget
 	public $errorMessage = '';
 	/**
 	 * Boolean: Using jQuery Mobile changes everything, so we need to know when we are using it.
-	 * Although we always use it on phones, we do not always use it on tablets.
+	 * Although we always use it on phones, we do not always use it on tablets or desktops.
 	 */
-	public $usingJQueryMobile = TRUE;
+	public $usingJQueryMobile = FALSE;
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneHeaderNavThisDevice = FALSE;
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone footer nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneFooterNavThisDevice = FALSE;
+
 	/**
 	 * Boolean: determines whether we want the hamburger menu in the upper left corner
 	 * of this page for this device.
@@ -389,6 +400,9 @@ class JmwsIdMyGadget
 	/**
 	 * Called by constructor:
 	 * Determine whether we are using jQuery Mobile and set many related variables in the process
+	 * Note:
+	 *   We always add the jQuery Mobile Data Roles and Theme Attributes to the markup
+	 *   So if we are not using them, it is important that they remain empty strings
 	 */
 	protected function initializeJQueryMobileVars()
 	{
@@ -400,6 +414,49 @@ class JmwsIdMyGadget
 	    $this->setJqmDataRoles();            // if we're using it, set the data roles and ...
 	    $this->setJqmDataThemeAttribute();   // the theme attribute (else leave them blank!)
 	  }
+	}
+	/**
+	 * Decide whether we are using the jQuery Mobile js library, based on:
+	 * o the device we are on and
+	 * o the values of device-dependent options set by the admin
+	 */
+	protected function setUsingJQueryMobile() {
+		$this->usingJQueryMobile = FALSE;
+		$this->phoneHeaderNavThisDevice = FALSE;
+		$this->phoneFooterNavThisDevice = FALSE;
+		$this->hamburgerIconThisDeviceLeft = FALSE;
+		$this->hamburgerIconThisDeviceRight = FALSE;
+
+		//
+		// The logic for setting usingJQueryMobile is directly related to the
+		//   logic for setting the phone nav and hamburger menu icon *ThisDevice* variables,
+		//   so we do all this at the same time
+		//
+		$phoneNavOnThisDevice = $this->getPhoneNavOnThisDevice();
+		if( $phoneNavOnThisDevice )
+		{
+			$this->phoneHeaderNavThisDevice = TRUE;
+			$this->phoneFooterNavThisDevice = TRUE;
+		}
+
+		if ( $this->isPhone() )
+		{
+			$this->usingJQueryMobile = TRUE;
+		}
+		else if ( $this->isTablet() )
+		{
+			if ( $phoneNavOnThisDevice )
+			{
+				$this->usingJQueryMobile = TRUE;
+			}
+		}
+		else
+		{
+			if ( $phoneNavOnThisDevice )
+			{
+				$this->usingJQueryMobile = TRUE;
+			}
+		}
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme Letter
