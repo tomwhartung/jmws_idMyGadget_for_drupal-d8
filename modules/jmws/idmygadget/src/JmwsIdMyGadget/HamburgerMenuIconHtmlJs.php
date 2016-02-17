@@ -6,7 +6,7 @@
  *   except when we reload the page. It would be nice to be able to remove that someday....
  */
 
-class HamburgerMenuIcon
+class HamburgerMenuIconHtmlJs
 {
 	const LEFT = 'left';
 	const RIGHT = 'right';
@@ -51,10 +51,21 @@ class HamburgerMenuIcon
 	 */
 	protected $leftOrRight = '';
 	/**
-	 * Parameters set in the joomla adminstrator area
-	 * @var type Object
+	 * Size of icon - set in the back end admin page of the CMS
 	 */
-	protected $params = null;
+	protected $iconSize;
+	/**
+	 * Color of icon - set in the back end admin page of the CMS
+	 */
+	protected $iconColor;
+	/**
+	 * Line cap of icon - set in the back end admin page of the CMS
+	 */
+	protected $iconLineCap;
+	/**
+	 * Line size of icon - set in the back end admin page of the CMS
+	 */
+	protected $iconLineSize;
 	/**
 	 * The object we are using for device detection
 	 * @var type Object
@@ -70,15 +81,114 @@ class HamburgerMenuIcon
 	/**
 	 * Constructor: use the parameters set in the joomla back end to set the data members
 	 */
-	public function __construct( $leftOrRight, $params, $jmwsIdMyGadget, $template )
+	public function __construct( $leftOrRight,
+							$iconSize, $iconColor, $iconLineCap, $iconLineSize  )
 	{
-		$this->leftOrRight = $leftOrRight ;
-		$this->params = $params;
-		$this->jmwsIdMyGadget = $jmwsIdMyGadget ;
-		$this->template = $template;
-		$this->setPublicDataMembers();
+		$this->leftOrRight = $leftOrRight;
+		$this->iconSize = $iconSize;
+		$this->iconColor = $iconColor;
+		$this->iconLineCap = $iconLineCap;
+		$this->iconLineSize = $iconLineSize;
+	//	$this->setUseImage();
+		$this->useImage = FALSE;
 	}
 
+	/**
+	 * Return the Html needed to properly render the hamburger menu icon
+	 */
+	public function getHtml()
+	{
+		$this->html .= '';
+		if ( $this->leftOrRight === self::LEFT )
+		{
+			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
+			if ( $this->useImage )
+			{
+				$this->html .=
+					'<img id="hamburger-icon-image-left" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '" ' .
+						'src="templates/' . $this->fileName . '" />';
+			}
+			else
+			{
+				$this->html .=
+					'<canvas id="hamburger-icon-left" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '">' .
+						'&nbsp;Menu&nbsp;' . '</canvas>';
+			}
+			$this->html .= '</a>';
+		}
+		else if ( $this->leftOrRight === self::RIGHT )
+		{
+			$this->html =
+				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
+			if ( $this->useImage )
+			{
+				$this->html .=
+					'<img id="hamburger-icon-image-right"' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '" ' .
+						' src="templates/' . $this->fileName . '" />';
+			}
+			else
+			{
+				$this->html .=
+					'<canvas id="hamburger-icon-right" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '">' .
+						'&nbsp;Menu&nbsp;' . '</canvas>';
+			}
+			$this->html .= '</a>';
+		}
+		return $this->html;
+	}
+	/**
+	 * Return the JavaScript needed to properly render the hamburger menu icon
+	 */
+	public function getJs()
+	{
+		$this->js .= '';
+		if ( $this->leftOrRight === self::LEFT )
+		{
+			$this->js =
+				'<script>' .
+					'var hamburgerIconLeftOptions = {};' .
+					'hamburgerIconLeftOptions.color = "' . $this->iconColor . '";' .
+					'hamburgerIconLeftOptions.lineCap = "' . $this->iconLineCap . '";' .
+					'hamburgerIconLeftOptions.lineSize = "' . $this->iconLineSize . '";' .
+				'</script>';
+		}
+		else if ( $this->leftOrRight === self::RIGHT )
+		{
+			$this->js =
+				'<script>' .
+					'var hamburgerIconRightOptions = {};' .
+					'hamburgerIconRightOptions.color = "' . $this->iconColor. '";' .
+					'hamburgerIconRightOptions.lineCap = "' . $this->iconLineCap . '";' .
+					'hamburgerIconRightOptions.lineSize = "' . $this->iconLineSize . '";' .
+				'</script>';
+		}
+		return $this->js;
+	}
+	/**
+	 * Determine whether an appropriate image is available
+	 */
+	protected function setUseImage()
+	{
+		$this->fileName = $this->template . '/images/idMyGadget/hamburgerMenuIcon' .
+			ucfirst($this->leftOrRight) .
+			ucfirst($this->jmwsIdMyGadget->getGadgetString()) .
+			'.png';
+		if ( file_exists(JPATH_THEMES . DS . $this->fileName) )
+		{
+			$this->useImage = TRUE;
+		}
+	}
+	/**
+	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
+	 */
 	protected function setPublicDataMembers()
 	{
 		$this->fileName = $this->template . '/images/idMyGadget/hamburgerMenuIcon' .
@@ -89,37 +199,35 @@ class HamburgerMenuIcon
 		{
 			$this->useImage = TRUE;
 		}
-		if ( $this->leftOrRight === self::LEFT &&
-		     $this->jmwsIdMyGadget->hamburgerIconThisDeviceLeft )
+		if ( $this->leftOrRight === self::LEFT )
 		{
 			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
 			if ( $this->useImage )
 			{
 				$this->html .=
 					'<img id="hamburger-icon-image-left" ' .
-						'width="' . $this->params->get('hamburgerMenuLeftSize') . '" ' .
-						'height="' . $this->params->get('hamburgerMenuLeftSize') . '" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '" ' .
 						'src="templates/' . $this->fileName . '" />';
 			}
 			else
 			{
 				$this->html .=
 					'<canvas id="hamburger-icon-left" ' .
-						'width="' . $this->params->get('hamburgerMenuLeftSize') . '" ' .
-						'height="' . $this->params->get('hamburgerMenuLeftSize') . '">' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '">' .
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
 			$this->js =
 				'<script>' .
 					'var hamburgerIconLeftOptions = {};' .
-					'hamburgerIconLeftOptions.color = "' . $this->params->get('hamburgerMenuLeftColor') . '";' .
-					'hamburgerIconLeftOptions.lineCap = "' . $this->params->get('hamburgerMenuLeftLineCap') . '";' .
-					'hamburgerIconLeftOptions.lineSize = "' . $this->params->get('hamburgerMenuLeftLineSize') . '";' .
+					'hamburgerIconLeftOptions.color = "' . $this->iconColor . '";' .
+					'hamburgerIconLeftOptions.lineCap = "' . $this->iconLineCap . '";' .
+					'hamburgerIconLeftOptions.lineSize = "' . $this->iconLineSize . '";' .
 				'</script>';
 		}
-		if ( $this->leftOrRight === self::RIGHT &&
-		     $this->jmwsIdMyGadget->hamburgerIconThisDeviceRight )
+		else if ( $this->leftOrRight === self::RIGHT )
 		{
 			$this->html =
 				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
@@ -127,25 +235,25 @@ class HamburgerMenuIcon
 			{
 				$this->html .=
 					'<img id="hamburger-icon-image-right"' .
-						'width="' . $this->params->get('hamburgerMenuRightSize') . '" ' .
-						'height="' . $this->params->get('hamburgerMenuRightSize') . '" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '" ' .
 						' src="templates/' . $this->fileName . '" />';
 			}
 			else
 			{
 				$this->html .=
 					'<canvas id="hamburger-icon-right" ' .
-						'width="' . $this->params->get('hamburgerMenuRightSize') . '" ' .
-						'height="' . $this->params->get('hamburgerMenuRightSize') . '">' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '">' .
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
 			$this->js =
 				'<script>' .
 					'var hamburgerIconRightOptions = {};' .
-					'hamburgerIconRightOptions.color = "' . $this->params->get('hamburgerMenuRightColor') . '";' .
-					'hamburgerIconRightOptions.lineCap = "' . $this->params->get('hamburgerMenuRightLineCap') . '";' .
-					'hamburgerIconRightOptions.lineSize = "' . $this->params->get('hamburgerMenuRightLineSize') . '";' .
+					'hamburgerIconRightOptions.color = "' . $this->iconColor. '";' .
+					'hamburgerIconRightOptions.lineCap = "' . $this->iconLineCap . '";' .
+					'hamburgerIconRightOptions.lineSize = "' . $this->iconLineSize . '";' .
 				'</script>';
 		}
 	}
