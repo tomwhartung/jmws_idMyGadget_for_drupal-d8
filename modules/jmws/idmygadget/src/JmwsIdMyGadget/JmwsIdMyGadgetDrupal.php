@@ -6,7 +6,6 @@
  * *THEN* we can reuse the rest of the code in this project for joomla and wordpress (and...?)
  */
 require_once 'JmwsIdMyGadget.php';
-require_once 'HamburgerMenuIconHtmlJs.php';
 
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 {
@@ -255,6 +254,19 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 		}
 
 		return $hamburgerIconOnThisDevice;
+	}
+	/**
+	 * Returns an array of icon settings, set in the admin page
+	 */
+	protected function getHamburgerIconSettings( $leftOrRight )
+	{
+		$config = \Drupal::config('idmygadget.settings');
+		$iconSettings = array();
+		$iconSettings['size'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_size' );
+		$iconSettings['color'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_color' );
+		$iconSettings['line_cap'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_line_cap' );
+		$iconSettings['line_size'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_line_size' );
+		return $iconSettings;
 	}
 	/**
 	 * Return the index of the jQuery Mobile Data Theme Letter
