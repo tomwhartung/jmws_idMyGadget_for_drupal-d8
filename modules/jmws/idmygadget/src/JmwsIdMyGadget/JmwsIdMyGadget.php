@@ -444,7 +444,7 @@ class JmwsIdMyGadget
 	 */
 	protected function setUsingJQueryMobile()
 	{
-		require_once 'HamburgerMenuIcon.php';
+		require_once 'HamburgerMenuIconHtmlJs.php';
 		$this->usingJQueryMobile = FALSE;
 		$this->phoneHeaderNavThisDevice = FALSE;
 		$this->phoneFooterNavThisDevice = FALSE;

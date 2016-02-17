@@ -1,7 +1,4 @@
 <?php
-// namespace Drupal\idmygadget\JmwsIdMyGadget;
-// use Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget;
-
 /**
  * Creates an object of the desired idMyGadget subclass and uses it for device detection.
  * NOTE:
@@ -9,9 +6,8 @@
  * *THEN* we can reuse the rest of the code in this project for joomla and wordpress (and...?)
  */
 require_once 'JmwsIdMyGadget.php';
-require_once 'HamburgerMenuIcon.php';
+require_once 'HamburgerMenuIconHtmlJs.php';
 
-// class JmwsIdMyGadgetDrupal extends \Drupal\idmygadget\JmwsIdMyGadget\JmwsIdMyGadget
 class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 {
 	/**
