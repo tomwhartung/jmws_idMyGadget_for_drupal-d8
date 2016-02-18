@@ -9,7 +9,7 @@
  * Version: 1.0
  * Author URI: http://tomwhartung.com/
  */
-define( 'IDMYGADGET_MODULE_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'src/JmwsIdMyGadget' );
+define( 'IDMYGADGET_MODULE_DIR', __DIR__ );
 
 /**
  * Add the jquery mobile css and js
