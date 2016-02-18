@@ -28,9 +28,15 @@ function idmygadget_page_attachments_alter(&$page) {
   //
   // If we are using jQuery Mobile (based on the value of various admin parameters),
   //   attach the css and js
+  // Likewise with the hamburger js file, which would only be needed if jQuery Mobile is
   //
   if ( $jmwsIdMyGadget->usingJQueryMobile ) {
     $page['#attached']['library'][] = 'idmygadget/jquery-mobile';
-    error_log('idmygadget_page_attachments_alter: attaching jQuery Mobile css and js');
+    // error_log('idmygadget_page_attachments_alter: attaching jQuery Mobile css and js');
+    if ( $jmwsIdMyGadget->hamburgerIconLeftOnThisDevice ||
+         $jmwsIdMyGadget->hamburgerIconRightOnThisDevice ) {
+      $page['#attached']['library'][] = 'idmygadget/hamburger-menu-icon';
+      error_log('idmygadget_page_attachments_alter: attaching hamburger-menu-icon js file');
+    }
   }
 }

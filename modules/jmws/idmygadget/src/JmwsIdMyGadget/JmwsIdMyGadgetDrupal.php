@@ -82,6 +82,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-phone">';
+			$logoNameTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( $config->get('idmygadget_show_site_name_phone') )   // NOTE: 'No' must be the zeroeth elt
 			{
 				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_phone')];
@@ -100,6 +101,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $textAnchorTagClose;
 				$logoNameTitleDescription .= '</' . $siteTitleElement . '>';
 			}
+			$logoNameTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-phone -->';
 			if ( strlen($siteSlogan) > 0 )
 			{
@@ -124,6 +126,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-tablet">';
+			$logoNameTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( $config->get('idmygadget_show_site_name_tablet') )   // NOTE: 'No' must be the zeroeth elt
 			{
 				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_tablet')];
@@ -142,6 +145,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $textAnchorTagClose;
 				$logoNameTitleDescription .= '</' . $siteTitleElement . '>';
 			}
+			$logoNameTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-tablet -->';
 			if ( strlen($siteSlogan) > 0 )
 			{
@@ -166,6 +170,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-desktop">';
+			$logoNameTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( $config->get('idmygadget_show_site_name_desktop') )   // NOTE: 'No' must be the zeroeth elt
 			{
 				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_desktop')];
@@ -184,6 +189,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $textAnchorTagClose;
 				$logoNameTitleDescription .= '</' . $siteTitleElement . '>';
 			}
+			$logoNameTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-desktop -->';
 			if ( strlen($siteSlogan) > 0 )
 			{
@@ -261,11 +267,21 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	protected function getHamburgerIconSettings( $leftOrRight )
 	{
 		$config = \Drupal::config('idmygadget.settings');
+		$iconSizeIndex = $config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_size' );
+		$iconLineCapIndex = (int)$config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_line_cap' );
+		$iconLineSizeIndex = $config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_line_size' );
 		$iconSettings = array();
-		$iconSettings['size'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_size' );
-		$iconSettings['color'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_color' );
-		$iconSettings['line_cap'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_line_cap' );
-		$iconSettings['line_size'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_line_size' );
+		$dimensions = parent::$hamburgerMenuIconSizeChoices[$iconSizeIndex];
+		$iconSettings['size'] = (integer) substr($dimensions, 0, 2 );
+		$iconSettings['color'] = $config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_color' );
+		$iconSettings['line_cap'] = parent::$hamburgerMenuIconLineCapChoices[$iconLineCapIndex];
+		$iconSettings['line_size'] = parent::$hamburgerMenuIconLineSizeChoices[$iconLineSizeIndex];
+	//	$debug = '$dimensions: ' . $dimensions;
+	//	$debug = '$iconSettings[color]: ' . $iconSettings['color'];
+	//	$debug = '$iconSizeIndex: ' . $iconSizeIndex;
+	//	$debug = '$iconLineCapIndex: ' . $iconLineCapIndex;
+	//	$debug = '$iconLineSizeIndex: ' . $iconLineSizeIndex;
+	//	error_log( $debug );
 		return $iconSettings;
 	}
 	/**

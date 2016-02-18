@@ -119,7 +119,7 @@ class JmwsIdMyGadget
 	/**
 	 * JavaScript to use for the Header Menu Icon on the Right side
 	 */
-	public $hamburgerMenuIconRightJs = '';
+	public $hamburgerIconRightJs = '';
 
 	/**
 	 * We want to use jQuery Mobile data-role attributes only when we are using that library.
@@ -280,9 +280,16 @@ class JmwsIdMyGadget
 		$pfnForN = $this->phoneFooterNavThisDevice ? 'F' : 'N';
 		$returnValue .= '/PhoneNav:' . $phnHorN . '-' . $pfnForN;
 
-		$hmiLeftLorN = $this->hamburgerIconLeftOnThisDevice ? 'L' : 'N';
-		$hmiRightRorN = $this->hamburgerIconRightOnThisDevice ? 'R' : 'N';
-		$returnValue .= '/HMI:' . $hmiLeftLorN . '-' . $hmiRightRorN;
+		$lenHmiLH = strlen( $this->hamburgerIconLeftHtml );
+		$lenHmiLJ = strlen( $this->hamburgerIconLeftJs );
+		$lenHmiRH = strlen( $this->hamburgerIconRightHtml );
+		$lenHmiRJ = strlen( $this->hamburgerIconRightJs );
+		$lengthsLeft = '(' . $lenHmiLH . ',' . $lenHmiLJ . ')';
+		$lengthsRight = '(' . $lenHmiRH . ',' . $lenHmiRJ . ')';
+
+	//	$hmiLeftLorN = $this->hamburgerIconLeftOnThisDevice ? 'L' : 'N';
+	//	$hmiRightRorN = $this->hamburgerIconRightOnThisDevice ? 'R' : 'N';
+		$returnValue .= '/hmiL:' . $lengthsLeft . '-hmiR:' . $lengthsRight;
 
 		if ( strlen($extra) > 0 )
 		{
@@ -528,8 +535,7 @@ class JmwsIdMyGadget
 	 */
 	protected function setHamburgerIconHtmlJs( $leftOrRight, $iconSettings )
 	{
-		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight,
-			$iconSettings['size'], $iconSettings['color'], $iconSettings['line_cap'], $iconSettings['line_size'] );
+		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight, $iconSettings );
 
 		if ( $leftOrRight == HamburgerMenuIconHtmlJs::LEFT )
 		{
