@@ -20,3 +20,16 @@ jquery-mobile:
     js/jquery.mobile/jquery.mobile-1.4.5.min.js {}
   dependencies:
     - core/jquery
+
+hamburger-menu-icon:
+  remote: http://tomwhartung.com/
+  version: 1.0
+  license:
+    name: GNU-GPL-2.0-or-later
+    url: https://github.com/tomwhartung/jmws_idMyGadget_for_drupal-d8/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    js/JmwsIdMyGadget/hamburgerMenuIcon.js {}
+  dependencies:
+    - core/jquery
+
