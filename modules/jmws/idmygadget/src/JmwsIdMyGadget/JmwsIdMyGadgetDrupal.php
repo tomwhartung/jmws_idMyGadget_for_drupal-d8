@@ -261,11 +261,21 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	protected function getHamburgerIconSettings( $leftOrRight )
 	{
 		$config = \Drupal::config('idmygadget.settings');
+		$iconSizeIndex = $config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_size' );
+		$iconLineCapIndex = (int)$config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_line_cap' );
+		$iconLineSizeIndex = $config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_line_size' );
 		$iconSettings = array();
-		$iconSettings['size'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_size' );
-		$iconSettings['color'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_color' );
-		$iconSettings['line_cap'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_line_cap' );
-		$iconSettings['line_size'] = $config->get( 'idmygadget_hamburger_icon_' . $leftOrRight . '_line_size' );
+		$dimensions = parent::$hamburgerMenuIconSizeChoices[$iconSizeIndex];
+		$iconSettings['size'] = (integer) substr($dimensions, 0, 2 );
+		$iconSettings['color'] = $config->get( 'idmygadget_hamburger_menu_icon_' . $leftOrRight . '_color' );
+		$iconSettings['line_cap'] = parent::$hamburgerMenuIconLineCapChoices[$iconLineCapIndex];
+		$iconSettings['line_size'] = parent::$hamburgerMenuIconLineSizeChoices[$iconLineSizeIndex];
+	//	$debug = '$dimensions: ' . $dimensions;
+	//	$debug = '$iconSettings[color]: ' . $iconSettings['color'];
+	//	$debug = '$iconSizeIndex: ' . $iconSizeIndex;
+	//	$debug = '$iconLineCapIndex: ' . $iconLineCapIndex;
+	//	$debug = '$iconLineSizeIndex: ' . $iconLineSizeIndex;
+	//	error_log( $debug );
 		return $iconSettings;
 	}
 	/**
