@@ -535,8 +535,7 @@ class JmwsIdMyGadget
 	 */
 	protected function setHamburgerIconHtmlJs( $leftOrRight, $iconSettings )
 	{
-		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight,
-			$iconSettings['size'], $iconSettings['color'], $iconSettings['line_cap'], $iconSettings['line_size'] );
+		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight, $iconSettings );
 
 		if ( $leftOrRight == HamburgerMenuIconHtmlJs::LEFT )
 		{
