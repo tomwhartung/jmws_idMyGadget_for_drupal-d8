@@ -82,6 +82,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-phone">';
+			$logoNameTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( $config->get('idmygadget_show_site_name_phone') )   // NOTE: 'No' must be the zeroeth elt
 			{
 				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_phone')];
@@ -100,6 +101,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $textAnchorTagClose;
 				$logoNameTitleDescription .= '</' . $siteTitleElement . '>';
 			}
+			$logoNameTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-phone -->';
 			if ( strlen($siteSlogan) > 0 )
 			{
@@ -124,6 +126,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-tablet">';
+			$logoNameTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( $config->get('idmygadget_show_site_name_tablet') )   // NOTE: 'No' must be the zeroeth elt
 			{
 				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_tablet')];
@@ -142,6 +145,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $textAnchorTagClose;
 				$logoNameTitleDescription .= '</' . $siteTitleElement . '>';
 			}
+			$logoNameTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-tablet -->';
 			if ( strlen($siteSlogan) > 0 )
 			{
@@ -166,6 +170,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $logoAnchorTagClose;
 			}
 			$logoNameTitleDescription .= '<div class="site-name-title-desktop">';
+			$logoNameTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( $config->get('idmygadget_show_site_name_desktop') )   // NOTE: 'No' must be the zeroeth elt
 			{
 				$siteNameElement = parent::$validElements[$config->get('idmygadget_site_name_element_desktop')];
@@ -184,6 +189,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 				$logoNameTitleDescription .= $textAnchorTagClose;
 				$logoNameTitleDescription .= '</' . $siteTitleElement . '>';
 			}
+			$logoNameTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			$logoNameTitleDescription .= '</div><!-- .site-name-title-desktop -->';
 			if ( strlen($siteSlogan) > 0 )
 			{
