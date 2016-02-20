@@ -21,6 +21,7 @@ class JmwsIdMyGadgetDrupal extends JmwsIdMyGadget
 	{
 	//	error_log( 'Creating a JmwsIdMyGadgetDrupal object for detector "' . $gadgetDetectorString . '" - note we want to do this only once!' );
 		$this->idMyGadgetDir = IDMYGADGET_MODULE_DIR . DIRECTORY_SEPARATOR . 'src/JmwsIdMyGadget';
+		$this->imageOverrideDir = 'modules/jmws/idmygadget/';
 		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
 		$this->translateStaticArrays();
 	}
