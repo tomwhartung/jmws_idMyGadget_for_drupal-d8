@@ -17,6 +17,21 @@ define( 'IDMYGADGET_MODULE_DIR', __DIR__ );
 function idmygadget_page_attachments_alter(&$page) {
   global $jmwsIdMyGadget;
   //
+  // Adding a link tag with the hreflang for google
+  // References:
+  //   https://moz.com/learn/seo/hreflang-tag
+  //   https://www.drupal.org/node/2160069
+  //   https://twitter.com/drupal8changes/status/413750239288643584
+  //   file: core/modules/content_translation/content_translation.module , lines 573-578
+  //
+  $page['#attached']['html_head_link'][] = array(
+      array(
+        'href' => 'http://seeme.com',
+        'rel' => 'alternate',
+        'hreflang' => 'en-us',
+      )
+  );
+  //
   // If the $jmwsIdMyGadget global object does not exist, and at one point we were getting that error,
   //   create the service and get it
   // Reference: https://api.drupal.org/api/drupal/core!core.api.php/group/container/8
