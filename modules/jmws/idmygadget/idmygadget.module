@@ -16,6 +16,7 @@ define( 'IDMYGADGET_MODULE_DIR', __DIR__ );
  */
 function idmygadget_page_attachments_alter(&$page) {
   global $jmwsIdMyGadget;
+  global $base_url;
   //
   // Adding a link tag with the hreflang for google
   // References:
@@ -26,7 +27,7 @@ function idmygadget_page_attachments_alter(&$page) {
   //
   $page['#attached']['html_head_link'][] = array(
       array(
-        'href' => 'http://seeme.com',
+        'href' => $base_url,
         'rel' => 'alternate',
         'hreflang' => 'en-us',
       )
@@ -51,7 +52,6 @@ function idmygadget_page_attachments_alter(&$page) {
     if ( $jmwsIdMyGadget->hamburgerIconLeftOnThisDevice ||
          $jmwsIdMyGadget->hamburgerIconRightOnThisDevice ) {
       $page['#attached']['library'][] = 'idmygadget/hamburger-menu-icon';
-      error_log('idmygadget_page_attachments_alter: attaching hamburger-menu-icon js file');
     }
   }
 }
