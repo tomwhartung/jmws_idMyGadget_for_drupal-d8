@@ -181,7 +181,7 @@ class HamburgerMenuIconHtmlJs
 		// $this->fileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
 		$this->fileName = $this->imageOverrideDir . '/' . $relativeFileName;
 		$fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
-		error_log( '$fileNameToCheck: ' . $fileNameToCheck );
+		// error_log( '$fileNameToCheck: ' . $fileNameToCheck );
 
 		if ( file_exists($fileNameToCheck) )
 		{
